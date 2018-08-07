@@ -1,0 +1,38 @@
+UTILISATEUR: 
+
+- Pseudo
+- Nom complet
+- Email
+- Mot de passe 
+- Photo de profil
+- Photo posté
+- Spots ajouté
+
+CHAMPI:
+
+- Espèce
+- Nom du champignon
+- Comestible
+- Description
+- Photos
+- Accessibilité
+- Qualité
+- Coordonnée
+
+INFO_CHAMPI:
+
+- id_champi
+- commentaires
+- photo utilisateur => id_user
+
+PHOTOS POSTEES PAR l'UTILISATEUR:
+
+- URL 
+- id_user
+- id_spot
+
+SPOTS USERS:
+
+- id_spot
+- id_user
+- coordonnée
