@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\SpotRepository")
  */
-class User
+class Spot
 {
     /**
      * @ORM\Id()
@@ -19,50 +19,56 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $USE_pseudo;
+    private $SPO_photo;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $USE_nom;
+    private $SPO_accessibilite;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $USE_email;
+    private $SPO_qualite;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $USE_password;
+    private $SPO_coordonnee;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $USE_role;
+    private $SPO_description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\PhotoUser", mappedBy="PHO_id_user")
+     * @ORM\OneToMany(targetEntity="App\Entity\PhotoUser", mappedBy="PHO_id_spot")
      */
     private $photoUsers;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CommentairesUser", mappedBy="COM_id_user")
+     * @ORM\OneToMany(targetEntity="App\Entity\CommentairesUser", mappedBy="COM_id_spot")
      */
     private $commentairesUsers;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Spot", mappedBy="SPO_id_User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="spots")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $spots;
+    private $SPO_id_User;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Champignon", inversedBy="spots")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $SPO_id_champi;
 
     public function __construct()
     {
         $this->photoUsers = new ArrayCollection();
         $this->commentairesUsers = new ArrayCollection();
-        $this->spots = new ArrayCollection();
     }
 
     public function getId()
@@ -70,62 +76,62 @@ class User
         return $this->id;
     }
 
-    public function getUSEPseudo(): ?string
+    public function getSPOPhoto(): ?string
     {
-        return $this->USE_pseudo;
+        return $this->SPO_photo;
     }
 
-    public function setUSEPseudo(string $USE_pseudo): self
+    public function setSPOPhoto(?string $SPO_photo): self
     {
-        $this->USE_pseudo = $USE_pseudo;
+        $this->SPO_photo = $SPO_photo;
 
         return $this;
     }
 
-    public function getUSENom(): ?string
+    public function getSPOAccessibilite(): ?string
     {
-        return $this->USE_nom;
+        return $this->SPO_accessibilite;
     }
 
-    public function setUSENom(string $USE_nom): self
+    public function setSPOAccessibilite(string $SPO_accessibilite): self
     {
-        $this->USE_nom = $USE_nom;
+        $this->SPO_accessibilite = $SPO_accessibilite;
 
         return $this;
     }
 
-    public function getUSEEmail(): ?string
+    public function getSPOQualite(): ?string
     {
-        return $this->USE_email;
+        return $this->SPO_qualite;
     }
 
-    public function setUSEEmail(string $USE_email): self
+    public function setSPOQualite(string $SPO_qualite): self
     {
-        $this->USE_email = $USE_email;
+        $this->SPO_qualite = $SPO_qualite;
 
         return $this;
     }
 
-    public function getUSEPassword(): ?string
+    public function getSPOCoordonnee(): ?string
     {
-        return $this->USE_password;
+        return $this->SPO_coordonnee;
     }
 
-    public function setUSEPassword(string $USE_password): self
+    public function setSPOCoordonnee(string $SPO_coordonnee): self
     {
-        $this->USE_password = $USE_password;
+        $this->SPO_coordonnee = $SPO_coordonnee;
 
         return $this;
     }
 
-    public function getUSERole(): ?string
+    public function getSPODescription(): ?string
     {
-        return $this->USE_role;
+        return $this->SPO_description;
     }
 
-    public function setUSERole(string $USE_role): self
+    public function setSPODescription(?string $SPO_description): self
     {
-        $this->USE_role = $USE_role;
+        $this->SPO_description = $SPO_description;
 
         return $this;
     }
@@ -142,7 +148,7 @@ class User
     {
         if (!$this->photoUsers->contains($photoUser)) {
             $this->photoUsers[] = $photoUser;
-            $photoUser->setPHOIdUser($this);
+            $photoUser->setPHOIdSpot($this);
         }
 
         return $this;
@@ -153,8 +159,8 @@ class User
         if ($this->photoUsers->contains($photoUser)) {
             $this->photoUsers->removeElement($photoUser);
             // set the owning side to null (unless already changed)
-            if ($photoUser->getPHOIdUser() === $this) {
-                $photoUser->setPHOIdUser(null);
+            if ($photoUser->getPHOIdSpot() === $this) {
+                $photoUser->setPHOIdSpot(null);
             }
         }
 
@@ -173,7 +179,7 @@ class User
     {
         if (!$this->commentairesUsers->contains($commentairesUser)) {
             $this->commentairesUsers[] = $commentairesUser;
-            $commentairesUser->setCOMIdUser($this);
+            $commentairesUser->setCOMIdSpot($this);
         }
 
         return $this;
@@ -184,41 +190,34 @@ class User
         if ($this->commentairesUsers->contains($commentairesUser)) {
             $this->commentairesUsers->removeElement($commentairesUser);
             // set the owning side to null (unless already changed)
-            if ($commentairesUser->getCOMIdUser() === $this) {
-                $commentairesUser->setCOMIdUser(null);
+            if ($commentairesUser->getCOMIdSpot() === $this) {
+                $commentairesUser->setCOMIdSpot(null);
             }
         }
 
         return $this;
     }
 
-    /**
-     * @return Collection|Spot[]
-     */
-    public function getSpots(): Collection
+    public function getSPOIdUser(): ?User
     {
-        return $this->spots;
+        return $this->SPO_id_User;
     }
 
-    public function addSpot(Spot $spot): self
+    public function setSPOIdUser(?User $SPO_id_User): self
     {
-        if (!$this->spots->contains($spot)) {
-            $this->spots[] = $spot;
-            $spot->setSPOIdUser($this);
-        }
+        $this->SPO_id_User = $SPO_id_User;
 
         return $this;
     }
 
-    public function removeSpot(Spot $spot): self
+    public function getSPOIdChampi(): ?Champignon
     {
-        if ($this->spots->contains($spot)) {
-            $this->spots->removeElement($spot);
-            // set the owning side to null (unless already changed)
-            if ($spot->getSPOIdUser() === $this) {
-                $spot->setSPOIdUser(null);
-            }
-        }
+        return $this->SPO_id_champi;
+    }
+
+    public function setSPOIdChampi(?Champignon $SPO_id_champi): self
+    {
+        $this->SPO_id_champi = $SPO_id_champi;
 
         return $this;
     }
