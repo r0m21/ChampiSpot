@@ -2,18 +2,26 @@
 
 {% block body %}
 
-<h1>Connexion !</h1>
+<section class="bg-color-1 h-100vh">
+    <div class="container center">
+        <img src="img/cs_logo_blanc.svg" class="m-auto">
+    </div>
+</section>
 
-<form action="{{ path('security_login') }}" method="post">
+<section class="h-100vh">
+    <h1>Connexion !</h1>
 
-    <label for="pseudo">Pseudo</label>
-    <input type="text" required name="_username" id="pseudo">
+    <form action="{{ path('security_login') }}" method="post">
 
-    <label for="mdp">Mot de passe</label>
-    <input type="password" required name="_password" id="mdp">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" required name="_username" id="pseudo">
 
-    <input type="submit" value="Connexion">
+        <label for="mdp">Mot de passe</label>
+        <input type="password" required name="_password" id="mdp">
 
-</form>
+        <input type="submit" value="Connexion">
+
+    </form>
+</section>
 
 {% endblock %}
