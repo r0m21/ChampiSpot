@@ -11,24 +11,12 @@ const initMap = function(){
 if($map !== null){
     initMap();
 }
-<<<<<<< HEAD
-let mymap = L.map('mapid').setView([51.505, -0.09], 13);
-=======
 let mymap = L.map('mapid').setView([47.3, 5.05], 13);
->>>>>>> 99d9ea420b6f977c5c592953b7b13866f9dccd9a
 L.tileLayer('//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>', 
     maxZoom: 18,
 }).addTo(mymap);
 
-<<<<<<< HEAD
-var marker = L.marker([lat, lon]).addTo(macarte);
-
-L.popup()
-    .setLatLng([51.5, -0.09])
-    .setContent("I am a standalone popup.")
-    .openOn(mymap);
-=======
 L.popup()
     .setLatLng([51.5, -0.09])
     .setContent("I am a standalone popup.")
@@ -68,4 +56,3 @@ function onMapClick(e) {
 
 mymap.on('click', onMapClick);
 
->>>>>>> 99d9ea420b6f977c5c592953b7b13866f9dccd9a
