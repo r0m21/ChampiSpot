@@ -2,14 +2,25 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(
+ * fields = {"USE_email"},
+ * message = "Cet email est déjà utilisée.",
+ * )
+ * @UniqueEntity(
+ * fields = {"username"},
+ * message = "Ce pseudo est déjà utilisé.",
+ * )
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -21,7 +32,7 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $USE_pseudo;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -30,18 +41,25 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $USE_email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
      */
-    private $USE_password;
+    private $password;
+
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Votre n'avez pas tapé le même mot de passe")
+     */
+    public $confirm_password;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $USE_role;
+    private $USE_role = 'ROLE_USER';
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\PhotoUser", mappedBy="PHO_id_user")
@@ -70,14 +88,14 @@ class User
         return $this->id;
     }
 
-    public function getUSEPseudo(): ?string
+    public function getUsername(): ?string
     {
-        return $this->USE_pseudo;
+        return $this->username;
     }
 
-    public function setUSEPseudo(string $USE_pseudo): self
+    public function setUsername(string $username): self
     {
-        $this->USE_pseudo = $USE_pseudo;
+        $this->username = $username;
 
         return $this;
     }
@@ -106,14 +124,14 @@ class User
         return $this;
     }
 
-    public function getUSEPassword(): ?string
+    public function getPassword(): ?string
     {
-        return $this->USE_password;
+        return $this->password;
     }
 
-    public function setUSEPassword(string $USE_password): self
+    public function setPassword(string $password): self
     {
-        $this->USE_password = $USE_password;
+        $this->password = $password;
 
         return $this;
     }
@@ -129,6 +147,20 @@ class User
 
         return $this;
     }
+
+    public function eraseCredentials(){}
+    public function getSalt(){}
+
+    /**
+     * Returns the roles granted to the user.
+     * 
+     * @return Role[] The user roles
+     */
+    public function getRoles(){
+
+        return array('ROLE_USER');
+    }
+    
 
     /**
      * @return Collection|PhotoUser[]

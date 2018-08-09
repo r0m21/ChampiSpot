@@ -3,10 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% endblock %}
     </head>
     <body>
+
+        {% if not app.user %}
+            
+            <a href="{{ path('security_login')}}">Connexion</a>
+        
+        {% else %}
+
+            <a href="{{ path('security_logout')}}">Deconnexion</a>
+        
+        {% endif %}
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        <script src="{{ asset('js/script.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
