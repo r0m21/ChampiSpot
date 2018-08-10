@@ -1,3 +1,32 @@
 .map{
     height:50vh;
 }
+
+
+/*--------------------------------------*/
+/*----------COULEURS/BACKGROUND---------*/
+
+.color-1{color: #F37A3A;}
+.color-2{color: #333333;}
+.color-3{color: white;}
+
+.bg-color-1{
+    background: rgb(247,85,38); /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgb(247,85,38) 0%, rgb(244,122,59) 70%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgb(247,85,38) 0%,rgb(244,122,59) 70%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgb(247,85,38) 0%,rgb(244,122,59) 70%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f75526', endColorstr='#f47a3b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+
+/*------------------------------------*/
+/*---------------TAILLES--------------*/
+
+.h-100vh{height: 100vh;}
+
+
+/*-------------POSITIONS---------------*/
+
+
+
+
