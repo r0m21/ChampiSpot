@@ -17,12 +17,6 @@ L.tileLayer('//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
     maxZoom: 18,
 }).addTo(mymap);
 
-/* Cette fonction détecte la latitude et la longitude onclick sur la map   */   
-
-/* mymap.on('click', function(e) {
-    alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
-}); */
-
 var markericon = L.icon({
     iconUrl: '../img/marqueur.svg',
     iconSize:     [38, 38], // size of the icon
@@ -31,7 +25,9 @@ var markericon = L.icon({
 });
 
 /**
- * Function onMapClick
+ * Function onMapClick()
+ * 
+ * @description Envoi une icone SVG à la position cliqué sur la map par l'utilisateur.
  * 
  * @param event onclick
  * @return svg icon for longitude and latitude
@@ -62,22 +58,23 @@ mymap.on('click', updateMarker);
 /**
  * Function getLocation()
  *  
- * Fonction qui sert à géolocaliser les utilisateurs en arrivant sur le site ( avec le accord par une popup )
- * 
+ * @description Fonction qui sert à géolocaliser les utilisateurs en arrivant
+ *              sur le site ( avec le accord par une popup )
  * @return Geolocalisation de l'utilisateur 
  */
+
 window.onload = function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(maPosition);
     } else { 
-        console.log("Geolocation is not supported by this browser.");
+        console.log("La géolocation n'est pas supporté par votre navigateur.");
     }
 }
 
 /**
  * Function maPosition()
  * 
- * Fonction de callback en cas de succès
+ * @description Fonction de callback en cas de succès
  * @param {*} position 
  * @type number
  * @return longitude et latitude de l'utilisateur
@@ -87,11 +84,25 @@ function maPosition(position) {
  
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
-    console.log(lat,lng);
 
+    var latitude = document.getElementById('lat');
+    var longitude = document.getElementById('lng');
+
+    latitude.setAttribute('data-lat', lat);
+    longitude.setAttribute('data-lng', lng);
+
+    console.log(lat,lng);
 }
 
-// Fonction de callback en cas d’erreur
+/**
+ * Function erreurPosition()
+ * 
+ * @description Détecte si il y a une erreur lors de la géolocalisation avec les différents messages
+ *              en fonction du cas d'erreur.
+ * 
+ * @param {*} error 
+ * @return string  Renvoi le message d'erreur
+ */
 function erreurPosition(error) {
     var info = "Erreur lors de la géolocalisation : ";
     switch(error.code) {
