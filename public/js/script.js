@@ -53,7 +53,7 @@ mymap.on('click', onMapClick);
  */
 window.onload = function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(maPosition);
+        navigator.geolocation.watchPosition(maPosition);
     } else { 
         console.log("Geolocation is not supported by this browser.");
     }
@@ -70,24 +70,28 @@ window.onload = function getLocation() {
 
 function maPosition(position) {
  
-    var infopos = "Position déterminée :\n";
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     console.log(lat,lng);
-    
-// Un nouvel objet LatLng pour Google Maps avec les paramètres de position
 
-    mymap = new L.map('#mapid').setView([lat, lng], 13);
+}
 
-    var marker = new L.marker([lat,lng], {icon: markericon}).addTo(mymap);
-
-    // Ajout d'un marqueur à la position trouvée
-    /* var marker = new google.maps.Marker({
-    position: latlng,
-    map: map,
-    title:"Vous êtes ici"
-    }); */
-
-    // Permet de centrer la carte sur la position latlng
-    /* map.panTo(latlng); */
+// Fonction de callback en cas d’erreur
+function erreurPosition(error) {
+    var info = "Erreur lors de la géolocalisation : ";
+    switch(error.code) {
+    case error.TIMEOUT:
+    	info += "Timeout !";
+    break;
+    case error.PERMISSION_DENIED:
+	info += "Vous n’avez pas donné la permission";
+    break;
+    case error.POSITION_UNAVAILABLE:
+    	info += "La position n’a pu être déterminée";
+    break;
+    case error.UNKNOWN_ERROR:
+    	info += "Erreur inconnue";
+    break;
+    }
+    document.getElementById("infoposition").innerHTML = info;
 }
