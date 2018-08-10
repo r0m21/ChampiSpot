@@ -1,21 +1,6 @@
 let $map = document.querySelector('map');
-class LeafletMap{
-    load(element){
-        L.map(element);
-    }
-}
-const initMap = function(){
-    let map = new LeafletMap();
-    map.load($map);
-}
-if($map !== null){
-    initMap();
-}
-let mymap = L.map('mapid').setView([47.3, 5.05], 13);
-L.tileLayer('//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>', 
-    maxZoom: 18,
-}).addTo(mymap);
+var mymap = L.map('mapid').setView(maPosition);
+var marker;
 
 var markericon = L.icon({
     iconUrl: '../img/marqueur.svg',
@@ -24,17 +9,36 @@ var markericon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
+class LeafletMap{
+    load(element){
+        L.map(element);
+    }
+}
+
+const initMap = function(){
+    let map = new LeafletMap();
+    map.load($map);
+}
+
+if($map !== null){
+    initMap();
+}
+
+
+L.tileLayer('//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>', 
+    maxZoom: 18,
+}).addTo(mymap);
+
+
 /**
- * Function onMapClick()
+ * Function updateMarker()
  * 
  * @description Envoi une icone SVG à la position cliqué sur la map par l'utilisateur.
  * 
  * @param event onclick
  * @return svg icon for longitude and latitude
  */
-
-
-var marker;
 
 var updateMarker = function(e) {
     var lat = (e.latlng.lat);
