@@ -68,26 +68,14 @@ window.onload = function getLocation() {
  * @return longitude et latitude de l'utilisateur
  */
 
-function maPosition(position) {
- 
+function surveillePosition(position) {
     var infopos = "Position déterminée :\n";
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
-    console.log(lat,lng);
-    
-// Un nouvel objet LatLng pour Google Maps avec les paramètres de position
+    infopos += "Latitude : "+position.coords.latitude +"\n";
+    infopos += "Longitude: "+position.coords.longitude+"\n";
 
-    mymap = new L.map('#mapid').setView([lat, lng], 13);
-
-    var marker = new L.marker([lat,lng], {icon: markericon}).addTo(mymap);
-
-    // Ajout d'un marqueur à la position trouvée
-    /* var marker = new google.maps.Marker({
-    position: latlng,
-    map: map,
-    title:"Vous êtes ici"
-    }); */
-
-    // Permet de centrer la carte sur la position latlng
-    /* map.panTo(latlng); */
+    console.log(infopos);
 }
+
+// On déclare la variable survId afin de pouvoir par la suite annuler le suivi de la position
+var survId = navigator.geolocation.watchPosition(surveillePosition);
+console.log(survId);
