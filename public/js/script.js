@@ -35,14 +35,29 @@ var markericon = L.icon({
  * 
  * @param event onclick
  * @return svg icon for longitude and latitude
- */ 
-function onMapClick(e) {
+ */
+
+
+var marker;
+
+var updateMarker = function(e) {
     var lat = (e.latlng.lat);
     var lng = (e.latlng.lng);
-    var marker = L.marker([lat,lng], {icon: markericon}).addTo(mymap);
-}
 
-mymap.on('click', onMapClick);
+    if (marker) {
+        marker
+        .setLatLng([lat, lng])
+        .setIcon(markericon)
+        ;
+    } else {
+        marker = L.marker([lat, lng])
+        .setIcon(markericon)
+        .addTo(mymap);
+    }
+    return false;
+};
+
+mymap.on('click', updateMarker);
 
 /**
  * Function getLocation()
