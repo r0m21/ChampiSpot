@@ -29,16 +29,6 @@ class Spot
     private $SPO_accessibilite;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $SPO_qualite;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $SPO_coordonnee;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $SPO_description;
@@ -64,6 +54,16 @@ class Spot
      * @ORM\JoinColumn(nullable=false)
      */
     private $SPO_id_champi;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $SPO_longitude;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $SPO_latitude;
 
     public function __construct()
     {
@@ -96,30 +96,6 @@ class Spot
     public function setSPOAccessibilite(string $SPO_accessibilite): self
     {
         $this->SPO_accessibilite = $SPO_accessibilite;
-
-        return $this;
-    }
-
-    public function getSPOQualite(): ?string
-    {
-        return $this->SPO_qualite;
-    }
-
-    public function setSPOQualite(string $SPO_qualite): self
-    {
-        $this->SPO_qualite = $SPO_qualite;
-
-        return $this;
-    }
-
-    public function getSPOCoordonnee(): ?string
-    {
-        return $this->SPO_coordonnee;
-    }
-
-    public function setSPOCoordonnee(string $SPO_coordonnee): self
-    {
-        $this->SPO_coordonnee = $SPO_coordonnee;
 
         return $this;
     }
@@ -218,6 +194,30 @@ class Spot
     public function setSPOIdChampi(?Champignon $SPO_id_champi): self
     {
         $this->SPO_id_champi = $SPO_id_champi;
+
+        return $this;
+    }
+
+    public function getSPOLongitude(): ?string
+    {
+        return $this->SPO_longitude;
+    }
+
+    public function setSPOLongitude(string $SPO_longitude): self
+    {
+        $this->SPO_longitude = $SPO_longitude;
+
+        return $this;
+    }
+
+    public function getSPOLatitude(): ?string
+    {
+        return $this->SPO_latitude;
+    }
+
+    public function setSPOLatitude(string $SPO_latitude): self
+    {
+        $this->SPO_latitude = $SPO_latitude;
 
         return $this;
     }

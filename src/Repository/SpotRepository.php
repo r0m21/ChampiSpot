@@ -47,4 +47,16 @@ class SpotRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findChampiFromSpot(){
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        
+        ';
+        
+
+        return $query->execute();
+
+    }
 }
