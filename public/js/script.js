@@ -1,5 +1,5 @@
 let $map = document.querySelector('map');
-var mymap = L.map('mapid').setView(maPosition);
+var mymap = L.map('mapid').setView([47.3, 5.05], 13);
 var marker;
 
 var markericon = L.icon({
