@@ -12,8 +12,17 @@ class MapController extends Controller
      */
     public function search()
     {
+        $repo = $this->getDoctrine()
+        ->getRepository(Spot::class);
+
+        $spots = $repo->findAll();
+
+        
         return $this->render('map/search.html.twig', [
             'controller_name' => 'MapController',
+            'spots' => $spots,
         ]);
     }
+
+    
 }
