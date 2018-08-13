@@ -9,4 +9,11 @@
 
     <input type="hidden" name="lat" id="lat"/> 
     <input type="hidden" name="lng" id="lng"/>
+
+    {% for spot in spots %}
+        {{ spot.id }}
+        {{ spot.spoDescription }}
+        {{ spot.SPOIdChampi.chaComestible }}
+        <img src="../{{ spot.spoPhoto }}" alt="">
+    {% endfor %}  
 {% endblock %}

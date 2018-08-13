@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Spot;
+use App\Form\SpotType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,18 +17,22 @@ class AjoutSpotController extends Controller
 
     public function ajoutSpot(Request $request, ObjectManager $manager)
     {
-        $newspot = new Spot();
 
-        $form = $this->createFormBuilder($newspot)
-                     ->add('CHA_espece')
-                     ->add('CHA_comestible')
-                     ->add('SPO_description')
-                     ->add('SPO_accessibilite')
-                     ->add('SPO_photo')
-                     ->getForm();
+        $newSpot = new Spot();
+        
+        $form = $this->createForm(SpotType::class, $newSpot);
 
-        return $this->render('ajout/ajout.html.twig', [
-            'formSpot' => $form->createView()
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $manager->persist($newSpot);
+            $manager->flush();
+
+        }
+
+        return $this->render('ajout_spot/ajout.html.twig', [
+            'formSpot' => $form->createView(),   
         ]);
     }
 }
