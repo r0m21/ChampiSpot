@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class AjoutSpotController extends Controller
 {
     /**
-     * @Route("/ajout", name="ajout_spot")
+     * @Route("/ajout", name="ajoutspot")
      */
 
     public function ajoutSpot(Request $request, ObjectManager $manager)
@@ -30,6 +30,8 @@ class AjoutSpotController extends Controller
             $manager->flush();
 
         }
+
+        dump($form);
 
         return $this->render('ajout_spot/ajout.html.twig', [
             'formSpot' => $form->createView(),   
