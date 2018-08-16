@@ -47,4 +47,17 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
+    /* public function findSpotFromUser(){
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT * FROM user
+        INNER JOIN spot
+        WHERE user. = champignon.id        
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt -> execute();
+
+        return $stmt->fetchAll();
+    } */
 }
