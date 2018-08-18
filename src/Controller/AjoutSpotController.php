@@ -21,6 +21,8 @@ class AjoutSpotController extends Controller
 
     public function ajoutSpot(Request $request, ObjectManager $manager)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER', null, 'Unable to access this page!');
+
         $newSpot = new Spot();
         
         $form = $this->createFormBuilder($newSpot)

@@ -27,15 +27,10 @@ class UserController extends Controller
         ->getRepository(User::class);
         $users = $repo->findAll();   
         
-        /* Accède aux fonctions des repos/classes liées en passant par getSpots/getCommentairesUsers/getPhotoUsers */
-        $spotsFromUser = $users->getSpots()->findAll();
-        $commentsFromUser = $users->getCommentairesUsers()->findAll();
-        $photosFromUser = $users->getPhotoUsers()->findAll();
-
+       
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
-            /* 'comment' => $comment,
-            'commentForm' => $form->createView() */
+
         ]);
     }
 
