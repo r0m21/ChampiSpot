@@ -11,12 +11,7 @@
     <input type="hidden" name="lng" id="lng"/>
 
     {%   for spot in spots   %}
-       <p>{{   spot.spoDescription   }}</p> 
-
-    {%   endfor   %}
-
-    {%   for comments in comment   %}
-        <p>{{   comments.COMText    }}</p>
+        <input type="hidden" data-lat="{{ spot.SPOLatitude }}" data-long="{{ spot.SPOLongitude }}" data-img="{{  spot.SPOPhoto  }}" name="lnglat" id="lnglat" class="lnglat" />
     {%   endfor   %}
 
 {% endblock %}

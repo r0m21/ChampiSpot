@@ -48,15 +48,17 @@ class SpotRepository extends ServiceEntityRepository
     }
     */
 
-    public function findChampiFromSpot(){
+    /* public function findChampiFromSpot(){
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-        
+        SELECT * FROM spot
+        INNER JOIN champignon
+        WHERE spot.SPO_id_champi = champignon.id        
         ';
-        
+        $stmt = $conn->prepare($sql);
+        $stmt -> execute();
 
-        return $query->execute();
-
-    }
+        return $stmt->fetchAll();
+    } */
 }
