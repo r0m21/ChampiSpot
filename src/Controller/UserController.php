@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\CommentairesUser;
+use App\Entity\User;
 use App\Repository\CommentairesUserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,15 +27,10 @@ class UserController extends Controller
         ->getRepository(User::class);
         $users = $repo->findAll();   
         
-        /* Accède aux fonctions des repos/classes liées en passant par getSpots/getCommentairesUsers/getPhotoUsers */
-        $spotsFromUser = $users->getSpots()->findAll();
-        $commentsFromUser = $users->getCommentairesUsers()->findAll();
-        $photosFromUser = $users->getPhotoUsers()->findAll();
-
+       
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
-            /* 'comment' => $comment,
-            'commentForm' => $form->createView() */
+
         ]);
     }
 
@@ -47,7 +43,7 @@ class UserController extends Controller
     }
     
 
-     public function show(CommentairesUser $comment){
+    public function show(CommentairesUser $comment){
         
 
         return $this->render('comment/show.html.twig', [
@@ -56,5 +52,33 @@ class UserController extends Controller
             'commentForm' => $form->createView()
         ]);
 
-     }
+    }
+
+    /**
+     * @Route("/profil/{id}", name="profil")
+     */     
+
+    public function profil($id){
+        
+
+        /* Récupère le repo */
+        $repo = $this->getDoctrine()
+        ->getRepository(User::class);
+        $infosProfil = $repo->find($id);
+        $photos = $infosProfil->getPhotoUsers();
+        $comments = $infosProfil->getCommentairesUsers();
+        $spots = $infosProfil->getSpots();
+    
+
+        dump($infosProfil);
+
+        return $this->render('user/profil.html.twig', [
+            'controller_name' => 'MapController',
+            'infos' => $infosProfil,
+            'photos' => $photos,
+            'comments' => $comments,
+            'spots' => $spots
+
+        ]);
+    }
 }

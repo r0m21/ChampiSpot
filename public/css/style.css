@@ -1,7 +1,29 @@
+body {position: relative;   }  
 .map{
     height:50vh;
 }
 
+/*--------------------------------------*/
+/*----------ANIMATION ACCUEIL---------*/
+
+@keyframes ecranAccueil {
+    0%   { opacity: 1; }
+    50%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.animation {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    z-index: 9999;
+    animation: ecranAccueil 3s;
+    -webkit-animation: ecranAccueil 3s;
+    animation-iteration-count: 1;
+}
 
 /*--------------------------------------*/
 /*----------COULEURS/BACKGROUND---------*/
@@ -18,14 +40,39 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f75526', endColorstr='#f47a3b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-
+.border{border: #F37A3A;}
 /*------------------------------------*/
 /*---------------TAILLES--------------*/
 
+.w-100pct{width: 100%;}
+.w-250px{width: 250px;}
+.h-250px{height: 250px;}
 .h-100vh{height: 100vh;}
+.h-100pct{height: 100%;}
 
+/*------------------------------------*/
+/*----------------FONTS--------------*/
 
-/*-------------POSITIONS---------------*/
+.raleway{font-family: 'Raleway', sans-serif;}
+
+.fs-12{font-size: 12px;}
+.fs-14{font-size: 0.875rem;}
+.fs-20{font-size: 20px;}
+
+/*-----------------------------------*/
+/*----------------FLEX---------------*/
+
+.d-flex{display: flex;}
+.jc-center{justify-content: center;}
+.jc-space-between{justify-content: space-between;}
+.jc-space-around{justify-content: space-around;}
+.flex-column{flex-direction: column;}
+
+/*------------------------------------*/
+/*-----------MARGING/PADDING----------*/
+
+.m-top50{margin-top: 50px;}
+
 
 
 
