@@ -40,6 +40,12 @@ var updateMarker = function(e) {
     var lat = (e.latlng.lat);
     var lng = (e.latlng.lng);
 
+    var latitude = document.getElementById('form_SPO_longitude');
+    var longitude = document.getElementById('form_SPO_latitude');
+
+    latitude.setAttribute('value', lat);
+    longitude.setAttribute('value', lng);
+
     if (champiMarker) {
         champiMarker
         .setLatLng([lat, lng])
