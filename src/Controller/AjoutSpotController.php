@@ -30,23 +30,24 @@ class AjoutSpotController extends Controller
                      ->add('SPO_accessibilite')
                      ->add('SPO_description')
 
-                     /* ->add('SPO_id_champi', EntityType::class, array(
+                     ->add('SPO_id_champi', EntityType::class, array(
                         'class' => 'App\Entity\Champignon',
                         'choice_label' => 'id',
                      ))
- */
-                    ->add('SPO_id_champi', EntityType::class, [
+
+                    /* ->add('SPO_id_champi', EntityType::class, [
                         'label' => 'Champignon',
                         'class' => 'App\Entity\Champignon',
                         'choice_label' => function (Champignon $champignon) {
                             return $champignon->getCHANom();
                         },
-                    ])
-                    /*  ->add('SPO_id_champi', EntityType::class, array(
+                    ]) */
+                     ->add('SPO_id_champi', EntityType::class, array(
+                        'label' => 'Champignon',
                         'class' => Champignon::class,
                         'choice_label' => 'CHANom',
                      ))
- */
+
                      ->add('SPO_id_user', EntityType::class, array(
                         'class' => 'App\Entity\User',
                         'choice_label' => 'id',
