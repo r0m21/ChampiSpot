@@ -53,6 +53,9 @@ class AjoutSpotController extends Controller
                         'label' => 'Champignon',
                         'class' => Champignon::class,
                         'choice_label' => 'CHANom',
+                        'attr' => [
+                            "class" => "browser-default"
+                        ]
                      ))
 
                      ->add('SPO_id_user', EntityType::class, array(
