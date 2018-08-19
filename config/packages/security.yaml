@@ -1,5 +1,7 @@
 # config/packages/security.yaml
 security:
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
     providers:
 
         chain_provider:
