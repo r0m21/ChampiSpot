@@ -56,10 +56,6 @@ class User implements UserInterface
      */
     public $confirm_password;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $USE_role = 'ROLE_USER';
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\PhotoUser", mappedBy="PHO_id_user")
@@ -136,17 +132,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getUSERole(): ?string
-    {
-        return $this->USE_role;
-    }
-
-    public function setUSERole(string $USE_role): self
-    {
-        $this->USE_role = $USE_role;
-
-        return $this;
-    }
+   
 
     public function eraseCredentials(){}
     public function getSalt(){}

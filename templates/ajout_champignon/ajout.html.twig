@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+
+{% block body %}
+
+<p>Ajout d'un champignon</p>
+
+    {{ form_start(formChampi) }}
+        {{ form_row(formChampi.CHA_espece) }}
+        {{ form_row(formChampi.CHA_nom) }}
+        {{ form_row(formChampi.CHA_comestible) }}
+        <input type="submit" value="Ajouter">
+    {{ form_end(formChampi) }}
+
+{% endblock %}
