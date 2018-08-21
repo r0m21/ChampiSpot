@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}SearchMap{{ controller_name }}!{% endblock %}
+{% block title %}Home Page{% endblock %}
 
 {% block body %}
-
-   <div class="map" id="mapid"></div>
-   <p id="infoposition"></p>
+<section class="pt-50">
+    
+    <div class="map" id="mapid"></div>
+    <p id="infoposition"></p>
 
     <input type="hidden" name="lat" id="lat"/> 
     <input type="hidden" name="lng" id="lng"/>
@@ -14,4 +15,6 @@
         <input type="hidden" data-lat="{{ spot.SPOLatitude }}" data-long="{{ spot.SPOLongitude }}" data-img="{{  spot.SPOPhoto  }}" name="lnglat" id="lnglat" class="lnglat" />
     {%   endfor   %}
 
+</section>
+   
 {% endblock %}

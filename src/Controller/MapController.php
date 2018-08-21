@@ -39,7 +39,7 @@ class MapController extends Controller
     }
 
     /**
-     * @Route("/map", name="map")
+     * @Route("/", name="map")
      */
     public function map()
     {
@@ -49,8 +49,7 @@ class MapController extends Controller
         ->getRepository(Spot::class);
         $spots = $repo->findAll();
 
-        return $this->render('map/map.html.twig', [
-            'controller_name' => 'MapController',
+        return $this->render('index.html.twig', [
             'spots' => $spots,
            
         ]);

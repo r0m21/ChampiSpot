@@ -46,15 +46,20 @@ body {position: relative;   }
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f75526', endColorstr='#f47a3b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.border{border: #F37A3A;}
+.bg-color-2{background-color:#FFFFFF;}
+
+.border-bot-1{border-bottom: 1px solid #E9E9E9;}
+
 /*------------------------------------*/
 /*---------------TAILLES--------------*/
 
 .w-100pct{width: 100%;}
-.w-250px{width: 250px;}
-.h-250px{height: 250px;}
+
 .h-100vh{height: 100vh;}
+
 .h-100pct{height: 100%;}
+
+.h-100px{height:100px;}
 
 /*------------------------------------*/
 /*----------------FONTS--------------*/
@@ -69,9 +74,15 @@ body {position: relative;   }
 /*----------------FLEX---------------*/
 
 .d-flex{display: flex;}
+
 .jc-center{justify-content: center;}
 .jc-space-between{justify-content: space-between;}
 .jc-space-around{justify-content: space-around;}
+
+.jc-flex-start{justify-content:flex-start;}
+
+.align-self-center{align-self:center;}
+
 .flex-column{flex-direction: column;}
 
 /*------------------------------------*/
@@ -79,6 +90,14 @@ body {position: relative;   }
 
 .m-top50{margin-top: 50px;}
 
+.pt-50{padding-top:50px;}
+
+.p-10-50{padding:10px 50px;}
+
+/*------------------------------------*/
+/*--------------GENERAL---------------*/
+
+.box-shadow-none{box-shadow:none;}
 
 
 
