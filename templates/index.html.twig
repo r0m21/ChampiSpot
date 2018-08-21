@@ -27,19 +27,26 @@
         <div class="col s9">
 
             <div class="map w-100pct" id="mapid">
-
+            {%   for spot in spots   %}
+                <input type="hidden" data-lat="{{ spot.spo_latitude }}" 
+                data-long="{{ spot.spo_longitude }}" data-img="{{  spot.spo_photo  }}" 
+                data-id="{{   spot.id   }}" data-description="{{  spot.spo_description  }}" 
+                name="lnglat" id="lnglat" class="lnglat" />
+                
                 <!-- Modal Structure -->
-                <div id="info-modal-spot" class="modal">
-                        <div class="modal-content">
-                            <h4>Modal Header</h4>
-                            <p>A bunch of text</p>
-                        </div>
-    
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                        </div>
+                <div id="info-modal-spot{{ spot.id }}" class="modal">
+                    <div class="modal-content">
+                        <h4>Modale de l'id {{ spot.id }}</h4>
+                        <p>{{  spot.spo_description  }}</p>
                     </div>
+
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
+                </div>
                 <!-- End Modal -->
+            {%   endfor   %}
+                
                 
             </div>
             <p id="infoposition"></p>
@@ -47,9 +54,7 @@
             <input type="hidden" name="lat" id="lat"/> 
             <input type="hidden" name="lng" id="lng"/>
 
-            {%   for spot in spots   %}
-                <input type="hidden" data-lat="{{ spot.spo_latitude }}" data-long="{{ spot.spo_longitude }}" data-img="{{  spot.spo_photo  }}" data-id="{{   spot.id   }}" data-description="{{  spot.spo_description  }}" name="lnglat" id="lnglat" class="lnglat" />
-            {%   endfor   %}
+
 
             
         </div>
