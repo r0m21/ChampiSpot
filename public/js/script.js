@@ -149,7 +149,7 @@ for (i=0; i<spotslnglat.length; i++){
     var photo = spotslnglat[i].getAttribute('data-img');
     var popupContent = "<div><a id='trigger-modal' class='waves-effect waves-light btn modal-trigger' href='#info-modal-spot'>Modal</a></div>";
 
-    marker = new L.marker([lat, long])
+    marker = new L.marker([long, lat])
         	.bindPopup(popupContent)
             .addTo(mymap);
 }
