@@ -4,17 +4,25 @@
 
 {% block body %}
 
-   <div class="map" id="mapid"></div>
-   <p id="infoposition"></p>
-
+    <div class="map" id="mapid"></div>
+    <p id="infoposition"></p>
+    <form action="" id="formFilter" method='POST'>
+        <select name="filter" class="browser-default" id="filterValue">
+            <option value="default">Choisir une espèce</option>
+            {% for champignon in allChampis %}
+                <option value="{{ champignon.CHAEspece }}">{{ champignon.CHAEspece }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Filtrer" name="submitFilter" id="submitFilter">
+    </form>
     <input type="hidden" name="lat" id="lat"/> 
     <input type="hidden" name="lng" id="lng"/>
 
     {%   for spot in spots   %}
-        <input type="hidden" data-lat="{{ spot.SPOLatitude }}" data-long="{{ spot.SPOLongitude }}" data-img="{{  spot.SPOPhoto  }}" data-id="{{   spot.id   }}" data-description="{{  spot.SPODescription  }}" name="lnglat" id="lnglat" class="lnglat" />
+        <input type="hidden" data-lat="{{ spot.spo_latitude }}" data-long="{{ spot.spo_longitude }}" data-img="{{  spot.spo_photo  }}" 
+        data-espece = "{{ spot.cha_espece }}"
+        data-id="{{ spot.id }}" 
+        data-description="{{  spot.spo_description  }}" name="lnglat" id="lnglat" class="lnglat" />
     {%   endfor   %}
 
-    {%   for spot in spots   %}
-
-    {%   endfor   %}
 {% endblock %}

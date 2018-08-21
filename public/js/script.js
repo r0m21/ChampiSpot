@@ -37,7 +37,7 @@ var markericon = L.icon({
 
 if(window.location.href.indexOf("ajout") > -1) {
     var champiMarker;
-var updateMarker = function(e) {
+    var updateMarker = function(e) {
     var lat = (e.latlng.lat);
     var lng = (e.latlng.lng);
 
@@ -132,14 +132,25 @@ function erreurPosition(error) {
     document.getElementById("infoposition").innerHTML = info;
 }
 
-var spotslnglat = document.querySelectorAll('.lnglat');
+    var marker;
+    var spotslnglat = document.querySelectorAll('.lnglat');
 
-for (i=0; i<spotslnglat.length; i++){
-    var lat = spotslnglat[i].getAttribute('data-lat');
-    var long = spotslnglat[i].getAttribute('data-long');
-    var photo = spotslnglat[i].getAttribute('data-img');
+    for (i=0; i<spotslnglat.length; i++){
+        var lat = spotslnglat[i].getAttribute('data-lat');
+        var long = spotslnglat[i].getAttribute('data-long');
+        var photo = spotslnglat[i].getAttribute('data-img');
 
-    marker = new L.marker([lat, long])
-        	.bindPopup(photo)
-            .addTo(mymap);
-}
+        marker = new L.marker([long, lat])
+                .bindPopup(photo)
+                .addTo(mymap);
+
+        
+    }
+   
+
+   
+
+
+
+
+    

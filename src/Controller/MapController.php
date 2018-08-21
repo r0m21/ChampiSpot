@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Spot;
+use App\Entity\Champignon;
 use App\Entity\CommentairesUser;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -43,20 +44,29 @@ class MapController extends Controller
     /**
      * @Route("/map", name="map")
      */
+
     public function map()
     {
         
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
-        $spots = $repo->findAll();
+
+        $repoChampis = $this->getDoctrine()
+        ->getRepository(Champignon::class);
+
+        $allChampis = $repoChampis->findAll();
         
+        $spots = $repo->findChampisFromAllSpot();
+
+        dump($spots);
 
 
 
         return $this->render('map/map.html.twig', [
             'controller_name' => 'MapController',
             'spots' => $spots,
+            'allChampis' => $allChampis
            
         ]);
     }
