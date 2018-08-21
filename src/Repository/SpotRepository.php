@@ -56,7 +56,7 @@ class SpotRepository extends ServiceEntityRepository
                 $sql = '
                 SELECT * FROM spot
                 INNER JOIN champignon
-                WHERE spot.spo_id_champi_id = champignon.cha_id
+                WHERE spot.spo_id_champi_id = champignon.id
                 AND champignon.cha_espece LIKE :espece                    
                 ';
                 $stmt = $conn->prepare($sql);
@@ -68,7 +68,7 @@ class SpotRepository extends ServiceEntityRepository
             $sql = '
             SELECT * FROM spot
             INNER JOIN champignon
-            WHERE spot.spo_id_champi_id = champignon.cha_id    
+            WHERE spot.spo_id_champi_id = champignon.id    
             ';
             $stmt = $conn->prepare($sql);
             $stmt -> execute();

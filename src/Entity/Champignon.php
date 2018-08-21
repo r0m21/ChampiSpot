@@ -17,7 +17,7 @@ class Champignon
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $CHA_id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -44,9 +44,9 @@ class Champignon
         $this->spots = new ArrayCollection();
     }
 
-    public function getCHAId()
+    public function getId()
     {
-        return $this->CHA_id;
+        return $this->id;
     }
 
     public function getCHAEspece(): ?string
