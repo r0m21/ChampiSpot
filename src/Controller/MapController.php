@@ -48,9 +48,6 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->findAll();
-        
-
-
 
         return $this->render('map/map.html.twig', [
             'controller_name' => 'MapController',
