@@ -44,6 +44,11 @@ class Spot
     private $commentairesUsers;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Signalement", mappedBy="SIG_id_spot")
+     */
+    private $signalement;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="spots")
      * @ORM\JoinColumn(nullable=false)
      */
