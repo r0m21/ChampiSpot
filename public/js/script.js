@@ -37,7 +37,7 @@ var markericon = L.icon({
 
 if(window.location.href.indexOf("ajout") > -1) {
     var champiMarker;
-    var updateMarker = function(e) {
+var updateMarker = function(e) {
     var lat = (e.latlng.lat);
     var lng = (e.latlng.lng);
 
@@ -139,6 +139,7 @@ function erreurPosition(error) {
         var lat = spotslnglat[i].getAttribute('data-lat');
         var long = spotslnglat[i].getAttribute('data-long');
         var photo = spotslnglat[i].getAttribute('data-img');
+
 
         marker = new L.marker([long, lat])
                 .bindPopup(photo)

@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}SearchMap{{ controller_name }}!{% endblock %}
+{% block title %}Home Page{% endblock %}
 
 {% block body %}
+<section class="pt-50">
 
     <div class="map" id="mapid"></div>
     <p id="infoposition"></p>
+<<<<<<< HEAD:templates/map/map.html.twig
     <form action="" id="formFilter" method='POST'>
         <select name="filter" class="browser-default" id="filterValue">
             <option value="default">Choisir une espèce</option>
@@ -15,6 +17,9 @@
         </select>
         <input type="submit" value="Filtrer" name="submitFilter" id="submitFilter">
     </form>
+=======
+
+>>>>>>> 2f5fe39ecb169e679741f8cd68fd9ecf5a92ccbc:templates/index.html.twig
     <input type="hidden" name="lat" id="lat"/> 
     <input type="hidden" name="lng" id="lng"/>
 
@@ -25,4 +30,9 @@
         data-description="{{  spot.spo_description  }}" name="lnglat" id="lnglat" class="lnglat" />
     {%   endfor   %}
 
+<<<<<<< HEAD:templates/map/map.html.twig
+=======
+</section>
+   
+>>>>>>> 2f5fe39ecb169e679741f8cd68fd9ecf5a92ccbc:templates/index.html.twig
 {% endblock %}
