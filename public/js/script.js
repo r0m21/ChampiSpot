@@ -80,6 +80,14 @@ window.onload = function getLocation() {
         console.log("La géolocation n'est pas supporté par votre navigateur.");
     }
 }
+$(function($){
+
+    if(window.location.href.indexOf("/") > -1){
+   $('.modal').modal();
+       
+    }
+})
+
 
 /**
  * Function maPosition()
@@ -135,23 +143,13 @@ function erreurPosition(error) {
     var marker;
     var spotslnglat = document.querySelectorAll('.lnglat');
 
-    for (i=0; i<spotslnglat.length; i++){
-        var lat = spotslnglat[i].getAttribute('data-lat');
-        var long = spotslnglat[i].getAttribute('data-long');
-        var photo = spotslnglat[i].getAttribute('data-img');
+for (i=0; i<spotslnglat.length; i++){
+    var lat = spotslnglat[i].getAttribute('data-lat');
+    var long = spotslnglat[i].getAttribute('data-long');
+    var photo = spotslnglat[i].getAttribute('data-img');
+    var popupContent = "<div><a id='trigger-modal' class='waves-effect waves-light btn modal-trigger' href='#info-modal-spot'>Modal</a></div>";
 
-
-        marker = new L.marker([long, lat])
-                .bindPopup(photo)
-                .addTo(mymap);
-
-        
-    }
-   
-
-   
-
-
-
-
-    
+    marker = new L.marker([lat, long])
+        	.bindPopup(popupContent)
+            .addTo(mymap);
+}
