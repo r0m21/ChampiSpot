@@ -10,8 +10,14 @@
     <input type="hidden" name="lat" id="lat"/> 
     <input type="hidden" name="lng" id="lng"/>
 
+    <input type="hidden" name="lat" id="lat"/> 
+    <input type="hidden" name="lng" id="lng"/>
+
     {%   for spot in spots   %}
-        <input type="hidden" data-lat="{{ spot.SPOLatitude }}" data-long="{{ spot.SPOLongitude }}" data-img="{{  spot.SPOPhoto  }}" name="lnglat" id="lnglat" class="lnglat" />
+        <input type="hidden" data-lat="{{ spot.SPOLatitude }}" data-long="{{ spot.SPOLongitude }}" data-img="{{  spot.SPOPhoto  }}" data-id="{{   spot.id   }}" data-description="{{  spot.SPODescription  }}" name="lnglat" id="lnglat" class="lnglat" />
     {%   endfor   %}
 
+    {%   for spot in spots   %}
+
+    {%   endfor   %}
 {% endblock %}
