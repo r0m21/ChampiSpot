@@ -28,10 +28,7 @@ class UserController extends Controller
         $users = $repo->findAll();   
         
        
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
-
-        ]);
+        return $this->render('user/index.html.twig');
     }
 
     /**
@@ -60,7 +57,6 @@ class UserController extends Controller
 
     public function profil($id){
         
-
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(User::class);

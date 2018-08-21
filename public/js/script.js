@@ -34,8 +34,9 @@ var markericon = L.icon({
  */
 
 
-var champiMarker;
 
+if(window.location.href.indexOf("ajout") > -1) {
+    var champiMarker;
 var updateMarker = function(e) {
     var lat = (e.latlng.lat);
     var lng = (e.latlng.lng);
@@ -58,8 +59,11 @@ var updateMarker = function(e) {
     }
     return false;
 };
-
 mymap.on('click', updateMarker);
+ }
+
+
+
 
 /**
  * Function getLocation()

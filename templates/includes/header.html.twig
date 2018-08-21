@@ -1,0 +1,44 @@
+<header class="border-bot-1">
+    <nav class="bg-color-2 h-100px p-10-50 d-flex jc-space-between box-shadow-none">
+
+        <div class="col s6 d-flex jc-flex-start">
+            <a href="/">
+               <img src="img/cs_logo_orange.svg" alt="ChampiSpot" class="responsive-img">
+            </a> 
+        </div>
+
+        <ul class="col s6 d-flex jc-space-around align-self-center">
+
+            <li>
+                <a class="color-1" href="/ajout">Ajouter un spot</a>
+            </li>
+
+            <li>
+                <a class="color-1" href="/a-propos">A propos</a>
+            </li>
+
+            {% if not app.user %}
+                <li>
+                    <a class="color-1" href="{{ path('security_login')}}">Se connecter</a>
+                </li> 
+            {% else %}
+
+                <li>
+                   <a class="color-1" href="/profil">Profil</a>
+                </li>
+
+                <li>
+                    <a class="color-1" href="{{ path('security_logout')}}">Deconnexion</a>
+                </li> 
+
+            {% endif %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a class="color-1" href="/admin">Administration</a>
+                </li>
+            {% endif %}
+
+        </ul> 
+    </nav>
+</header>

@@ -21,6 +21,8 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->find($id);
+
+        
         $comment = $spots->getCommentairesUsers();
         $longitude = $repo->find($id)->getSPOLongitude();
         $latitude = $repo->find($id)->getSPOLatitude();
@@ -39,7 +41,7 @@ class MapController extends Controller
     }
 
     /**
-     * @Route("/map", name="map")
+     * @Route("/", name="map")
      */
     public function map()
     {
@@ -48,12 +50,8 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->findAll();
-        
 
-
-
-        return $this->render('map/map.html.twig', [
-            'controller_name' => 'MapController',
+        return $this->render('index.html.twig', [
             'spots' => $spots,
            
         ]);

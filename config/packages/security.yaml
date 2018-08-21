@@ -12,7 +12,7 @@ security:
             memory:
                 users:
                     admin:
-                        password: $2y$13$Iy4AWy9VRa6xvH0UOIWol.dQ6Btw3fCv.307jX54Iyrg7PRkI7Cfy
+                        password: $2y$13$Mpihs8YoiZ5Zb69.tfvsJuWJUR5YlGdD5waql8untmn6lLrdW1eNS
                         roles: 'ROLE_ADMIN'
 
         in_database:
