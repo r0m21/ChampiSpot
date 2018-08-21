@@ -3,17 +3,54 @@
 {% block title %}Home Page{% endblock %}
 
 {% block body %}
-<section class="pt-50">
+<section class="p-50-50-0">
 
-    <div class="map" id="mapid"></div>
-    <p id="infoposition"></p>
+    <div class="row">
+        <div class="col s3 d-flex flex-column ai-center jc-space-between h-75vh">
+            <div class="d-flex flex-column">
+                <h3 class="raleway fw-700 color-1 separator fs-24 no-margin text-center">FILTRES DE RECHERCHE</h3>
+                <form class="" action="">
+                    <input class="" type="text" value="OUi">
+                    <input type="text" value="OUi">
+                    <input type="text" value="OUi">
+                    <input class="w-100pct" type="submit" value="Ajouter un spot">
+                </form>
+            </div>
+            <div class="d-flex ai-flex-end">
+                <img class="responsive-img"src="../img/congratulations.svg" alt="">
+            </div>
+        </div>
 
-    <input type="hidden" name="lat" id="lat"/> 
-    <input type="hidden" name="lng" id="lng"/>
+        <div class="col s9">
 
-    {%   for spot in spots   %}
-        <input type="hidden" data-lat="{{ spot.SPOLatitude }}" data-long="{{ spot.SPOLongitude }}" data-img="{{  spot.SPOPhoto  }}" data-id="{{   spot.id   }}" data-description="{{  spot.SPODescription  }}" name="lnglat" id="lnglat" class="lnglat" />
-    {%   endfor   %}
+            <div class="map w-100pct" id="mapid">
+
+                <!-- Modal Structure -->
+                <div id="info-modal-spot" class="modal">
+                        <div class="modal-content">
+                            <h4>Modal Header</h4>
+                            <p>A bunch of text</p>
+                        </div>
+    
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                        </div>
+                    </div>
+                <!-- End Modal -->
+                
+            </div>
+            <p id="infoposition"></p>
+
+            <input type="hidden" name="lat" id="lat"/> 
+            <input type="hidden" name="lng" id="lng"/>
+
+            {%   for spot in spots   %}
+                <input type="hidden" data-lat="{{ spot.SPOLatitude }}" data-long="{{ spot.SPOLongitude }}" data-img="{{  spot.SPOPhoto  }}" data-id="{{   spot.id   }}" data-description="{{  spot.SPODescription  }}" name="lnglat" id="lnglat" class="lnglat" />
+            {%   endfor   %}
+
+            
+        </div>
+    </div>
 
 </section>
    
