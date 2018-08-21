@@ -55,16 +55,25 @@ class MapController extends Controller
         $repoChampis = $this->getDoctrine()
         ->getRepository(Champignon::class);
 
+        if(isset($_POST['submitFilter'])){
+            $espece = $_POST['filter'];
+            if ($espece != 'Default'){
+                $spots = $repo
+                ->findBy(array('SPO_id_champi' => '1'));
+            }
+            dump($spots);
+       
+        }
         $allChampis = $repoChampis->findAll();
         
-        $spots = $repo->findChampisFromAllSpot();
+        $spots = $repo->findAll();
 
-        dump($spots);
 
 
         return $this->render('index.html.twig', [
             'spots' => $spots,
             'allChampis' => $allChampis
+           
            
         ]);
     }

@@ -48,7 +48,7 @@ class SpotRepository extends ServiceEntityRepository
     }
     */
 
-    public function findChampisFromAllSpot(){
+    /* public function findChampisFromAllSpot(){
         $conn = $this->getEntityManager()->getConnection();
         if(isset($_POST['submitFilter'])){
             $espece = $_POST['filter'];
@@ -76,5 +76,5 @@ class SpotRepository extends ServiceEntityRepository
 
 
         return $stmt->fetchAll();
-    }
+    } */
 }
