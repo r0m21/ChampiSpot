@@ -59,14 +59,18 @@ class MapController extends Controller
             $espece = $_POST['filter'];
             if ($espece != 'Default'){
                 $spots = $repo
-                ->findBy(array('SPO_id_champi' => '1'));
+                ->findBy(array('SPO_id_champi' => $espece));
             }
             dump($spots);
        
+        }else
+        {
+            $spots = $repo->findAll();
         }
+
         $allChampis = $repoChampis->findAll();
         
-        $spots = $repo->findAll();
+        
 
 
 

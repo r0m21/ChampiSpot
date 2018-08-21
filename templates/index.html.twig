@@ -13,7 +13,7 @@
                         <select name="filter" class="browser-default" id="filterValue">
                             <option value="default">Choisir une espèce</option>
                         {% for champignon in allChampis %}
-                            <option value="{{ champignon.CHAEspece }}">{{ champignon.CHAEspece }}</option>
+                            <option value="{{ champignon.id }}">{{ champignon.CHAEspece }}</option>
                         {% endfor %}
                         </select>
                         <input type="submit" value="Filtrer" name="submitFilter" id="submitFilter">
