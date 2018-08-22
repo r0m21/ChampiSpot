@@ -70,10 +70,16 @@ class Spot
      */
     private $SPO_latitude;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Signalement", mappedBy="sig_id_spot_id")
+     */
+    private $signalements;
+
     public function __construct()
     {
         $this->photoUsers = new ArrayCollection();
         $this->commentairesUsers = new ArrayCollection();
+        $this->signalements = new ArrayCollection();
     }
 
     public function getId()
@@ -223,6 +229,37 @@ class Spot
     public function setSPOLatitude(string $SPO_latitude): self
     {
         $this->SPO_latitude = $SPO_latitude;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Signalement[]
+     */
+    public function getSignalements(): Collection
+    {
+        return $this->signalements;
+    }
+
+    public function addSignalement(Signalement $signalement): self
+    {
+        if (!$this->signalements->contains($signalement)) {
+            $this->signalements[] = $signalement;
+            $signalement->setSigIdSpotId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSignalement(Signalement $signalement): self
+    {
+        if ($this->signalements->contains($signalement)) {
+            $this->signalements->removeElement($signalement);
+            // set the owning side to null (unless already changed)
+            if ($signalement->getSigIdSpotId() === $this) {
+                $signalement->setSigIdSpotId(null);
+            }
+        }
 
         return $this;
     }
