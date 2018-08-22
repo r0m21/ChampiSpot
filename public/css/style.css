@@ -132,6 +132,45 @@ body {position: relative;}
 /*------------------------------------*/
 /*--------------SPECIFIQUE------------*/
 
+<<<<<<< HEAD
+.separator::after{      /* Séparateur centré */
+    content: "";
+    display: block;
+    height: 1px;
+    width: auto;
+    background-color: #E8910C;
+    margin: 10px 0px 20px;
+    
+}
+
+.map{
+    height:75vh;
+}
+
+[type="radio"]:not(:checked), [type="radio"]:checked {
+    position: relative;
+    opacity: 1;
+    pointer-events: all;
+ }
+/*------------------------------------*/
+/*--------------MODAL------------*/
+
+.modal {
+    display: none;
+    z-index:9999;
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
+    background-color: blue;
+    max-height: 70%;
+    width: 80%;
+    margin: auto;
+    overflow-y: auto;
+    will-change: top, opacity;
+}
+=======
     /*------------------------------------*/
     /*--------------GENERAL---------------*/
 
@@ -209,3 +248,4 @@ body {position: relative;}
         cursor:pointer;
     }
     
+>>>>>>> 67994848c2a19ba21f41a047b8c668395db143f1
