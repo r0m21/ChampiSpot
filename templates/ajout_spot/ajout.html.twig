@@ -21,6 +21,7 @@
                         <input type="submit" value="Envoyer">
                     {{ form_end(formSpot) }}
                     <a href="{{ path('ajout_champignon') }}">Ajouter un champignon</a>
+                    
             </div>
             <div class="d-flex ai-flex-end">
                 <img class="responsive-img"src="../img/congratulations.svg" alt="">
@@ -63,7 +64,10 @@
             
         </div>
     </div>
+<button id="snap">Prendre la photo</button>
+<video id="video" width="320" height="240" autoplay></video>
 
+<canvas id="canvas" width="320" height="240"></canvas>
 </section>
 
     <div class="map" id="mapid"></div>
