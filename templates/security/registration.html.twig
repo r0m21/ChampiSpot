@@ -2,20 +2,50 @@
 
 {% block body %}
 
-    <h1>Inscription</h1>
+    <section class="container mt-50">
+            <div class="row center-align">
+                <div class="d-flex flex-column col s12">
+                    <img src="img/cs_logo_orange-st.svg" alt="logo" class="responsive-img">
+                                 
+                    <div class="col s12 mt-50">
+                    {{ form_start(form) }}
+                        <div class="row d-flex flex-column ai-center no-margin">
+                        
+                            <div class="d-inline-flex flex-column ai-flex-start block-form">
+                                {{ form_row(form.username, {'label': 'Pseudo'}) }}
+                            </div>
+                            
+                            <div class="d-inline-flex flex-column ai-flex-start block-form mt-10">
+                                {{ form_row(form.USE_nom, {'label': 'Nom complet'}) }}
+                            </div>
 
-    {{ form_start(form) }}
+                            <div class="d-inline-flex flex-column ai-flex-start block-form mt-10">
+                                {{ form_row(form.USE_email, {'label': 'Mail'}) }}
+                            </div>
 
-        {{ form_row(form.username, {'label': 'Pseudo'}) }}
-        {{ form_row(form.USE_nom, {'label': 'Nom complet'}) }}
-        {{ form_row(form.USE_email, {'label': 'Mail'}) }}
-        {{ form_row(form.password, {'label': 'Mot de passe'}) }}
-        {{ form_row(form.confirm_password, {'label': 'Confirmer votre mot de passe'}) }}
+                            <div class="d-inline-flex flex-column ai-flex-start block-form mt-10">
+                                {{ form_row(form.password, {'label': 'Mot de passe'}) }}
+                            </div>
+
+                            <div class="d-inline-flex flex-column ai-flex-start block-form mt-10">
+                                {{ form_row(form.confirm_password, {'label': 'Confirmer votre mot de passe'}) }}
+                            </div>
+
+                            <div class="d-inline-flex flex-column mt-10 block-avatar">
+                                <label for="registration_USE_profile_pic"><i class="fas fa-camera"></i></label>
+                                {{ form_row(form.USE_profile_pic) }}
+                            </div>
+                            
+                            <div class="mt-20">
+                                <input id="submit-form" type="submit" value="S'inscrire" class="no-border-radius waves-effect waves-light input-action bg-color-3">
+                            </div>
+                            {{ form_end(form) }}
+                        </div> 
+                    </div>
+                </div>
+            </div>
         
-
-        <button type="submit">S'inscrire</button>
-
-    {{ form_end(form) }}
+        </section>
     
 
 {% endblock %}

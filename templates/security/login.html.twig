@@ -3,7 +3,6 @@
 {% block body %}
 
 <section class="bg-color-1 h-100vh animation">
-
     <div class="container h-100pct valign-wrapper center-align">
         <div class="row">
             <div class="col s12 l12">
@@ -11,47 +10,39 @@
             </div>
         </div>
     </div>
-
 </section>
 
-<section class="h-100vh">
+<section class="container mt-50">
+    <div class="row center-align">
+        <div class="d-flex flex-column col s12">
+            <img src="img/cs_logo_orange-st.svg" alt="logo" class="responsive-img">
 
-    <div class="row center-align m-top50">
-        <div class="col s12">
-            <img src="img/cs_logo_orange.svg" alt="logo" class="responsive-img">
-        </div>
-    </div>
+            <form action="{{ path('security_login') }}" method="post"  class="col s12 mt-50">
+                <div class="row d-flex flex-column ai-center no-margin">
 
-    <div class="container">
-        <div class="row">
-            <form action="{{ path('security_login') }}" method="post"  class="col s12">
-                <div class="row">
-                    <div class="col s12 color-1">
-                        <label for="pseudo" class="fs-14 color-1 raleway">Pseudo</label>
+                    <div class="d-inline-flex flex-column ai-flex-start">
+                        <label for="pseudo" class="fs-14 color-1 raleway">Identifiant</label>
+                        <input class="browser-default input-1" type="text" required name="_username" id="pseudo">
                     </div>
-                    <div class="input-field">
-                        <input class="browser-default" type="text" required name="_username" id="pseudo">
-                    </div>
-                   
-
-                    <div class="col s12">
+                    
+                    <div class="d-inline-flex flex-column ai-flex-start mt-10">
                         <label for="mdp" class="fs-14 color-1 raleway">Mot de passe</label>
-                        <input type="password" required name="_password" id="mdp">
+                        <input class="browser-default input-1" type="password" required name="_password" id="mdp">
                     </div>
 
-                    <div class="col s12">
-                        <input type="submit" value="Connexion" class="waves-effect waves-light btn-large w-100pct">
+                    <div class="mt-20">
+                        <input type="submit" value="Connexion" class="no-border-radius waves-effect waves-light input-action bg-color-3">
                     </div>
 
-                    <div class="col s12">
-                        <input type="submit" value="Mot de passe oublié" class="waves-effect waves-light btn-large w-100pct">
+                    <div class="mt-20">
+                        <input type="button" class="button-action" value="Mot de passe oublié" onclick="window.location.href='/recuperation'">
                     </div>
 
-                    <div class="col s12">
-                        <input type="submit" value="Inscrivez-vous" class="waves-effect waves-light btn-large w-100pct">
+                    <div class="mt-20">
+                        <h5 class="fs-12 raleway fw-500">Aucun compte ?</h5>
+                        <input type="button" class="button-action" value="S'inscrire" onclick="window.location.href='/inscription'">
                     </div>
                 </div>
-                
             </form>
         </div>
     </div>
