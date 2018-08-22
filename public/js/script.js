@@ -83,8 +83,7 @@ window.onload = function getLocation() {
 $(function($){
 
     if(window.location.href.indexOf("/") > -1){
-   $('.modal').modal();
-       
+        $('.modal').modal();       
     }
 })
 
@@ -140,15 +139,17 @@ function erreurPosition(error) {
     document.getElementById("infoposition").innerHTML = info;
 }
 
-var spotslnglat = document.querySelectorAll('.lnglat');
+    var marker;
+    var spotslnglat = document.querySelectorAll('.lnglat');
 
 for (i=0; i<spotslnglat.length; i++){
     var lat = spotslnglat[i].getAttribute('data-lat');
     var long = spotslnglat[i].getAttribute('data-long');
     var photo = spotslnglat[i].getAttribute('data-img');
-    var popupContent = "<div><a id='trigger-modal' class='waves-effect waves-light btn modal-trigger' href='#info-modal-spot'>Modal</a></div>";
+    var id = spotslnglat[i].getAttribute('data-id');
+    var popupContent = "<div><a id='trigger-modal' class='waves-effect waves-light btn modal-trigger' href='#info-modal-spot" + id + "'>Modal</a></div>";
 
-    marker = new L.marker([lat, long])
+    marker = new L.marker([long, lat])
         	.bindPopup(popupContent)
             .addTo(mymap);
 }

@@ -7,43 +7,39 @@
                 <div class="d-flex flex-column col s12">
                     <img src="img/cs_logo_orange-st.svg" alt="logo" class="responsive-img">
                                    
-                    <form action="{{ path('security_login') }}" method="post"  class="col s12 mt-50">
+                    <form action="/" method="post"  class="col s12 mt-50">
                         <div class="row d-flex flex-column ai-center no-margin">
                         {{ form_start(form) }}
-                            <div class="d-inline-flex flex-column ai-flex-start">
+                            <div class="d-inline-flex flex-column ai-flex-start block-form">
                                 {{ form_row(form.username, {'label': 'Pseudo'}) }}
                             </div>
                             
-                            <div class="d-inline-flex flex-column ai-flex-start mt-10">
+                            <div class="d-inline-flex flex-column ai-flex-start block-form mt-10">
                                 {{ form_row(form.USE_nom, {'label': 'Nom complet'}) }}
                             </div>
 
-                            <div class="d-inline-flex flex-column ai-flex-start mt-10">
+                            <div class="d-inline-flex flex-column ai-flex-start block-form mt-10">
                                 {{ form_row(form.USE_email, {'label': 'Mail'}) }}
                             </div>
 
-                            <div class="d-inline-flex flex-column ai-flex-start mt-10">
+                            <div class="d-inline-flex flex-column ai-flex-start block-form mt-10">
                                 {{ form_row(form.password, {'label': 'Mot de passe'}) }}
                             </div>
 
-                            <div class="d-inline-flex flex-column ai-flex-start mt-10">
+                            <div class="d-inline-flex flex-column ai-flex-start block-form mt-10">
                                 {{ form_row(form.confirm_password, {'label': 'Confirmer votre mot de passe'}) }}
                             </div>
-        
-                            <div class="mt-20">
-                                <input type="submit" value="Connexion" class="no-border-radius waves-effect waves-light input-action bg-color-3">
+
+                            <div class="d-inline-flex flex-column mt-10 block-avatar">
+                                <label for="registration_USE_profile_pic"><i class="fas fa-camera"></i></label>
+                                {{ form_row(form.USE_profile_pic) }}
                             </div>
-        
+                            
                             <div class="mt-20">
-                                <input type="button" class="button-action" value="Mot de passe oublié" onclick="window.location.href='/recuperation'">
+                                <input type="submit" value="S'inscrire" class="no-border-radius waves-effect waves-light input-action bg-color-3">
                             </div>
-        
-                            <div class="mt-20">
-                                <h5 class="fs-12 raleway fw-500">Aucun compte ?</h5>
-                                <input type="button" class="button-action" value="S'inscrire" onclick="window.location.href='/inscription'">
-                            </div>
-                        </div>
-                        {{ form_end(form) }}
+                            {{ form_end(form) }}
+                        </div> 
                     </form>
                 </div>
             </div>

@@ -72,6 +72,13 @@ class User implements UserInterface
      */
     private $spots;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $use_profile_pic;
+
+
+
     public function __construct()
     {
         $this->photoUsers = new ArrayCollection();
@@ -240,4 +247,17 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getUseProfilePic(): ?string
+    {
+        return $this->use_profile_pic;
+    }
+
+    public function setUseProfilePic(?string $use_profile_pic): self
+    {
+        $this->use_profile_pic = $use_profile_pic;
+
+        return $this;
+    }
+
 }
