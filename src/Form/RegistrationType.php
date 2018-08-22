@@ -17,12 +17,12 @@ class RegistrationType extends AbstractType
             ->add('username')
             ->add('USE_nom')
             ->add('USE_email')
-            ->add('USE_profile_pic', FileType::class, array(
+            /* ->add('USE_profile_pic', FileType::class, array(
                 'label' => 'Ajouter une photo de profil',
                 'attr' => [
                     "accept" => "image/*",
                 ]
-             ))
+             )) */
             ->add('password', PasswordType::class)
             ->add('confirm_password', PasswordType::class)
         ;

@@ -135,6 +135,12 @@ body {position: relative;   }
 .map{
     height:75vh;
 }
+
+[type="radio"]:not(:checked), [type="radio"]:checked {
+    position: relative;
+    opacity: 1;
+    pointer-events: all;
+ }
 /*------------------------------------*/
 /*--------------MODAL------------*/
 

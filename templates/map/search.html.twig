@@ -19,4 +19,14 @@
         <p>{{   comments.COMText    }}</p>
     {%   endfor   %}
 
+    {{ form_start(formSignal) }}
+
+        {{ form_row(formSignal.SIG_vide, {'label': 'Il n\'y a rien à ce spot : '}) }}
+        {{ form_row(formSignal.SIG_toxique, {'label': 'Toxicité incorrecte : '}) }}
+        {{ form_row(formSignal.SIG_desc, {'label': 'Description incorrecte : '}) }}
+        {{ form_row(formSignal.SIG_accessibilite, {'label': 'Qualité du spot incorrecte : '}) }}
+        <input type="submit" value="Signaler ce spot">
+
+    {{ form_end(formSignal) }}
+
 {% endblock %}

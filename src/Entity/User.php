@@ -77,6 +77,11 @@ class User implements UserInterface
      */
     private $use_profile_pic;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Signalement", mappedBy="SIG_id_user", orphanRemoval=true)
+     */
+    private $signalements;
+
 
 
     public function __construct()
@@ -84,6 +89,7 @@ class User implements UserInterface
         $this->photoUsers = new ArrayCollection();
         $this->commentairesUsers = new ArrayCollection();
         $this->spots = new ArrayCollection();
+        $this->signalements = new ArrayCollection();
     }
 
     public function getId()
@@ -256,6 +262,37 @@ class User implements UserInterface
     public function setUseProfilePic(?string $use_profile_pic): self
     {
         $this->use_profile_pic = $use_profile_pic;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Signalement[]
+     */
+    public function getSignalements(): Collection
+    {
+        return $this->signalements;
+    }
+
+    public function addSignalement(Signalement $signalement): self
+    {
+        if (!$this->signalements->contains($signalement)) {
+            $this->signalements[] = $signalement;
+            $signalement->setSIGIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSignalement(Signalement $signalement): self
+    {
+        if ($this->signalements->contains($signalement)) {
+            $this->signalements->removeElement($signalement);
+            // set the owning side to null (unless already changed)
+            if ($signalement->getSIGIdUser() === $this) {
+                $signalement->setSIGIdUser(null);
+            }
+        }
 
         return $this;
     }

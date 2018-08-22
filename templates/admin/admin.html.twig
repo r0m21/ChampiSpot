@@ -1,9 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello !{% endblock %}
+{% block title %}Administration{% endblock %}
 
 {% block body %}
-Nous sommes sur la page admin !
 
+    <p>Signalements</p>
+
+    {% for newSignal in signalement %}
+
+            <p>Il n'y a rien à ce spot : {{ newSignal.sigVide }}</p>
+            <p>Toxicité incorrecte : {{ newSignal.sigToxique }}</p>
+            <p>Description incorrecte : {{ newSignal.sigDesc }}</p>
+            <p>Qualité du spot incorrecte : {{ newSignal.sigAccessibilite }}</p>
+
+    {% endfor %}
 
 {% endblock %}
