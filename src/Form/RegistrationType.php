@@ -43,10 +43,10 @@ class RegistrationType extends AbstractType
                 ),
             ))
             ->add('USE_profile_pic', FileType::class, array(
-                'label' => 'Ajouter un avatar',
+                'label' => ' ',
                 'attr' => array(
                     "accept" => "image/*",
-                    "class" => "d-none",
+                    "class" => "d-none input-file",
                 ),        
              ))
         ;
