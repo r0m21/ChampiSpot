@@ -82,7 +82,7 @@ class AjoutSpotController extends Controller
             $photoname = str_replace(' ', '+', $photoname);
             $data = base64_decode($photoname);
             // déplace le fichier là où doit êtrs stocké
-            $file = $upload_dir . mktime() . ".png";
+            $file = $upload_dir . md5($data) . ".png";
             $success = file_put_contents($file, $data);
             move_uploaded_file($success, $upload_dir);
             // updates the 'photo' property to store the photo file name
