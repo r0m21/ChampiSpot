@@ -182,4 +182,3 @@ if(window.location.href.indexOf("ajout") > -1){
         });  
         }
 }
-

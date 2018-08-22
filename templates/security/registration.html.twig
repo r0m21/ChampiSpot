@@ -6,10 +6,11 @@
             <div class="row center-align">
                 <div class="d-flex flex-column col s12">
                     <img src="img/cs_logo_orange-st.svg" alt="logo" class="responsive-img">
-                                   
-                    <form action="/" method="post"  class="col s12 mt-50">
+                                 
+                    <div class="col s12 mt-50">
+                    {{ form_start(form) }}
                         <div class="row d-flex flex-column ai-center no-margin">
-                        {{ form_start(form) }}
+                        
                             <div class="d-inline-flex flex-column ai-flex-start block-form">
                                 {{ form_row(form.username, {'label': 'Pseudo'}) }}
                             </div>
@@ -36,11 +37,11 @@
                             </div>
                             
                             <div class="mt-20">
-                                <input type="submit" value="S'inscrire" class="no-border-radius waves-effect waves-light input-action bg-color-3">
+                                <input id="submit-form" type="submit" value="S'inscrire" class="no-border-radius waves-effect waves-light input-action bg-color-3">
                             </div>
                             {{ form_end(form) }}
                         </div> 
-                    </form>
+                    </div>
                 </div>
             </div>
         

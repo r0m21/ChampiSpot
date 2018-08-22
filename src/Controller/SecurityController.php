@@ -31,6 +31,24 @@ class SecurityController extends Controller
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
 
+            // $photo récupère le fichier uploadé
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $photo */
+
+            $photo = $form->get('USE_profile_pic')->getData();
+
+            $photoName = $this->generateUniqueFileName().'.'.$photo->guessExtension();
+
+            // déplace le fichier là où doit êtrs stocké
+            $photo->move(
+                $this->getParameter('profile_directory'),
+                $photoName
+            );
+
+            // updates the 'photo' property to store the photo file name
+            // instead of its contents
+
+            $newSpot->setSPOPhoto($photoName);
+
             $manager->persist($user);
             $manager->flush();
 
