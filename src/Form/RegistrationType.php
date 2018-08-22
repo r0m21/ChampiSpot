@@ -17,19 +17,6 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-<<<<<<< HEAD
-            ->add('username')
-            ->add('USE_nom')
-            ->add('USE_email')
-            /* ->add('USE_profile_pic', FileType::class, array(
-                'label' => 'Ajouter une photo de profil',
-                'attr' => [
-                    "accept" => "image/*",
-                ]
-             )) */
-            ->add('password', PasswordType::class)
-            ->add('confirm_password', PasswordType::class)
-=======
             ->add('username', TextType::class ,array(
                 'attr' => array(
                 'class' => 'input-1 browser-default'
@@ -62,7 +49,6 @@ class RegistrationType extends AbstractType
                     "class" => "d-none",
                 ),        
              ))
->>>>>>> 67994848c2a19ba21f41a047b8c668395db143f1
         ;
         
     }
