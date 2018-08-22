@@ -22,21 +22,17 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->find($id);
-
         
         $comment = $spots->getCommentairesUsers();
         $longitude = $repo->find($id)->getSPOLongitude();
         $latitude = $repo->find($id)->getSPOLatitude();
-        
-
-
 
         return $this->render('map/search.html.twig', [
             'controller_name' => 'MapController',
             'spots' => $spots,
             'comment' => $comment,
             'longitude' => $longitude,
-            'latitude' => $latitude
+            'latitude' => $latitude,
 
         ]);
     }
