@@ -153,3 +153,16 @@ for (i=0; i<spotslnglat.length; i++){
         	.bindPopup(popupContent)
             .addTo(mymap);
 }
+
+var loadFile = function(event) {
+    var output = document.getElementById('output');
+    var submitMeme = document.getElementById('submit-form');
+  
+    output.src = URL.createObjectURL(event.target.files[0]);
+    
+    submitMeme.addEventListener('click', function(){
+  
+      output.style.display = "none";
+    });
+  };
+  
