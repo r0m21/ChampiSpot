@@ -8,16 +8,16 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180821075838 extends AbstractMigration
+final class Version20180822080313 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE signalement CHANGE sig_id_spot sig_id_spot_id INT NOT NULL');
+        $this->addSql('CREATE TABLE signalement (id INT AUTO_INCREMENT NOT NULL, sig_id_spot_id INT NOT NULL, sig_vide VARCHAR(255) NOT NULL, sig_toxique VARCHAR(255) NOT NULL, sig_desc VARCHAR(255) NOT NULL, sig_accessibilite VARCHAR(255) NOT NULL, INDEX IDX_F4B5511469B981F0 (sig_id_spot_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE signalement ADD CONSTRAINT FK_F4B5511469B981F0 FOREIGN KEY (sig_id_spot_id) REFERENCES spot (id)');
-        $this->addSql('CREATE INDEX IDX_F4B5511469B981F0 ON signalement (sig_id_spot_id)');
+        $this->addSql('ALTER TABLE user DROP use_role');
     }
 
     public function down(Schema $schema) : void
@@ -25,8 +25,7 @@ final class Version20180821075838 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE signalement DROP FOREIGN KEY FK_F4B5511469B981F0');
-        $this->addSql('DROP INDEX IDX_F4B5511469B981F0 ON signalement');
-        $this->addSql('ALTER TABLE signalement CHANGE sig_id_spot_id sig_id_spot INT NOT NULL');
+        $this->addSql('DROP TABLE signalement');
+        $this->addSql('ALTER TABLE user ADD use_role VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
     }
 }

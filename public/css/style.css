@@ -44,8 +44,10 @@ body {position: relative;   }
 }
 
 .bg-color-2{background-color:#FFFFFF;}
+.bg-color-3{background-color: #F37A3A;}
 
 .border-bot-1{border-bottom: 1px solid #E9E9E9;}
+.no-border-radius{border-radius:0;}
 
 /*------------------------------------*/
 /*---------------TAILLES--------------*/
@@ -86,6 +88,7 @@ body {position: relative;   }
 
 .ai-center{align-items:center;}
 .ai-flex-end{align-items:flex-end;}
+.ai-flex-start{align-items:flex-start;}
 
 .align-self-center{align-self:center;}
 
@@ -97,7 +100,9 @@ body {position: relative;   }
 .no-margin{margin: 0;}
 .no-padding{padding:0;}
 
-.m-top50{margin-top: 50px;}
+.mt-10{margin-top:10px;}
+.mt-20{margin-top:20px;}
+.mt-50{margin-top: 50px;}
 
 .pt-50{padding-top:50px;}
 
@@ -113,6 +118,7 @@ body {position: relative;   }
 /*--------------DISPLAY---------------*/
 
 .d-block{display:block;}
+.d-inline-flex{display: inline-flex;}
 
 /*------------------------------------*/
 /*--------------GENERAL---------------*/
@@ -152,4 +158,30 @@ body {position: relative;   }
     margin: auto;
     overflow-y: auto;
     will-change: top, opacity;
+}
+
+/*------------------------------------*/
+/*----------------BUTTON--------------*/
+
+.input-action input[type="submit"]{
+    background-color: #F37A3A;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px 100px;
+}
+
+.button-action{
+    background-color: #F37A3A;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border:0;
+    width:200px;
+}
+
+.input-1{
+    padding: 10px;
+    border: 1px solid #707070;
 }
