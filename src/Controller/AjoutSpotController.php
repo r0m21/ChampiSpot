@@ -27,12 +27,8 @@ class AjoutSpotController extends Controller
         $newSpot = new Spot();
         
         $form = $this->createFormBuilder($newSpot)
-                     ->add('SPO_photo', FileType::class, array(
+                     ->add('SPO_photo', HiddenType::class, array(
                         'label' => 'Ajouter une photo',
-                        'attr' => [
-                            "accept" => "image/*",
-                            "capture" => "camera"
-                        ]
                      ))
                      ->add('SPO_accessibilite')
                      ->add('SPO_description')
@@ -80,23 +76,19 @@ class AjoutSpotController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            // $photo récupère le fichier uploadé
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $photo */
-
+            $upload_dir = "uploads/photos/";
             $photo = $form->get('SPO_photo')->getData();
-
-            $photoName = $this->generateUniqueFileName().'.'.$photo->guessExtension();
-
+            $photoname = str_replace('data:image/png;base64,', '', $photo);
+            $photoname = str_replace(' ', '+', $photoname);
+            $data = base64_decode($photoname);
             // déplace le fichier là où doit êtrs stocké
-            $photo->move(
-                $this->getParameter('photos_directory'),
-                $photoName
-            );
-
+            $file = $upload_dir . md5($data) . ".png";
+            $success = file_put_contents($file, $data);
+            move_uploaded_file($success, $upload_dir);
             // updates the 'photo' property to store the photo file name
             // instead of its contents
 
-            $newSpot->setSPOPhoto($photoName);
+            $newSpot->setSPOPhoto($file);
 
             $manager->persist($newSpot);
             $manager->flush();
