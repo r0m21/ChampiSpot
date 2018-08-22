@@ -6,6 +6,7 @@ use App\Entity\Spot;
 use App\Entity\Champignon;
 use App\Entity\CommentairesUser;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -37,6 +38,7 @@ class MapController extends Controller
         ]);
     }
 
+
     /**
      * @Route("/", name="map")
      */
@@ -47,7 +49,7 @@ class MapController extends Controller
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
-
+       
         $repoChampis = $this->getDoctrine()
         ->getRepository(Champignon::class);
 
