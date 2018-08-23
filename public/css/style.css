@@ -286,6 +286,9 @@ body {position: relative;}
         font-size: 18px;
         font-weight:700;
     }
+    .leaflet-bottom, .leaflet-top, .leaflet-control{
+        z-index:400;
+    }
     .w-100-mobile{
         width:100%;
     }

@@ -6,6 +6,7 @@ use App\Entity\Spot;
 use App\Entity\Signalement;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class AdminController extends Controller
 {
