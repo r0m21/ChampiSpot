@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}SearchMap{{ controller_name }}!{% endblock %}
+{% block title %}Info spot{% endblock %}
 
 {% block body %}
 
@@ -29,4 +29,8 @@
 
     {{ form_end(formSignal) }}
 
+    {{ form_start(formComment) }}
+        {{ form_row(formComment.COM_text, {'placeholder': 'Écrire un commentaire'}) }}
+        <input type="submit" value="Ajouter un commentaire">
+    {{ form_end(formComment) }}
 {% endblock %}

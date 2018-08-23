@@ -45,18 +45,6 @@ class UserController extends Controller
             
         ]);
     }
-    
-
-    public function show(CommentairesUser $comment){
-        
-
-        return $this->render('comment/show.html.twig', [
-            'controller_name' => 'UserController',
-            'comment' => $comment,
-            'commentForm' => $form->createView()
-        ]);
-
-    }
 
     /**
      * @Route("/profil/{id}", name="profil")

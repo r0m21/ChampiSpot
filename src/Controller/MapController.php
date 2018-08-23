@@ -4,14 +4,16 @@ namespace App\Controller;
 
 use App\Entity\Spot;
 use App\Entity\User;
+use App\Form\CommentType;
 use App\Entity\Champignon;
 use App\Entity\Signalement;
+
 use App\Entity\CommentairesUser;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
@@ -34,7 +36,7 @@ class MapController extends Controller
         $comment = $spots->getCommentairesUsers();
         $longitude = $repo->find($id)->getSPOLongitude();
         $latitude = $repo->find($id)->getSPOLatitude();
-        
+
         $newSignal = new Signalement();
 
         $form = $this->createFormBuilder($newSignal)
@@ -103,7 +105,6 @@ class MapController extends Controller
 
                     ->getForm();
 
-
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -115,14 +116,35 @@ class MapController extends Controller
 
         }
 
+        /* Formulaire d'ajout de commentaire */
+                
+        $newComment = new CommentairesUser();
+        $form_comment = $this->createForm(CommentType::class, $newComment);
+
+        $repo_com = $this->getDoctrine()
+        ->getRepository(CommentairesUser::class);
+        
+        $id_spot = $repo_com->find($spots)->getCOMIdSpot();
+        $id_user = $repo_com->find($userId)->getCOMIdUser();
+
+        $form_comment->handleRequest($request);
+
+        if($form_comment->isSubmitted() && $form_comment->isValid()){
+
+            $manager->persist($newComment);
+            $manager->flush();
+
+            dump($newComment);
+
+        }
 
         return $this->render('map/search.html.twig', [
-            'controller_name' => 'MapController',
             'spots' => $spots,
             'comment' => $comment,
             'longitude' => $longitude,
             'latitude' => $latitude,
             'formSignal' => $form->createView(),
+            'formComment' => $form_comment->createView(),
         ]);
     }
 
