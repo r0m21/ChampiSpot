@@ -130,8 +130,8 @@ class MapController extends Controller
             ->getRepository(User::class);
             $users = $repo->find($userId);
 
-            $newComment->setCOMIdSpot($users);
-            $newComment->setCOMIdUser(Spot::class);
+            $newComment->setCOMIdSpot($spots);
+            $newComment->setCOMIdUser($users);
 
             $manager->persist($newComment);
             $manager->flush();

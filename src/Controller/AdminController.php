@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Spot;
 use App\Entity\Signalement;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -12,25 +13,15 @@ class AdminController extends Controller
     /**
      * @Route("/admin", name="admin")
      */
-    public function admin()
+    public function admin(Request $request, $id)
     {
-        $ignore = $_POST['ignore'];
-
-        if($ignore->isSubmitted() && $ignore->isValid()){
-            
-            
-
-        }
-  
-
         $repo = $this->getDoctrine()
         ->getRepository(Signalement::class);
         $signalement = $repo->FindAll();
-        dump($signalement);
+        
         return $this->render('admin/admin.html.twig', [
             'signalement' => $signalement,
         
         ]);
     }
-   
 }

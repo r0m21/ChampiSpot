@@ -132,31 +132,6 @@ body {position: relative;}
 /*------------------------------------*/
 /*--------------SPECIFIQUE------------*/
 
-/*------------------------------------*/
-/*--------------IMAGES------------*/
-.profile-img{
-    width:150px;
-    height:150px;
-}
-
-/*------------------------------------*/
-/*--------------MODAL------------*/
-
-.modal {
-    display: none;
-    z-index:9999;
-    position: absolute;
-    left: 10px;
-    right: 10px;
-    top: 10px;
-    bottom: 10px;
-    background-color: blue;
-    max-height: 70%;
-    width: 80%;
-    margin: auto;
-    overflow-y: auto;
-    will-change: top, opacity;
-}
     /*------------------------------------*/
     /*--------------GENERAL---------------*/
 
@@ -173,6 +148,14 @@ body {position: relative;}
     .map{
         height:75vh;
     }
+    
+    /*------------------------------------*/
+    /*--------------IMAGES------------*/
+    .profile-img{
+        width:150px;
+        height:150px;
+    }
+
     /*------------------------------------*/
     /*--------------MODAL------------*/
 
@@ -191,7 +174,7 @@ body {position: relative;}
         overflow-y: auto;
         will-change: top, opacity;
     }
-
+    
     /*------------------------------------*/
     /*----------------BUTTON--------------*/
 
