@@ -59,7 +59,7 @@ class AjoutSpotController extends Controller
                      ))
                      ->add('SPO_id_user', HiddenType::class)
                         
-                        
+     
                     
 
                      ->add('SPO_longitude', HiddenType::class, [

@@ -11,17 +11,22 @@ class AdminController extends Controller
 {
     /**
      * @Route("/admin", name="admin")
-     * @Method("POST")
      */
     public function admin()
     {
-        $ignore = $_POST['ignore'];
+        /* $ignore = $_POST['ignore'];
 
         if($ignore->isSubmitted() && $ignore->isValid()){
-            
-            
 
-        }
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->remove($product);
+            $em->flush();
+
+            $response['success'] = true;
+            $response['message'] = 'Le spot a bien été supprimé';
+
+        } */
   
 
         $repo = $this->getDoctrine()

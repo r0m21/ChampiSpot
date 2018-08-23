@@ -100,7 +100,6 @@ class MapController extends Controller
         if($form->isSubmitted() && $form->isValid()){
 
             $userId = $user->getId(); 
-            dump($userId);
 
             $repo = $this->getDoctrine()
             ->getRepository(User::class);
