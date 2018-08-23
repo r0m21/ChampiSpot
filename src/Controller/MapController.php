@@ -22,9 +22,10 @@ class MapController extends Controller
     /**
      * @Route("/search/{id}", name="search")
      */
-    public function search($id, Request $request, ObjectManager $manager)
+    public function search($id, Request $request, ObjectManager $manager, UserInterface $user)
     {
-        
+        $userId = $user->getId();
+
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
@@ -132,7 +133,7 @@ class MapController extends Controller
 
     public function map()
     {
-        
+      
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
@@ -157,8 +158,7 @@ class MapController extends Controller
 
         return $this->render('index.html.twig', [
             'spots' => $spots,
-            'allChampis' => $allChampis
-           
+            'allChampis' => $allChampis,           
            
         ]);
     }

@@ -83,10 +83,9 @@ class User implements UserInterface
     private $signalements;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\RoleUtilisateur", inversedBy="users")
-     * @ORM\Column(type="integer", options={"default"= 1})
+     * @ORM\Column(type="string", length=255)
      */
-    private $USE_role_id;
+    private $USE_role = "ROLE_USER";
 
     public function __construct()
     {
@@ -161,7 +160,7 @@ class User implements UserInterface
      */
     public function getRoles(){
 
-        return getUSERoleId();
+        return $this->getUSERole();
     }
     
 
@@ -301,14 +300,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getUSERoleId(): ?RoleUtilisateur
+    public function getUSERole(): ?string
     {
-        return $this->USE_role_id;
+        return $this->USE_role;
     }
 
-    public function setUSERoleId(?RoleUtilisateur $USE_role_id): self
+    public function setUSERole(string $USE_role): self
     {
-        $this->USE_role_id = $USE_role_id;
+        $this->USE_role = $USE_role;
 
         return $this;
     }

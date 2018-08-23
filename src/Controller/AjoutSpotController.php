@@ -27,7 +27,8 @@ class AjoutSpotController extends Controller
         $this->denyAccessUnlessGranted('ROLE_USER', null, 'Unable to access this page!');
         
         $newSpot = new Spot();
-        
+        $userId = $user->getId();
+
         $form = $this->createFormBuilder($newSpot)
                      ->add('SPO_photo', HiddenType::class, array(
                         'label' => 'Ajouter une photo',
@@ -78,8 +79,7 @@ class AjoutSpotController extends Controller
 
         if($form->isSubmitted() && $form->isValid()){
 
-            $userId = $user->getId(); 
-            dump($userId);
+           
 
             $repo = $this->getDoctrine()
             ->getRepository(User::class);
@@ -106,7 +106,8 @@ class AjoutSpotController extends Controller
         }
 
         return $this->render('ajout_spot/ajout.html.twig', [
-            'formSpot' => $form->createView(),   
+            'formSpot' => $form->createView(),
+            'userId' => $userId   
         ]);
     }
 

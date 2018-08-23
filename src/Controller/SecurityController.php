@@ -7,14 +7,15 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\MdpOubliType;
 use App\Form\RegistrationType;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 class SecurityController extends Controller
 {
@@ -37,27 +38,28 @@ class SecurityController extends Controller
            
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
-            
-            // $photo récupère le fichier uploadé
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $photo */
 
-            $photo = $form->get('USE_profile_pic')->getData();
+           
+                // $photo récupère le fichier uploadé
+                /** @var Symfony\Component\HttpFoundation\File\UploadedFile $photo */
 
-            if($photo != null){
+                $photo = $form->get('USE_profile_pic')->getData();
 
-                $photoName = $this->generateUniqueFileName().'.'.$photo->guessExtension();
+            if($photo != null)
+                {
+                    $photoName = $this->generateUniqueFileName().'.'.$photo->guessExtension();
 
-                // déplace le fichier là où doit êtrs stocké
-                $photo->move(
-                    $this->getParameter('profile_directory'),
-                    $photoName
-                );
+                    // déplace le fichier là où doit êtrs stocké
+                    $photo->move(
+                        $this->getParameter('profile_directory'),
+                        $photoName
+                    );
 
-                // updates the 'photo' property to store the photo file name
-                // instead of its contents
+                    // updates the 'photo' property to store the photo file name
+                    // instead of its contents
 
-                $user->setUseProfilePic($photoName);
-            }
+                    $user->setUseProfilePic($photoName);
+                }
 
             $manager->persist($user);
             $manager->flush();
@@ -85,6 +87,7 @@ class SecurityController extends Controller
      * @Route("/connexion", name="security_login")
      */
     public function login(){
+
         return $this->render('security/login.html.twig');
     }
 
@@ -92,7 +95,7 @@ class SecurityController extends Controller
      * @Route("/deconnexion", name="security_logout")
      */
     public function logout(){
-        
+        $_SESSION = array();
     }
 
     /**
@@ -100,7 +103,7 @@ class SecurityController extends Controller
      */
         public function password(UserPasswordEncoderInterface $encoder, ObjectManager $manager){
 
-
+            $message = "";
             $repo = $this->getDoctrine()
             ->getRepository(User::class);
             
@@ -159,24 +162,23 @@ class SecurityController extends Controller
                         }
     
                         /* return $this->redirectToRoute("security_login"); */
-                        echo('Nous avons envoyé votre nouveau mot de passe sur votre adresse mail');
+                        /* $message = "Nous avons envoyé votre nouveau mot de passe sur votre adresse mail"; */
                     }
                     else{
-                        echo ("Le pseudonyme et l'adresse e-mail ne correspondent pas ou n'existent pas");
+                        return $message = "Le pseudonyme et l'adresse e-mail ne correspondent pas ou n'existent pas";
                     }                    
                     
                 }
                 else{
-                    echo('Veuillez remplir les champs correctement');
+                    return $message = 'Veuillez remplir les champs correctement';
                 }
-            }
-            
-               
+            }              
                 
             
-        
+            
+
             return $this->render('security/password.html.twig', [    
-                
+                "message" => $message,
             ]);
         }
 
