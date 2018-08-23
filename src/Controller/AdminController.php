@@ -11,6 +11,7 @@ class AdminController extends Controller
 {
     /**
      * @Route("/admin", name="admin")
+     * @Method("POST")
      */
     public function admin()
     {
