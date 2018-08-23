@@ -37,7 +37,7 @@ class RegistrationType extends AbstractType
                 'class' => 'input-1 browser-default'
                 ),
             ))
-            ->add('USE_role', HiddenType::class)
+            ->add('USE_role_id', HiddenType::class)
 
             ->add('confirm_password', PasswordType::class ,array(
                 'attr' => array(

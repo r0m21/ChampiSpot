@@ -84,16 +84,9 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\RoleUtilisateur", inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="integer", options={"default"= 1})
      */
-    private $USE_role;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\RoleUtilisateur", mappedBy="ROL_role")
-     */
-    private $roleUtilisateurs;
-
-
+    private $USE_role_id;
 
     public function __construct()
     {
@@ -101,7 +94,6 @@ class User implements UserInterface
         $this->commentairesUsers = new ArrayCollection();
         $this->spots = new ArrayCollection();
         $this->signalements = new ArrayCollection();
-        $this->roleUtilisateurs = new ArrayCollection();
     }
 
     public function getId()
@@ -169,7 +161,7 @@ class User implements UserInterface
      */
     public function getRoles(){
 
-        return $this->getUSERole();
+        return getUSERoleId();
     }
     
 
@@ -309,46 +301,14 @@ class User implements UserInterface
         return $this;
     }
 
-    
-    public function getUSERole(): ?RoleUtilisateur
+    public function getUSERoleId(): ?RoleUtilisateur
     {
-        return $this->USE_role;
+        return $this->USE_role_id;
     }
 
-    public function setUSERole(?RoleUtilisateur $USE_role): self
+    public function setUSERoleId(?RoleUtilisateur $USE_role_id): self
     {
-        $this->USE_role = $USE_role;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|RoleUtilisateur[]
-     */
-    public function getRoleUtilisateurs(): Collection
-    {
-        return $this->roleUtilisateurs;
-    }
-
-    public function addRoleUtilisateur(RoleUtilisateur $roleUtilisateur): self
-    {
-        if (!$this->roleUtilisateurs->contains($roleUtilisateur)) {
-            $this->roleUtilisateurs[] = $roleUtilisateur;
-            $roleUtilisateur->setROLRole($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRoleUtilisateur(RoleUtilisateur $roleUtilisateur): self
-    {
-        if ($this->roleUtilisateurs->contains($roleUtilisateur)) {
-            $this->roleUtilisateurs->removeElement($roleUtilisateur);
-            // set the owning side to null (unless already changed)
-            if ($roleUtilisateur->getROLRole() === $this) {
-                $roleUtilisateur->setROLRole(null);
-            }
-        }
+        $this->USE_role_id = $USE_role_id;
 
         return $this;
     }
