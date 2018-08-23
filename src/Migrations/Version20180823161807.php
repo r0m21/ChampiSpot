@@ -8,14 +8,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180823125221 extends AbstractMigration
+final class Version20180823161807 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user CHANGE use_role_id use_role_id INT DEFAULT 1 NOT NULL');
+        $this->addSql('DROP TABLE role_utilisateur');
     }
 
     public function down(Schema $schema) : void
@@ -23,6 +23,6 @@ final class Version20180823125221 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user CHANGE use_role_id use_role_id INT DEFAULT 2 NOT NULL');
+        $this->addSql('CREATE TABLE role_utilisateur (id INT AUTO_INCREMENT NOT NULL, rol_role VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
     }
 }

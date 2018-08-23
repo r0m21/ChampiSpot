@@ -37,7 +37,7 @@ class RegistrationType extends AbstractType
                 'class' => 'input-1 browser-default'
                 ),
             ))
-            ->add('USE_role_id', HiddenType::class)
+            ->add('USE_role', HiddenType::class)
 
             ->add('confirm_password', PasswordType::class ,array(
                 'attr' => array(
@@ -46,7 +46,6 @@ class RegistrationType extends AbstractType
             ))
             ->add('USE_profile_pic', FileType::class, array(
                 'label' => 'Ajouter un avatar',
-                'required'   => false,
                 'attr' => array(
                     "accept" => "image/*",
                     "class" => "d-none input-file",
