@@ -163,4 +163,15 @@ class MapController extends Controller
     }
 
     
+    /**
+     * @Route("/a-propos", name="a-propos")
+     */
+    public function aPropos()
+    {
+        return $this->render('a_propos/a_propos.html.twig', [
+            
+        ]);
+    }
+
+    
 }

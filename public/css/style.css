@@ -102,7 +102,7 @@ body {position: relative;}
 
     .no-margin{margin: 0;}
     .no-padding{padding:0;}
-
+    .no-margin-bottom{margin-bottom:0;}
     .mt-10{margin-top:10px;}
     .mt-20{margin-top:20px;}
     .mt-50{margin-top: 50px;}
@@ -131,6 +131,13 @@ body {position: relative;}
 
 /*------------------------------------*/
 /*--------------SPECIFIQUE------------*/
+
+/*------------------------------------*/
+/*--------------IMAGES------------*/
+.profile-img{
+    width:150px;
+    height:150px;
+}
 
 /*------------------------------------*/
 /*--------------MODAL------------*/
