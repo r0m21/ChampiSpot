@@ -85,9 +85,13 @@ class User implements UserInterface
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\RoleUtilisateur", inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
-     * @ORM\Column(type="integer", options={"default" = 2})
      */
     private $USE_role;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\RoleUtilisateur", mappedBy="ROL_role")
+     */
+    private $roleUtilisateurs;
 
 
 
@@ -97,6 +101,7 @@ class User implements UserInterface
         $this->commentairesUsers = new ArrayCollection();
         $this->spots = new ArrayCollection();
         $this->signalements = new ArrayCollection();
+        $this->roleUtilisateurs = new ArrayCollection();
     }
 
     public function getId()
@@ -313,6 +318,37 @@ class User implements UserInterface
     public function setUSERole(?RoleUtilisateur $USE_role): self
     {
         $this->USE_role = $USE_role;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RoleUtilisateur[]
+     */
+    public function getRoleUtilisateurs(): Collection
+    {
+        return $this->roleUtilisateurs;
+    }
+
+    public function addRoleUtilisateur(RoleUtilisateur $roleUtilisateur): self
+    {
+        if (!$this->roleUtilisateurs->contains($roleUtilisateur)) {
+            $this->roleUtilisateurs[] = $roleUtilisateur;
+            $roleUtilisateur->setROLRole($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRoleUtilisateur(RoleUtilisateur $roleUtilisateur): self
+    {
+        if ($this->roleUtilisateurs->contains($roleUtilisateur)) {
+            $this->roleUtilisateurs->removeElement($roleUtilisateur);
+            // set the owning side to null (unless already changed)
+            if ($roleUtilisateur->getROLRole() === $this) {
+                $roleUtilisateur->setROLRole(null);
+            }
+        }
 
         return $this;
     }

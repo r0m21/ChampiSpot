@@ -85,9 +85,6 @@ class AjoutSpotController extends Controller
             ->getRepository(User::class);
             $users = $repo->find($userId);
             
-            
-            
-
             $upload_dir = "uploads/photos/";
             $photo = $form->get('SPO_photo')->getData();
             $photoname = str_replace('data:image/png;base64,', '', $photo);
