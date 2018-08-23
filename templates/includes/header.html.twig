@@ -22,15 +22,15 @@
                     <a class="color-1" href="{{ path('security_login')}}">Se connecter</a>
                 </li> 
             {% else %}
-
+            
+            {% if app.user.id %}
                 <li>
                    <a class="color-1" href="/profil/{{ app.user.id }}">Profil</a>
                 </li>
-
+            {% endif %}
                 <li>
                     <a class="color-1" href="{{ path('security_logout')}}">Deconnexion</a>
                 </li> 
-
             {% endif %}
 
             {% if is_granted('ROLE_ADMIN') %}
