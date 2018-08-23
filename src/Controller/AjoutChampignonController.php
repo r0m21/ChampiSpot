@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Champignon;
 use App\Form\ChampiType;
+use App\Entity\Champignon;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AjoutChampignonController extends Controller
@@ -14,8 +15,10 @@ class AjoutChampignonController extends Controller
     /**
      * @Route("/ajout-champignon", name="ajout_champignon")
      */
-    public function ajoutChampignon(Request $request, ObjectManager $manager)
+    public function ajoutChampignon(Request $request, ObjectManager $manager, UserInterface $user)
     {
+        $userId = $user->getId(); 
+
 
         $newChampi = new Champignon();
         
@@ -31,7 +34,8 @@ class AjoutChampignonController extends Controller
         }
 
         return $this->render('ajout_champignon/ajout.html.twig', [
-            'formChampi' => $form->createView(),   
+            'formChampi' => $form->createView(),
+            'userId' => $userId,   
         ]);
     }
 }

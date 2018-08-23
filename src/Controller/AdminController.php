@@ -32,12 +32,5 @@ class AdminController extends Controller
         
         ]);
     }
-
-    /**
-     * @Route("/admin", name="admin")
-     */
-    public function delete()
-    {}
-
-    
+   
 }

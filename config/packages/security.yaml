@@ -51,6 +51,6 @@ security:
     access_control:
         # require ROLE_ADMIN for /admin*
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/ajout, roles: ROLE_USER }
+        - { path: ^/ajout, roles: [ROLE_ADMIN, ROLE_USER] }
         - { path: ^/ajout-champignon, roles: ROLE_USER }
         

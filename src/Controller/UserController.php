@@ -3,20 +3,21 @@
 namespace App\Controller;
 
 
-use App\Entity\CommentairesUser;
 use App\Entity\User;
+use App\Form\CommentType;
+use App\Entity\CommentairesUser;
 use App\Repository\CommentairesUserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Form\CommentType;
 
 class UserController extends Controller
 {
     /**
      * @Route("/", name="index")
      */
-    public function index()
+    public function index(UserInterface $user)
     {
         
         $comment = new CommentairesUser;
@@ -27,8 +28,12 @@ class UserController extends Controller
         ->getRepository(User::class);
         $users = $repo->findAll();   
         
+        $userId = $user->getId(); 
+
        
-        return $this->render('user/index.html.twig');
+        return $this->render('user/index.html.twig', [
+            'userId' => $userId,
+        ]);
     }
 
     /**
@@ -57,25 +62,28 @@ class UserController extends Controller
      * @Route("/profil/{id}", name="profil")
      */     
 
-    public function profil($id){
+    public function profil($id, UserInterface $user){
         
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(User::class);
+
+        $userId = $user->getId(); 
+
+
         $infosProfil = $repo->find($id);
         $photos = $infosProfil->getPhotoUsers();
         $comments = $infosProfil->getCommentairesUsers();
         $spots = $infosProfil->getSpots();
-    
-
-        dump($infosProfil);
+        dump($spots);
+        
 
         return $this->render('user/profil.html.twig', [
-            'controller_name' => 'MapController',
             'infos' => $infosProfil,
             'photos' => $photos,
             'comments' => $comments,
-            'spots' => $spots
+            'spots' => $spots,
+            'userId' => $userId,
 
         ]);
     }
