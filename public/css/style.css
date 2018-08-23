@@ -256,3 +256,46 @@ body {position: relative;}
         pointer-events: all;
      }
     
+/*------------------------------------*/
+/*--------------MEDIA QUERIES------------*/
+
+@media screen and (max-width: 600px) {
+    .no-padding-mobile{
+        padding:0 !important; 
+    } 
+    .no-margin-mobile{
+        margin:0;
+    }
+    .m-t-25-mobile{
+        margin-top:25px;
+    }
+    .d-none-mobile{
+        display:none;
+    }
+    .d-block-mobile{
+        display:block;
+    }
+    .d-flex-mobile{
+        display:flex;
+    }
+    .flex-column-reverse-mobile{
+        flex-direction: column-reverse;
+    }
+    .sidenav li>a{
+        color:white;
+        font-size: 18px;
+        font-weight:700;
+    }
+    .w-100-mobile{
+        width:100%;
+    }
+    .p-50-t-mobile{
+        padding:50px 0 0 0;
+    }
+    .map-mobile{
+        height:50vh;
+    }
+    .h-100pct-mobile{
+        height:100%;
+    }
+}

@@ -1,13 +1,13 @@
 <header class="border-bot-1">
-    <nav class="row bg-color-2 h-100px p-10-50 d-flex jc-space-between box-shadow-none no-margin">
+    <nav class="row bg-color-2 h-100px p-10-50 d-flex jc-space-between box-shadow-none no-margin no-padding-mobile d-none-mobile">
     
-        <div class="col m6 d-flex jc-flex-start">
+        <div class="col m6 s2 d-flex jc-flex-start">
             <a href="/">
                <img src="../img/cs_logo_orange.svg" alt="ChampiSpot" class="responsive-img">
             </a> 
         </div>
 
-        <ul class="col m6 d-flex jc-space-around align-self-center">
+        <ul class="col m6 s10 d-flex jc-space-around align-self-center ">
 
             <li>
                 <a class="color-1" href="/ajout">Ajouter un spot</a>
@@ -41,4 +41,43 @@
 
         </ul> 
     </nav>
+
+
+        <ul id="slide-out" class="sidenav bg-color-1 d-flex flex-column jc-space-around text-center">
+            <li>
+            <a href="/" class="color-3 raleway">Home</a>
+            </li>
+            <li>
+                <a class="color-3 raleway" href="/ajout">Ajouter un spot</a>
+            </li>
+
+            <li>
+                <a class="color-3 raleway" href="/a-propos">A propos</a>
+            </li>
+
+            {% if not app.user %}
+                <li>
+                    <a class="color-3 raleway" href="{{ path('security_login')}}">Se connecter</a>
+                </li> 
+            {% else %}
+
+            {% if app.user.id %}
+                <li>
+                   <a class="color-3 raleway" href="/profil/{{ app.user.id }}">Profil</a>
+                </li>
+            {% endif %}
+                <li>
+                    <a class="color-3 raleway" href="{{ path('security_logout')}}">Deconnexion</a>
+                </li> 
+            {% endif %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a class="color-3 raleway" href="/admin">Administration</a>
+                </li>
+            {% endif %}
+
+        </ul>
+    
+  <a href="#" data-target="slide-out" class="sidenav-trigger d-none d-block-mobile"><i class="material-icons">menu</i></a>
 </header>
