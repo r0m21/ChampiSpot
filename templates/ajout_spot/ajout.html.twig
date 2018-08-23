@@ -4,10 +4,10 @@
 
 {% block body %}
 
-<section class="p-50-50-0">
-    
-    <div class="row">
-        <div class="col m3 d-flex flex-column ai-center jc-space-between h-75vh">
+<section class="p-50-50-0 no-padding-mobile">
+
+    <div class="row d-flex-mobile flex-column-reverse-mobile">
+        <div class="col m3 d-flex flex-column ai-center jc-space-between h-75vh s12 h-100pct-mobile">
             <div class="d-flex flex-column">
                 <h3 class="raleway fw-700 color-1 separator fs-24 no-margin text-center">AJOUTER UN SPOT</h3>
                      {{ form_start(formSpot) }}
@@ -24,13 +24,13 @@
                     
             </div>
             <div class="d-flex ai-flex-end">
-                <img class="responsive-img"src="../img/congratulations.svg" alt="">
+                <img class="responsive-img d-none-mobile" src="../img/congratulations.svg" alt="">
             </div>
         </div>
 
-        <div class="col m9">
+        <div class="col m9 s12 m-t-25-mobile">
 
-            <div class="map w-100pct" id="mapid">
+            <div class="map w-100pct map-mobile" id="mapid">
             {# {%   for spot in spots   %}
                 <input type="hidden" data-lat="{{ spot.SPOLatitude }}" 
                 data-long="{{ spot.SPOLongitude }}" data-img="{{  spot.SPOPhoto  }}" 
