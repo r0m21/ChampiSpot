@@ -75,7 +75,7 @@ class UserController extends Controller
         $photos = $infosProfil->getPhotoUsers();
         $comments = $infosProfil->getCommentairesUsers();
         $spots = $infosProfil->getSpots();
-
+        dump($spots);
         
 
         return $this->render('user/profil.html.twig', [
