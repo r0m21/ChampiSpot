@@ -8,15 +8,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180822095017 extends AbstractMigration
+final class Version20180823093133 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE signalement ADD CONSTRAINT FK_F4B55114E3268119 FOREIGN KEY (sig_id_user_id) REFERENCES user (id)');
-        $this->addSql('CREATE INDEX IDX_F4B55114E3268119 ON signalement (sig_id_user_id)');
+        $this->addSql('ALTER TABLE user CHANGE use_role use_role INT DEFAULT 2 NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -24,7 +23,6 @@ final class Version20180822095017 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE signalement DROP FOREIGN KEY FK_F4B55114E3268119');
-        $this->addSql('DROP INDEX IDX_F4B55114E3268119 ON signalement');
+        $this->addSql('ALTER TABLE user CHANGE use_role use_role INT DEFAULT 0 NOT NULL');
     }
 }

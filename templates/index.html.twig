@@ -9,14 +9,14 @@
         <div class="col s3 d-flex flex-column ai-center jc-space-between h-75vh">
             <div class="d-flex flex-column">
                 <h3 class="raleway fw-700 color-1 separator fs-24 no-margin text-center">FILTRES DE RECHERCHE</h3>
-                    <form action="" id="formFilter" method='POST'>
+                    <form class="" action="" id="formFilter" method='POST'>
                         <select name="filter" class="browser-default" id="filterValue">
                             <option value="default">Choisir une espèce</option>
                         {% for champignon in allChampis %}
                             <option value="{{ champignon.id }}">{{ champignon.CHAEspece }}</option>
                         {% endfor %}
                         </select>
-                        <input type="submit" value="Filtrer" name="submitFilter" id="submitFilter">
+                        <input class="button-secondary mt-20" type="submit" value="Filtrer" name="submitFilter" id="submitFilter">
                     </form>
             </div>
             <div class="d-flex ai-flex-end">
@@ -34,17 +34,6 @@
                 name="lnglat" id="lnglat" class="lnglat" />
                 
                 <!-- Modal Structure -->
-<<<<<<< HEAD
-                <div id="info-modal-spot" class="modal">
-                    <div class="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
-                    </div>
-
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                    </div>
-=======
                 <div id="info-modal-spot{{ spot.id }}" class="modal">
                     <div class="modal-content">
                         <h4>Modale de l'id {{ spot.id }}</h4>
@@ -55,7 +44,6 @@
                     <div class="modal-footer">
                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                     </div>
->>>>>>> 7431e0d3b10b4badc279447febc4c058defbb54a
                 </div>
                 <!-- End Modal -->
             {%   endfor   %}

@@ -82,6 +82,13 @@ class User implements UserInterface
      */
     private $signalements;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\RoleUtilisateur", inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="integer", options={"default" = 2})
+     */
+    private $USE_role;
+
 
 
     public function __construct()
@@ -157,7 +164,7 @@ class User implements UserInterface
      */
     public function getRoles(){
 
-        return array('ROLE_USER');
+        return $this->getUSERole();
     }
     
 
@@ -293,6 +300,19 @@ class User implements UserInterface
                 $signalement->setSIGIdUser(null);
             }
         }
+
+        return $this;
+    }
+
+    
+    public function getUSERole(): ?RoleUtilisateur
+    {
+        return $this->USE_role;
+    }
+
+    public function setUSERole(?RoleUtilisateur $USE_role): self
+    {
+        $this->USE_role = $USE_role;
 
         return $this;
     }

@@ -185,27 +185,22 @@ if(window.location.href.indexOf("ajout") > -1){
 
 // Ajout dynamique du nom de fichier à la place d'un texte.
 
-var fileInput  = document.querySelector( ".input-file" ),
-    button     = document.querySelector( ".input-file-trigger" ),
-    the_return = document.querySelector(".file-return");
- 
-// action lorsque la "barre d'espace" ou "Entrée" est pressée
-button.addEventListener( "keydown", function( event ) {
-    if ( event.keyCode == 13 || event.keyCode == 32 ) {
-        fileInput.focus();
-    }
-});
- 
-// action lorsque le label est cliqué
-button.addEventListener( "click", function( event ) {
-   fileInput.focus();
-   return false;
-});
- 
-// affiche un retour visuel dès que input:file change
-fileInput.addEventListener( "change", function( event ) {
-    str = this.value;
-    var res = str.split("\\", 3);
+if(window.location.href.indexOf("inscription") > -1){
+    var fileInput  = document.querySelector( ".input-file" ),
+        button     = document.querySelector( ".input-file-trigger" ),
+        the_return = document.querySelector(".file-return");
+    
+    // action lorsque le label est cliqué
+    button.addEventListener( "click", function( event ) {
+    fileInput.focus();
+    return false;
+    });
+    
+    // affiche un retour visuel dès que input:file change
+    fileInput.addEventListener( "change", function( event ) {
+        str = this.value;
+        var res = str.split("\\", 3);
 
-    the_return.innerHTML = res[2];
-});
+        the_return.innerHTML = res[2];
+    });
+}
