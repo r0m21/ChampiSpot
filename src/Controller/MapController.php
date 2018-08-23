@@ -12,6 +12,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
@@ -30,7 +31,7 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->find($id);
-        
+       
         $comment = $spots->getCommentairesUsers();
         $longitude = $repo->find($id)->getSPOLongitude();
         $latitude = $repo->find($id)->getSPOLatitude();
@@ -38,16 +39,6 @@ class MapController extends Controller
         $newSignal = new Signalement();
 
         $form = $this->createFormBuilder($newSignal)
-
-                    ->add('SIG_id_user', EntityType::class, array(
-                        'class' => 'App\Entity\User',
-                        'choice_label' => 'id',
-                    ))
-
-                    ->add('sig_id_spot_id', EntityType::class, array(
-                        'class' => Spot::class,
-                        'choice_label' => 'id',
-                    ))
                      
                     ->add('SIG_vide', ChoiceType::class, array(
                         'choices' => array(
@@ -108,10 +99,18 @@ class MapController extends Controller
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $userId = $user->getId(); 
+            dump($userId);
+
+            $repo = $this->getDoctrine()
+            ->getRepository(User::class);
+            $users = $repo->find($userId);
+
+            $newSignal->setSIGIdUser($users);
+            $newSignal->setSigIdSpotId($spots);
+
             $manager->persist($newSignal);
             $manager->flush();
-
-            dump($newSignal);
 
         }
 
