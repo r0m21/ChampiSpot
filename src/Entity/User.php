@@ -82,7 +82,10 @@ class User implements UserInterface
      */
     private $signalements;
 
-
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $USE_role = "ROLE_USER";
 
     public function __construct()
     {
@@ -157,7 +160,7 @@ class User implements UserInterface
      */
     public function getRoles(){
 
-        return array('ROLE_USER');
+        return $this->getUSERole();
     }
     
 
@@ -293,6 +296,18 @@ class User implements UserInterface
                 $signalement->setSIGIdUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUSERole(): ?string
+    {
+        return $this->USE_role;
+    }
+
+    public function setUSERole(string $USE_role): self
+    {
+        $this->USE_role = $USE_role;
 
         return $this;
     }
