@@ -19,6 +19,9 @@
 
             {% if not app.user %}
                 <li>
+                    <a class="color-1" href="{{ path('security_registration')}}">S'inscrire</a>
+                </li> 
+                <li>
                     <a class="color-1" href="{{ path('security_login')}}">Se connecter</a>
                 </li> 
             {% else %}
@@ -57,8 +60,11 @@
 
             {% if not app.user %}
                 <li>
-                    <a class="color-3 raleway" href="{{ path('security_login')}}">Se connecter</a>
+                    <a class="color-3 raleway" href="{{ path('security_registration')}}">S'inscrire</a>
                 </li> 
+                <li>
+                    <a class="color-3 raleway" href="{{ path('security_login')}}">Se connecter</a>
+                </li>                 
             {% else %}
 
             {% if app.user.id %}
