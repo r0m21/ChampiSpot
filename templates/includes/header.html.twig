@@ -1,13 +1,13 @@
 <header class="border-bot-1">
     <nav class="row bg-color-2 h-100px p-10-50 d-flex jc-space-between box-shadow-none no-margin">
     
-        <div class="col s6 d-flex jc-flex-start">
+        <div class="col m6 d-flex jc-flex-start">
             <a href="/">
                <img src="../img/cs_logo_orange.svg" alt="ChampiSpot" class="responsive-img">
             </a> 
         </div>
 
-        <ul class="col s6 d-flex jc-space-around align-self-center">
+        <ul class="col m6 d-flex jc-space-around align-self-center">
 
             <li>
                 <a class="color-1" href="/ajout">Ajouter un spot</a>
@@ -22,7 +22,7 @@
                     <a class="color-1" href="{{ path('security_login')}}">Se connecter</a>
                 </li> 
             {% else %}
-            
+
             {% if app.user.id %}
                 <li>
                    <a class="color-1" href="/profil/{{ app.user.id }}">Profil</a>
