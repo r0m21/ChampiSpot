@@ -32,8 +32,9 @@
                             </div>
 
                             <div class="d-inline-flex flex-column mt-10 block-avatar">
-                                <label for="registration_USE_profile_pic"><i class="fas fa-camera"></i></label>
+                                <label class="input-file-trigger" for="registration_USE_profile_pic"><i class="fas fa-camera"></i></label>
                                 {{ form_row(form.USE_profile_pic) }}
+                                <p class="file-return no-margin color-1">Veuillez séléctionner une photo</p>   
                             </div>
                             
                             <div class="mt-20">
@@ -44,8 +45,6 @@
                     </div>
                 </div>
             </div>
-        
         </section>
-    
 
 {% endblock %}

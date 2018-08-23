@@ -132,26 +132,6 @@ body {position: relative;}
 /*------------------------------------*/
 /*--------------SPECIFIQUE------------*/
 
-<<<<<<< HEAD
-.separator::after{      /* Séparateur centré */
-    content: "";
-    display: block;
-    height: 1px;
-    width: auto;
-    background-color: #E8910C;
-    margin: 10px 0px 20px;
-    
-}
-
-.map{
-    height:75vh;
-}
-
-[type="radio"]:not(:checked), [type="radio"]:checked {
-    position: relative;
-    opacity: 1;
-    pointer-events: all;
- }
 /*------------------------------------*/
 /*--------------MODAL------------*/
 
@@ -170,7 +150,6 @@ body {position: relative;}
     overflow-y: auto;
     will-change: top, opacity;
 }
-=======
     /*------------------------------------*/
     /*--------------GENERAL---------------*/
 
@@ -217,6 +196,22 @@ body {position: relative;}
         padding: 10px 100px;
     }
 
+    .button-secondary{
+        background-color: #F37A3A;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        width:100%;
+        padding: 10px;
+        border:none;
+        transition: .5s;
+    }
+    .button-secondary:hover{
+        background: transparent;
+        color: #F37A3A;
+        border: 1px solid #F37A3A;
+    }
+
     .button-action{
         background-color: #F37A3A;
         color: #fff;
@@ -247,5 +242,10 @@ body {position: relative;}
         font-size:22px;
         cursor:pointer;
     }
+
+    [type="radio"]:not(:checked), [type="radio"]:checked {
+        position: relative;
+        opacity: 1;
+        pointer-events: all;
+     }
     
->>>>>>> 67994848c2a19ba21f41a047b8c668395db143f1

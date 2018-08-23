@@ -37,6 +37,8 @@ class RegistrationType extends AbstractType
                 'class' => 'input-1 browser-default'
                 ),
             ))
+            ->add('USE_role', HiddenType::class)
+
             ->add('confirm_password', PasswordType::class ,array(
                 'attr' => array(
                 'class' => 'input-1 browser-default'
@@ -44,14 +46,13 @@ class RegistrationType extends AbstractType
             ))
             ->add('USE_profile_pic', FileType::class, array(
                 'label' => 'Ajouter un avatar',
-                'required'   => false,
                 'attr' => array(
                     "accept" => "image/*",
-                    "class" => "d-none",
+                    "class" => "d-none input-file",
                 ),        
              ))
         ;
-        
+        $builder->get('USE_profile_pic')->setRequired(false);
     }
 
     public function configureOptions(OptionsResolver $resolver)

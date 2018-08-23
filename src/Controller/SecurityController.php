@@ -30,6 +30,8 @@ class SecurityController extends Controller
 
         $form = $this->createForm(RegistrationType::class, $user);
 
+        
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
