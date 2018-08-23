@@ -10,6 +10,7 @@ use App\Entity\CommentairesUser;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -124,6 +125,7 @@ class MapController extends Controller
         ]);
     }
 
+
     /**
      * @Route("/", name="map")
      */
@@ -134,7 +136,7 @@ class MapController extends Controller
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
-
+       
         $repoChampis = $this->getDoctrine()
         ->getRepository(Champignon::class);
 

@@ -1,4 +1,4 @@
-if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("profil") > -1  || window.location.href.indexOf("search") > -1) {
+if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("profil") > -1  || window.location.href.indexOf("search") > -1 || window.location.href == "http://localhost:8000/" ) {
     let $map = document.querySelector('map');
     class LeafletMap{
         load(element){
