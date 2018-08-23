@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Spot;
-use App\Entity\Champignon;
 use App\Entity\User;
 
 
+use App\Entity\Champignon;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,7 +25,7 @@ class AjoutSpotController extends Controller
     public function ajoutSpot(Request $request, ObjectManager $manager, UserInterface $user)
     {
         $this->denyAccessUnlessGranted('ROLE_USER', null, 'Unable to access this page!');
-
+        
         $newSpot = new Spot();
         
         $form = $this->createFormBuilder($newSpot)
@@ -56,6 +56,10 @@ class AjoutSpotController extends Controller
                             "class" => "browser-default"
                         ]
                      ))
+                     ->add('SPO_id_user', HiddenType::class)
+                        
+                        
+                    
 
                      ->add('SPO_longitude', HiddenType::class, [
                          'attr' => [
@@ -77,6 +81,17 @@ class AjoutSpotController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+
+            $userId = $user->getId(); 
+            dump($userId);
+
+            $repo = $this->getDoctrine()
+            ->getRepository(User::class);
+            $users = $repo->find($userId);
+            
+            
+            
+
             $upload_dir = "uploads/photos/";
             $photo = $form->get('SPO_photo')->getData();
             $photoname = str_replace('data:image/png;base64,', '', $photo);
@@ -88,6 +103,8 @@ class AjoutSpotController extends Controller
             move_uploaded_file($success, $upload_dir);
             // updates the 'photo' property to store the photo file name
             // instead of its contents
+
+            $newSpot->setSPOIdUser($users);
             $newSpot->setSPOPhoto($file);
 
             $manager->persist($newSpot);

@@ -2,17 +2,21 @@
 
 {% block title %}Administration{% endblock %}
 
-{% block body %}
-
+{% block body %}     
+    
     <p>Signalements</p>
 
     {% for newSignal in signalement %}
 
+            <a href="/search/{{ newSignal.sigIdSpotId.id }}">Voir les informations</a>
             <p>Il n'y a rien à ce spot : {{ newSignal.sigVide }}</p>
             <p>Toxicité incorrecte : {{ newSignal.sigToxique }}</p>
             <p>Description incorrecte : {{ newSignal.sigDesc }}</p>
             <p>Qualité du spot incorrecte : {{ newSignal.sigAccessibilite }}</p>
+            <input type="submit" name="ignore" value="Ignorer le signalement">
+            <input type="submit" name="delete" value="Supprimer le spot">
 
     {% endfor %}
+
 
 {% endblock %}
