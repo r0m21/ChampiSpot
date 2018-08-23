@@ -63,7 +63,7 @@ class UserController extends Controller
         $photos = $infosProfil->getPhotoUsers();
         $comments = $infosProfil->getCommentairesUsers();
         $spots = $infosProfil->getSpots();
-        dump($spots);
+        $spotsNumber = $spots->count($id);
         
 
         return $this->render('user/profil.html.twig', [
@@ -72,6 +72,7 @@ class UserController extends Controller
             'comments' => $comments,
             'spots' => $spots,
             'userId' => $userId,
+            'spotsNumber' => $spotsNumber,
 
         ]);
     }

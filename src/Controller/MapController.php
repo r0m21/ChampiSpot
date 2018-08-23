@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Spot;
 use App\Entity\User;
-use App\Form\CommentType;
 use App\Entity\Champignon;
 use App\Entity\Signalement;
-
 use App\Entity\CommentairesUser;
+
+use App\Form\CommentType;
+
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,7 +33,7 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->find($id);
-        
+       
         $comment = $spots->getCommentairesUsers();
         $longitude = $repo->find($id)->getSPOLongitude();
         $latitude = $repo->find($id)->getSPOLatitude();
@@ -40,16 +41,6 @@ class MapController extends Controller
         $newSignal = new Signalement();
 
         $form = $this->createFormBuilder($newSignal)
-
-                    ->add('SIG_id_user', EntityType::class, array(
-                        'class' => 'App\Entity\User',
-                        'choice_label' => 'id',
-                    ))
-
-                    ->add('sig_id_spot_id', EntityType::class, array(
-                        'class' => Spot::class,
-                        'choice_label' => 'id',
-                    ))
                      
                     ->add('SIG_vide', ChoiceType::class, array(
                         'choices' => array(
@@ -109,33 +100,44 @@ class MapController extends Controller
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $userId = $user->getId(); 
+
+            $repo = $this->getDoctrine()
+            ->getRepository(User::class);
+            $users = $repo->find($userId);
+
+            $newSignal->setSIGIdUser($users);
+            $newSignal->setSigIdSpotId($spots);
+
             $manager->persist($newSignal);
             $manager->flush();
-
-            dump($newSignal);
 
         }
 
         /* Formulaire d'ajout de commentaire */
                 
         $newComment = new CommentairesUser();
-        $form_comment = $this->createForm(CommentType::class, $newComment);
 
-        $repo_com = $this->getDoctrine()
-        ->getRepository(CommentairesUser::class);
-        
-        $id_spot = $repo_com->find($spots)->getCOMIdSpot();
-        $id_user = $repo_com->find($userId)->getCOMIdUser();
+        $form_comment = $this->createForm(CommentType::class, $newComment);
 
         $form_comment->handleRequest($request);
 
         if($form_comment->isSubmitted() && $form_comment->isValid()){
 
+            $userId = $user->getId();
+
+            $repo = $this->getDoctrine()
+            ->getRepository(User::class);
+            $users = $repo->find($userId);
+
+            $newComment->setCOMIdSpot($users);
+            $newComment->setCOMIdUser(Spot::class);
+
             $manager->persist($newComment);
             $manager->flush();
 
-            dump($newComment);
-
+            
+dump($form_comment);
         }
 
         return $this->render('map/search.html.twig', [
@@ -182,6 +184,17 @@ class MapController extends Controller
             'spots' => $spots,
             'allChampis' => $allChampis,           
            
+        ]);
+    }
+
+    
+    /**
+     * @Route("/a-propos", name="a-propos")
+     */
+    public function aPropos()
+    {
+        return $this->render('a_propos/a_propos.html.twig', [
+            
         ]);
     }
 
