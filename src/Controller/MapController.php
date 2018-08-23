@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
@@ -21,14 +22,14 @@ class MapController extends Controller
     /**
      * @Route("/search/{id}", name="search")
      */
-    public function search($id, Request $request, ObjectManager $manager)
+    public function search($id, Request $request, ObjectManager $manager, UserInterface $user)
     {
         
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->find($id);
-        
+       
         $comment = $spots->getCommentairesUsers();
         $longitude = $repo->find($id)->getSPOLongitude();
         $latitude = $repo->find($id)->getSPOLatitude();
@@ -39,7 +40,10 @@ class MapController extends Controller
 
                     ->add('SIG_id_user', EntityType::class, array(
                         'class' => 'App\Entity\User',
-                        'choice_label' => 'id',
+                        'choice_label' => function (UserInterface $user){
+                            return findBy($user)->getId(); 
+                        }
+                   
                     ))
 
                     ->add('sig_id_spot_id', EntityType::class, array(
@@ -109,7 +113,6 @@ class MapController extends Controller
             $manager->persist($newSignal);
             $manager->flush();
 
-            dump($newSignal);
 
         }
 
