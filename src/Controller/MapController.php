@@ -137,7 +137,7 @@ class MapController extends Controller
             $manager->flush();
 
             
-dump($form_comment);
+dump($longitude);
         }
 
         return $this->render('map/search.html.twig', [

@@ -7,16 +7,34 @@
    <div class="map" id="mapid"></div>
    <p id="infoposition"></p>
 
-    <input type="hidden" name="lat" id="lat"/> 
-    <input type="hidden" name="lng" id="lng"/>
+    <!-- <input type="hidden" name="lat" id="lat"/> 
+    <input type="hidden" name="lng" id="lng"/> -->
+
 
     {%   for spot in spots   %}
-       <p>{{   spot.spoDescription   }}</p> 
-
+        <input type="hidden" data-lat="{{ spot.SPOLatitude }}" 
+        data-long="{{ spot.SPOLongitude }}" data-img="{{  spot.SPOPhoto  }}" 
+        data-id="{{   spot.id   }}" data-description="{{  spot.SPODescription  }}" 
+        name="lnglat" id="lnglat" class="lnglat" />
     {%   endfor   %}
 
+<!-- Modal Structure -->
+    <div id="info-modal-spot{{ spots.id }}" class="modal">
+        <div class="modal-content">
+            <h4>Modale de l'id {{ spots.id }}</h4>
+            <p>{{  spots.SPODescription  }}</p>
+            <p>Avec le champi : {{ spots.SPOIdChampi.CHAEspece }}</p>
+        </div>
+
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+<!-- End Modal -->
+
+
     {%   for comments in comment   %}
-        <p>{{   comments.COMText    }}</p>
+        <p>{{ comments.COMText }}</p>
     {%   endfor   %}
 
     {{ form_start(formSignal) }}

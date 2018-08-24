@@ -171,11 +171,6 @@ if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("p
         }
     }
     
-
-
-
-
-    
     $(function($){
 
         if(window.location.href.indexOf("/") > -1){
