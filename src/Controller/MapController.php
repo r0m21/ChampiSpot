@@ -53,8 +53,12 @@ class MapController extends Controller
                         ),
                         "expanded" => true,
                         "multiple" => false,
+                        "label_attr" => [
+                            "class" => "color-1-mobile"
+                        ],
                         "attr" => array(
                             "name" => "group1",
+                            "class" => "color-1-mobile"
                         ))
 
                     )
@@ -63,10 +67,13 @@ class MapController extends Controller
                             'Oui' => 'oui',
                             'Non' => 'non',
                         ),
+                        "choice_attr" => array(
+                            "class" => "color-1-mobile"
+                        ),
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "browser-default ",
                         ))
 
                     )
@@ -76,10 +83,13 @@ class MapController extends Controller
                             'Oui' => 'oui',
                             'Non' => 'non',
                         ),
+                        "choice_attr" => array(
+                            "class" => "color-1-mobile"
+                        ),
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "browser-default ",
                         ))
 
                     )
@@ -89,10 +99,13 @@ class MapController extends Controller
                             'Oui' => 'oui',
                             'Non' => 'non',
                         ),
+                        "choice_attr" => array(
+                            "class" => "color-1-mobile"
+                        ),
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "browser-default ",
                         ))
 
                         

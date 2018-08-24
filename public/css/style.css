@@ -49,6 +49,7 @@ body {position: relative;}
     .bg-color-2{background-color:#FFFFFF;}
     .bg-color-3{background-color: #F37A3A;}
 
+
     .border-bot-1{border-bottom: 1px solid #E9E9E9;}
     .no-border-radius{border-radius:0;}
 
@@ -267,6 +268,9 @@ body {position: relative;}
 /*--------------MEDIA QUERIES------------*/
 
 @media screen and (max-width: 600px) {
+    .modal{
+        background-color: rgba(244,120,58,0.7);
+    }
     .no-padding-mobile{
         padding:0 !important; 
     } 
@@ -310,5 +314,12 @@ body {position: relative;}
     }
     .w-90pct-mobile{
         width:90%;
+    }
+    .color-1-mobile{
+        color:white;
+    }
+    input[type="radio"] + label{
+        color:white;
+        font-size : 14px;
     }
 }

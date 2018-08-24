@@ -29,6 +29,11 @@
     <input type="hidden" name="lat" id="lat"/> 
     <input type="hidden" name="lng" id="lng"/>
 
+
+
+
+
+        {# VERSION MOBILE #}
     <div class="d-flex flex-column d-none d-block-mobile d-flex-mobile flex-column-mobile ai-center">
         {% if spots.SPOPhoto %}
         <img src = "../{{  spots.SPOPhoto }}" class="responsive-img"/>
@@ -66,27 +71,42 @@
             <p class="no-margin">{{ spots.SPOAccessibilite }}</p>
             <input type="hidden" name="accessibilité" id="accessibilite" value="{{ spots.SPOAccessibilite }}">
         </div>
-         
-</div>
+<!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger bg-color-3" href="#modal1">Signaler ce spot</a>
 
-    
-
-    {%   for comments in comment   %}
-        <p>{{   comments.COMText    }}</p>
-    {%   endfor   %}
-
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bg-color-4">
     {{ form_start(formSignal) }}
 
-        {{ form_row(formSignal.SIG_vide, {'label': 'Il n\'y a rien à ce spot : '}) }}
-        {{ form_row(formSignal.SIG_toxique, {'label': 'Toxicité incorrecte : '}) }}
-        {{ form_row(formSignal.SIG_desc, {'label': 'Description incorrecte : '}) }}
-        {{ form_row(formSignal.SIG_accessibilite, {'label': 'Qualité du spot incorrecte : '}) }}
+        {{ form_label(formSignal.SIG_vide, 'Il n\'y a rien à ce spot : ', {
+       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
+        {{ form_widget(formSignal.SIG_vide)}}
+
+        {{ form_label(formSignal.SIG_toxique, 'Toxicité incorrecte : ', {
+       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
+        {{ form_widget(formSignal.SIG_toxique)}}
+
+        {{ form_label(formSignal.SIG_desc, 'Description incorrecte :  ', {
+       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
+        {{ form_widget(formSignal.SIG_desc) }}
+
+        {{ form_label(formSignal.SIG_accessibilite, 'Accessibilité du spot incorrecte :  ', {
+       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
+        {{ form_widget(formSignal.SIG_accessibilite) }}
+
         <input type="submit" value="Signaler ce spot">
 
     {{ form_end(formSignal) }}
 
-    {{ form_start(formComment) }}
-        {{ form_row(formComment.COM_text, {'placeholder': 'Écrire un commentaire'}) }}
+  </div>
+   {{ form_start(formComment) }}
+        {{ form_widget(formComment.COM_text, {'placeholder': 'Écrire un commentaire'}) }}
         <input type="submit" value="Ajouter un commentaire">
     {{ form_end(formComment) }}
+         
+    </div>
+
+   
+    
+    
 {% endblock %}
