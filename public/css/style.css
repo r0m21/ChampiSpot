@@ -109,6 +109,7 @@ body {position: relative;}
 
     .pt-50{padding-top:50px;}
 
+    .p-10{padding:10px;}
     .p-10-50{padding:10px 50px;}
     .p-50-50-0{padding:50px 50px 0;}
 
@@ -167,8 +168,8 @@ body {position: relative;}
         right: 10px;
         top: 10px;
         bottom: 10px;
-        background-color: blue;
-        max-height: 70%;
+        background-color: rgba(255,255,255,.9);
+        height: 100%;
         width: 80%;
         margin: auto;
         overflow-y: auto;
@@ -238,6 +239,8 @@ body {position: relative;}
         opacity: 1;
         pointer-events: all;
      }
+
+     textarea{resize:none;}
     
 /*------------------------------------*/
 /*--------------MEDIA QUERIES------------*/

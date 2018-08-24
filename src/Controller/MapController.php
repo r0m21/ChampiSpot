@@ -32,12 +32,12 @@ class MapController extends Controller
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
-        $spots = $repo->find($id);
-
-        $comment = $spots->getCommentairesUsers();
+        $spots = $repo->find($id);  
+        $comment = $spots->getCommentairesUsers($limitCom);
+                         
 
        /*  $allUser = $comment->getCOMIdUser(); */
-        dump($spots);
+       
 
         $newSignal = new Signalement();
 
@@ -168,7 +168,7 @@ class MapController extends Controller
                 $spots = $repo
                 ->findBy(array('SPO_id_champi' => $espece));
             }
-            dump($spots);
+            
        
         }else
         {
