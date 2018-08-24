@@ -33,7 +33,7 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->find($id);
-       
+
         $comment = $spots->getCommentairesUsers();
         $longitude = $repo->find($id)->getSPOLongitude();
         $latitude = $repo->find($id)->getSPOLatitude();
@@ -62,7 +62,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "browser-default input-1",
                         ))
 
                     )
@@ -75,7 +75,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "browser-default input-1",
                         ))
 
                     )
@@ -88,7 +88,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "browser-default input-1",
                         ))
 
                         
@@ -137,7 +137,6 @@ class MapController extends Controller
             $manager->flush();
 
             
-dump($form_comment);
         }
 
         return $this->render('map/search.html.twig', [
