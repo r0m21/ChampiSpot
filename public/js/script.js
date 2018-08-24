@@ -1,72 +1,6 @@
-if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("profil") > -1  || window.location.href.indexOf("search") > -1 || window.location.href == "http://localhost:8000/" ) {
-    let $map = document.querySelector('map');
-    class LeafletMap{
-        load(element){
-            L.map(element);
-        }
-    }
-    const initMap = function(){
-        let map = new LeafletMap();
-        map.load($map);
-    }
-    if($map !== null){
-        initMap();
-    }
-    let mymap = L.map('mapid').setView([47.3, 5.05], 13);
-    L.tileLayer('//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>', 
-        maxZoom: 18,
-    }).addTo(mymap);
+var screenWidth = $(document).width();
 
-    var markericon = L.icon({
-        iconUrl: '../img/marqueur.svg',
-        iconSize:     [38, 38], // size of the icon
-        iconAnchor:   [19, 38], // point of the icon which will correspond to marker's location
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-    });
-
-    /**
-     * Function onMapClick()
-     * 
-     * @description Envoi une icone SVG à la position cliqué sur la map par l'utilisateur.
-     * 
-     * @param event onclick
-     * @return svg icon for longitude and latitude
-     */
-
-
-
-    if(window.location.href.indexOf("ajout") > -1) {
-        var champiMarker;
-        var updateMarker = function(e) {
-        var lat = (e.latlng.lat);
-        var lng = (e.latlng.lng);
-
-        var latitude = document.getElementById('form_SPO_longitude');
-        var longitude = document.getElementById('form_SPO_latitude');
-
-        latitude.setAttribute('value', lat);
-        longitude.setAttribute('value', lng);
-
-        if (champiMarker) {
-            champiMarker
-            .setLatLng([lat, lng])
-            .setIcon(markericon)
-            ;
-        } else {
-            champiMarker = L.marker([lat, lng])
-            .setIcon(markericon)
-            .addTo(mymap);
-        }
-        return false;
-    };
-    mymap.on('click', updateMarker);
-    }
-
-
-
-
-    /**
+/**
      * Function getLocation()
      *  
      * @description Fonction qui sert à géolocaliser les utilisateurs en arrivant
@@ -81,13 +15,6 @@ if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("p
             console.log("La géolocation n'est pas supporté par votre navigateur.");
         }
     }
-    $(function($){
-
-        if(window.location.href.indexOf("/") > -1){
-            $('.modal').modal();       
-        }
-    })
-
 
     /**
      * Function maPosition()
@@ -139,6 +66,124 @@ if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("p
         }
         document.getElementById("infoposition").innerHTML = info;
     }
+
+
+if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("profil") > -1  || window.location.href.indexOf("search") > -1 || window.location.href == "http://localhost:8000/" ) {
+    let $map = document.querySelector('map');
+    class LeafletMap{
+        load(element){
+            L.map(element);
+        }
+    }
+    const initMap = function(){
+        let map = new LeafletMap();
+        map.load($map);
+    }
+    if($map !== null){
+        initMap();
+    }
+    
+    let mymap = L.map('mapid').setView([47.3, 5.05], 13);
+
+    if(screenWidth < 600 ) {
+        mymap.locate({setView: true, watch: true, maxZoom: 13});
+    var newMarker;  
+    function onLocationFound(e) {
+  
+    var lat = (e.latlng.lat);
+    var lng = (e.latlng.lng);
+    
+    var latitude = document.getElementById('form_SPO_longitude');
+    var longitude = document.getElementById('form_SPO_latitude');
+
+    latitude.setAttribute('value', lat);
+    longitude.setAttribute('value', lng);
+    if (newMarker) {
+        newMarker
+        .setLatLng([lat, lng])
+        .setIcon(markericon)
+        ;
+    } else {
+        newMarker = L.marker([lat, lng])
+        .addTo(mymap);
+    }
+    return false;
+    }
+    mymap.on('locationfound', onLocationFound);
+
+    function onLocationError(e) {
+        alert(e.message);
+    }    
+    mymap.on('locationerror', onLocationError);
+
+    }
+    
+
+    L.tileLayer('//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>', 
+        maxZoom: 18,
+    }).addTo(mymap);
+
+    var markericon = L.icon({
+        iconUrl: '../img/marqueur.svg',
+        iconSize:     [38, 38], // size of the icon
+        iconAnchor:   [19, 38], // point of the icon which will correspond to marker's location
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+
+    /**
+     * Function onMapClick()
+     * 
+     * @description Envoi une icone SVG à la position cliqué sur la map par l'utilisateur.
+     * 
+     * @param event onclick
+     * @return svg icon for longitude and latitude
+     */
+
+
+
+    if (screenWidth > 600){
+        if(window.location.href.indexOf("ajout") > -1) {
+            var champiMarker;
+            var updateMarker = function(e) {
+            var lat = (e.latlng.lat);
+            var lng = (e.latlng.lng);
+    
+            var latitude = document.getElementById('form_SPO_longitude');
+            var longitude = document.getElementById('form_SPO_latitude');
+    
+            latitude.setAttribute('value', lat);
+            longitude.setAttribute('value', lng);
+    
+            if (champiMarker) {
+                champiMarker
+                .setLatLng([lat, lng])
+                .setIcon(markericon)
+                ;
+            } else {
+                champiMarker = L.marker([lat, lng])
+                .setIcon(markericon)
+                .addTo(mymap);
+            }
+            return false;
+        };
+        mymap.on('click', updateMarker);
+        }
+    }
+    
+
+
+
+
+    
+    $(function($){
+
+        if(window.location.href.indexOf("/") > -1){
+            $('.modal').modal();       
+        }
+    })
+
+
 
         var marker;
         var spotslnglat = document.querySelectorAll('.lnglat');
@@ -207,7 +252,7 @@ if(window.location.href.indexOf("inscription") > -1){
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, options);
+    var instances = M.Sidenav.init(elems);
   });
 
   // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
@@ -219,3 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
   $(document).ready(function(){
     $('.sidenav').sidenav();
   });
+
+
+
+    

@@ -38,7 +38,7 @@ class Signalement
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Spot", inversedBy="signalements")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $sig_id_spot_id;
 

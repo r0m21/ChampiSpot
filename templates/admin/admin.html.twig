@@ -14,8 +14,11 @@
             <p>Description incorrecte : {{ newSignal.sigDesc }}</p>
             <p>Qualité du spot incorrecte : {{ newSignal.sigAccessibilite }}</p>
 
+            
+
             <form action="" method="POST">
-                <input type="submit" name="ignore" value="Ignorer le signalement">
+                <input type="hidden" name="idsignal" value="{{ newSignal.id }}">
+                <input type="hidden" name="idvalue" value="{{ newSignal.sigIdSpotId.id }}">
                 <input type="submit" name="delete" value="Supprimer le spot">
             </form>
 
