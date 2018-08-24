@@ -218,6 +218,14 @@ body {position: relative;}
         border: 1px solid #707070;
     }
 
+    .canvas-w {
+        width:100px !important;
+    }
+    
+    .canvas-h{
+        height:100px !important;
+    }
+
     /*------------------------------------*/
     /*----------------Formulaire--------------*/
 
@@ -240,6 +248,8 @@ body {position: relative;}
         pointer-events: all;
      }
 
+    .absolute{position:absolute;}
+    .relative{position:relative;}
      /*------------------------------------*/
     /*----------------Couleurs--------------*/
 
@@ -297,5 +307,8 @@ body {position: relative;}
     }
     .h-100pct-mobile{
         height:100%;
+    }
+    .w-90pct-mobile{
+        width:90%;
     }
 }

@@ -29,12 +29,12 @@
     <input type="hidden" name="lat" id="lat"/> 
     <input type="hidden" name="lng" id="lng"/>
 
-    <div class="d-flex flex-column d-none d-block-mobile">
+    <div class="d-flex flex-column d-none d-block-mobile d-flex-mobile flex-column-mobile ai-center">
         {% if spots.SPOPhoto %}
         <img src = "../{{  spots.SPOPhoto }}" class="responsive-img"/>
         {% endif %}
         <p class="color-1">INFORMATIONS</p>
-        <div class="row no-margin-mobile">
+        <div class="row no-margin-mobile w-90pct-mobile">
             <div class="d-flex text-center col s3">
                 <div class="d-flex flex-column">
                 {% if champi == "non" %}
@@ -57,11 +57,13 @@
                 </p>
             </div>
         </div>
-        <div>
+        <div class="w-90pct-mobile">
             <p>Posté par {{ author.username }}</p>
         </div>
-        <div class="d-flex jc-center">
-        <canvas id="myChart" width="150" height="150"></canvas>
+        <div class="d-flex ai-center flex-column">
+            <canvas id="myChart" width="150" height="150" class="canvas-w canvas-h"></canvas>
+            <p class="raleway fs-18 color-1">Accessibilité :</p>
+            <p class="no-margin">{{ spots.SPOAccessibilite }}</p>
             <input type="hidden" name="accessibilité" id="accessibilite" value="{{ spots.SPOAccessibilite }}">
         </div>
          
