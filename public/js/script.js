@@ -262,6 +262,36 @@ document.addEventListener('DOMContentLoaded', function() {
     $('.sidenav').sidenav();
   });
 
+var ctx = document.getElementById("myChart");
+var doughnutData = document.getElementById('accessibilite').value;
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ["Accessibilité"],
+        datasets: [{
+            label: '',
+            data: [doughnutData, 5],
+            backgroundColor: [
+              'rgb(244, 120, 58)',
+              'rgb(255,255,255)'
+          
 
+          ],
+          borderColor: [
+            'rgb(244, 120, 58)',
+            'rgb(255,255,255)'
+
+
+            ],
+            borderWidth: 1
+        }]
+    },options : {
+        scaleOverride: true,
+        scaleSteps: 1,
+        scaleStepWidth: 5,
+        scaleStartValue: 0,
+    }
+       
+});
 
     

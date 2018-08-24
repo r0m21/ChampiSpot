@@ -77,6 +77,7 @@ body {position: relative;}
     .fs-14{font-size: 0.875rem;}
     .fs-20{font-size: 20px;}
     .fs-24{font-size:24px;}
+    .fs-80{font-size:80px;}
 
     /*-----------------------------------*/
     /*----------------FLEX---------------*/
@@ -240,7 +241,22 @@ body {position: relative;}
         pointer-events: all;
      }
 
+<<<<<<< HEAD
      textarea{resize:none;}
+=======
+     /*------------------------------------*/
+    /*----------------Couleurs--------------*/
+
+    .color-comestible{
+        color:#6ADE6A;
+    }
+    .color-toxique{
+        color:#F36666;
+    }
+    .color-incertain{
+        color:#A7A7A7;
+    }
+>>>>>>> cf56c766c6e2a4655e3fccd10880a3a530a65aad
     
 /*------------------------------------*/
 /*--------------MEDIA QUERIES------------*/

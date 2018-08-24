@@ -33,11 +33,14 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->find($id);  
-        $comment = $spots->getCommentairesUsers($limitCom);
+        $comment = $spots->getCommentairesUsers();
                          
 
-       /*  $allUser = $comment->getCOMIdUser(); */
-       
+        $thisAuthor = $spots->getSPOIdUser();
+
+        $thisChampi = $spots->getSPOIdChampi()->getCHAComestible();
+
+        $comment = $spots->getCommentairesUsers();
 
         $newSignal = new Signalement();
 
@@ -63,7 +66,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default input-1",
+                            "class" => "browser-default",
                         ))
 
                     )
@@ -76,7 +79,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default input-1",
+                            "class" => "browser-default",
                         ))
 
                     )
@@ -89,7 +92,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default input-1",
+                            "class" => "browser-default",
                         ))
 
                         
@@ -142,6 +145,8 @@ class MapController extends Controller
         return $this->render('map/search.html.twig', [
             'spots' => $spots,
             'comment' => $comment,
+            'author' => $thisAuthor,
+            'champi' => $thisChampi,
             'formSignal' => $form->createView(),
             'formComment' => $form_comment->createView(),
         ]);
