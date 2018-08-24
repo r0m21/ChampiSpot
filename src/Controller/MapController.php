@@ -32,15 +32,15 @@ class MapController extends Controller
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
-        $spots = $repo->find($id);
+        $spots = $repo->find($id);  
+        $comment = $spots->getCommentairesUsers();
+                         
 
         $thisAuthor = $spots->getSPOIdUser();
 
         $thisChampi = $spots->getSPOIdChampi()->getCHAComestible();
 
         $comment = $spots->getCommentairesUsers();
-        $longitude = $repo->find($id)->getSPOLongitude();
-        $latitude = $repo->find($id)->getSPOLatitude();
 
         $newSignal = new Signalement();
 
@@ -140,16 +140,12 @@ class MapController extends Controller
             $manager->persist($newComment);
             $manager->flush();
 
-            
-dump($form_comment);
         }
 
         return $this->render('map/search.html.twig', [
             'spots' => $spots,
             'comment' => $comment,
             'author' => $thisAuthor,
-            'longitude' => $longitude,
-            'latitude' => $latitude,
             'champi' => $thisChampi,
             'formSignal' => $form->createView(),
             'formComment' => $form_comment->createView(),
@@ -177,7 +173,7 @@ dump($form_comment);
                 $spots = $repo
                 ->findBy(array('SPO_id_champi' => $espece));
             }
-            dump($spots);
+            
        
         }else
         {

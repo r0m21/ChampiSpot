@@ -171,11 +171,6 @@ if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("p
         }
     }
     
-
-
-
-
-    
     $(function($){
 
         if(window.location.href.indexOf("/") > -1){
@@ -272,10 +267,10 @@ var doughnutData = document.getElementById('accessibilite').value;
 var myDoughnutChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ["Accessibilité"],
+        labels: [],
         datasets: [{
             label: '',
-            data: [doughnutData, 5],
+            data: [doughnutData, 5-doughnutData],
             backgroundColor: [
               'rgb(244, 120, 58)',
               'rgb(255,255,255)'
@@ -286,15 +281,11 @@ var myDoughnutChart = new Chart(ctx, {
             'rgb(244, 120, 58)',
             'rgb(255,255,255)'
 
-
             ],
             borderWidth: 1
         }]
     },options : {
-        scaleOverride: true,
-        scaleSteps: 1,
-        scaleStepWidth: 5,
-        scaleStartValue: 0,
+        cutoutPercentage: 80,
     }
        
 });

@@ -110,6 +110,7 @@ body {position: relative;}
 
     .pt-50{padding-top:50px;}
 
+    .p-10{padding:10px;}
     .p-10-50{padding:10px 50px;}
     .p-50-50-0{padding:50px 50px 0;}
 
@@ -124,6 +125,12 @@ body {position: relative;}
     .d-block{display:block;}
     .d-none{display:none;}
     .d-inline-flex{display: inline-flex;}
+
+    /*------------------------------------*/
+    /*--------------POSITION---------------*/
+
+    .absolute{position:absolute;}
+    .relative{position:relative;}
 
     /*------------------------------------*/
     /*--------------GENERAL---------------*/
@@ -168,8 +175,8 @@ body {position: relative;}
         right: 10px;
         top: 10px;
         bottom: 10px;
-        background-color: blue;
-        max-height: 70%;
+        background-color: rgba(255,255,255,.9);
+        height: 100%;
         width: 80%;
         margin: auto;
         overflow-y: auto;
@@ -218,6 +225,14 @@ body {position: relative;}
         border: 1px solid #707070;
     }
 
+    .canvas-w {
+        width:100px !important;
+    }
+    
+    .canvas-h{
+        height:100px !important;
+    }
+
     /*------------------------------------*/
     /*----------------Formulaire--------------*/
 
@@ -240,6 +255,10 @@ body {position: relative;}
         pointer-events: all;
      }
 
+     textarea{resize:none;}
+
+    
+
      /*------------------------------------*/
     /*----------------Couleurs--------------*/
 
@@ -252,6 +271,7 @@ body {position: relative;}
     .color-incertain{
         color:#A7A7A7;
     }
+
     
 /*------------------------------------*/
 /*--------------MEDIA QUERIES------------*/
@@ -297,5 +317,8 @@ body {position: relative;}
     }
     .h-100pct-mobile{
         height:100%;
+    }
+    .w-90pct-mobile{
+        width:90%;
     }
 }
