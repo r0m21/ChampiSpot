@@ -4,7 +4,7 @@
 
 {% block body %}
 
-   <div class="map" id="mapid"></div>
+   <div class="map d-none-mobile" id="mapid"></div>
 
                 <input type="hidden" data-lat="{{ spots.SPOLatitude }}" 
                 data-long="{{ spots.SPOLongitude }}" data-img="{{  spots.SPOPhoto  }}" 
@@ -29,10 +29,45 @@
     <input type="hidden" name="lat" id="lat"/> 
     <input type="hidden" name="lng" id="lng"/>
 
-    {%   for spot in spots   %}
-       <p>{{   spots.spoDescription   }}</p> 
+    <div class="d-flex flex-column d-none d-block-mobile">
+        {% if spots.SPOPhoto %}
+        <img src = "../{{  spots.SPOPhoto }}" class="responsive-img"/>
+        {% endif %}
+        <p class="color-1">INFORMATIONS</p>
+        <div class="row no-margin-mobile">
+            <div class="d-flex text-center col s3">
+                <div class="d-flex flex-column">
+                {% if champi == "non" %}
+                    <i class="fas fa-skull color-toxique"></i>
+                    <p class="color-toxique no-margin-mobile">Toxique</p>
+                {% endif %} 
+                {% if champi == "oui" %}
+                    <i class="fas fa-smile color-comestible fs-80"></i>
+                    <p class="color-comestible fs-24 no-margin-mobile">Comestible</p>
+                {% endif %} 
+                {% if champi == "peut-être" %}
+                    <i class="fas fa-question-circle color-incertain"></i>
+                    <p class="color-incertain no-margin-mobile">Toxicité à déterminer</p>
+                {% endif %} 
+                </div>
+            </div>
+            <div class="col s8 offset-s1">
+                <p>
+                    {{   spots.SPODescription   }}
+                </p>
+            </div>
+        </div>
+        <div>
+            <p>Posté par {{ author.username }}</p>
+        </div>
+        <div class="d-flex jc-center">
+        <canvas id="myChart" width="150" height="150"></canvas>
+            <input type="hidden" name="accessibilité" id="accessibilite" value="{{ spots.SPOAccessibilite }}">
+        </div>
+         
+</div>
 
-    {%   endfor   %}
+    
 
     {%   for comments in comment   %}
         <p>{{   comments.COMText    }}</p>

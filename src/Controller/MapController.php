@@ -33,7 +33,11 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->find($id);
-       
+
+        $thisAuthor = $spots->getSPOIdUser();
+
+        $thisChampi = $spots->getSPOIdChampi()->getCHAComestible();
+
         $comment = $spots->getCommentairesUsers();
         $longitude = $repo->find($id)->getSPOLongitude();
         $latitude = $repo->find($id)->getSPOLatitude();
@@ -143,8 +147,10 @@ dump($form_comment);
         return $this->render('map/search.html.twig', [
             'spots' => $spots,
             'comment' => $comment,
+            'author' => $thisAuthor,
             'longitude' => $longitude,
             'latitude' => $latitude,
+            'champi' => $thisChampi,
             'formSignal' => $form->createView(),
             'formComment' => $form_comment->createView(),
         ]);
