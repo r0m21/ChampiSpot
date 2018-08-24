@@ -35,8 +35,9 @@ class MapController extends Controller
         $spots = $repo->find($id);
        
         $comment = $spots->getCommentairesUsers();
-        $longitude = $repo->find($id)->getSPOLongitude();
-        $latitude = $repo->find($id)->getSPOLatitude();
+
+       /*  $allUser = $comment->getCOMIdUser(); */
+        dump($spots);
 
         $newSignal = new Signalement();
 
@@ -136,15 +137,11 @@ class MapController extends Controller
             $manager->persist($newComment);
             $manager->flush();
 
-            
-dump($longitude);
         }
 
         return $this->render('map/search.html.twig', [
             'spots' => $spots,
             'comment' => $comment,
-            'longitude' => $longitude,
-            'latitude' => $latitude,
             'formSignal' => $form->createView(),
             'formComment' => $form_comment->createView(),
         ]);
