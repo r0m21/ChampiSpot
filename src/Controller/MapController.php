@@ -33,7 +33,7 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->find($id);
-       
+
         $comment = $spots->getCommentairesUsers();
 
        /*  $allUser = $comment->getCOMIdUser(); */
@@ -63,7 +63,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "browser-default input-1",
                         ))
 
                     )
@@ -76,7 +76,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "browser-default input-1",
                         ))
 
                     )
@@ -89,7 +89,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "browser-default input-1",
                         ))
 
                         
