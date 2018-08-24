@@ -221,7 +221,9 @@ if(window.location.href.indexOf("ajout") > -1){
         
         // Trigger photo take
         document.getElementById("snap").addEventListener("click", function() {
-            context.drawImage(video, 0, 0, 320, 240);
+            canvas.classList.remove("d-none");
+            canvas.classList.add("d-block");
+            context.drawImage(video, 0, 0, 250, 180);
             var dataURL = canvas.toDataURL("image/png");
             document.getElementById('form_SPO_photo').value = dataURL;
         });  

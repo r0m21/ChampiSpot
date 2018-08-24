@@ -40,16 +40,23 @@ class AjoutSpotController extends Controller
                         'attr' => [
                             'min' => '1',
                             'max' => '5',
-                            'placeholder' => 'Noter entre 1 et 5',
+                            'placeholder' => '1 à 5',
+                            'class' => 'browser-default input-1  d-flex flex-column',
                         ]
                      ))
                      ->add('SPO_description', TextType::class, array(
                         'label' => 'Description',
+                        'attr' => [
+                            'class' => 'browser-default input-1  d-flex flex-column',
+                        ]
                      ))
 
                      ->add('SPO_id_champi', EntityType::class, array(
                         'class' => 'App\Entity\Champignon',
                         'choice_label' => 'id',
+                        'attr' => [
+                            'class' => 'browser-default input-1',
+                        ]
                      ))
 
                     ->add('SPO_id_user', EntityType::class, array(
@@ -65,7 +72,7 @@ class AjoutSpotController extends Controller
                         'class' => Champignon::class,
                         'choice_label' => 'CHANom',
                         'attr' => [
-                            "class" => "browser-default"
+                            "class" => "browser-default input-1  d-flex flex-column"
                         ]
                      ))
                      ->add('SPO_id_user', HiddenType::class)

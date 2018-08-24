@@ -7,7 +7,7 @@
 <section class="p-50-50-0 no-padding-mobile">
 
     <div class="row d-flex-mobile flex-column-reverse-mobile">
-        <div class="col m3 d-flex flex-column ai-center jc-space-between h-75vh s12 h-100pct-mobile">
+        <div class="col m3 d-flex flex-column ai-center jc-space-between h-100pct s12 h-100pct-mobile">
             <div class="d-flex flex-column">
                 <h3 class="raleway fw-700 color-1 separator fs-24 no-margin text-center">AJOUTER UN SPOT</h3>
                      {{ form_start(formSpot) }}
@@ -20,11 +20,13 @@
                         
                         <input type="submit" value="Envoyer">
                     {{ form_end(formSpot) }}
+                    <div class="d-flex flex-column">
+                        <button id="snap" class="browser-default">Prendre la photo</button>
+                        <video id="video" width="250" height="180" autoplay></video>
+                        <canvas id="canvas" width="250" height="180" class="d-none"></canvas>
+                    </div>
                     <a href="{{ path('ajout_champignon') }}">Ajouter un champignon</a>
                     
-            </div>
-            <div class="d-flex ai-flex-end">
-                <img class="responsive-img d-none-mobile" src="../img/congratulations.svg" alt="">
             </div>
         </div>
 
@@ -64,10 +66,6 @@
             
         </div>
     </div>
-<button id="snap">Prendre la photo</button>
-<video id="video" width="320" height="240" autoplay></video>
-
-<canvas id="canvas" width="320" height="240"></canvas>
 </section>
 
     <div class="map" id="mapid"></div>
