@@ -124,6 +124,7 @@
                         
                                         <!-- Affiche les commentaires -->
                                         {%   for comments in comment   %}
+                                            <p>{{  comments.COMIdUser.username }}</p>
                                             <p>{{ comments.COMText }}</p>
                                         {%   endfor   %}
                         

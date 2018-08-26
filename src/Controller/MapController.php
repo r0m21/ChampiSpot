@@ -32,15 +32,25 @@ class MapController extends Controller
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
+
+        $repoComment = $this->getDoctrine()
+        ->getRepository(CommentairesUser::class);
+        
         $spots = $repo->find($id);  
-        $comment = $spots->getCommentairesUsers();
-                         
+        dump($spots);
+        $comment = $repoComment -> findBy([
+            "COM_id_spot" => $spots,
+        ], 
+        [ 'id' => 'DESC'],
+         3);
+        dump($comment);
+        
 
         $thisAuthor = $spots->getSPOIdUser();
 
         $thisChampi = $spots->getSPOIdChampi()->getCHAComestible();
 
-        $comment = $spots->getCommentairesUsers();
+        /* $comment = $spots->getCommentairesUsers(); */
 
         $newSignal = new Signalement();
 
