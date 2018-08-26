@@ -128,10 +128,6 @@ class MapController extends Controller
 
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $com_by_id = $em->getRepository(CommentairesUser::class)->findComment($id);
-dump($com_by_id);
-
         /* Formulaire d'ajout de commentaire */
                 
         $newComment = new CommentairesUser();
@@ -159,7 +155,7 @@ dump($com_by_id);
 
         return $this->render('map/search.html.twig', [
             'spots' => $spots,
-            'comment' => $com_by_id,
+            'comment' => $comment,
             'author' => $thisAuthor,
             'champi' => $thisChampi,
             'formSignal' => $form->createView(),

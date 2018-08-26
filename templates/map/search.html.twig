@@ -124,8 +124,21 @@
                         
                                         <!-- Affiche les commentaires -->
                                         {%   for comments in comment   %}
+
+                                                {% if comments.COMIdUser.useProfilePic != null %}
+
+                                                    <img src="../{{comments.COMIdUser.useProfilePic }}" alt="Photo de profil"> 
+                                    
+                                                {% else %}
+                                            
+                                                    <img src="../img/default-profile.png" alt="Photo de profil">
+                                                
+                                                {% endif %}
+                                               
                                             <p>{{  comments.COMIdUser.username }}</p>
+                                            
                                             <p>{{ comments.COMText }}</p>
+                                            
                                         {%   endfor   %}
                         
                                     </div>
