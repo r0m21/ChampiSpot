@@ -33,14 +33,10 @@ class MapController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
         $spots = $repo->find($id);  
-        $comment = $spots->getCommentairesUsers();
-                         
 
         $thisAuthor = $spots->getSPOIdUser();
 
         $thisChampi = $spots->getSPOIdChampi()->getCHAComestible();
-
-        $comment = $spots->getCommentairesUsers();
 
         $newSignal = new Signalement();
 
@@ -118,6 +114,10 @@ class MapController extends Controller
 
         }
 
+        $em = $this->getDoctrine()->getManager();
+        $com_by_id = $em->getRepository(CommentairesUser::class)->findComment($id);
+dump($com_by_id);
+
         /* Formulaire d'ajout de commentaire */
                 
         $newComment = new CommentairesUser();
@@ -140,11 +140,12 @@ class MapController extends Controller
             $manager->persist($newComment);
             $manager->flush();
 
+
         }
 
         return $this->render('map/search.html.twig', [
             'spots' => $spots,
-            'comment' => $comment,
+            'comment' => $com_by_id,
             'author' => $thisAuthor,
             'champi' => $thisChampi,
             'formSignal' => $form->createView(),
