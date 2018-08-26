@@ -68,15 +68,4 @@ class CommentairesUserRepository extends ServiceEntityRepository
             ->getResult()
         ;
     } */
-    public function findComment($id) {
-        $qb = $this->_em->createQueryBuilder();
-        $qb->select('u')
-                ->from(CommentairesUser::class, 'u')
-                ->where('u.com_id_spot = :id')
-                ->setMaxResults(3)
-                ->setParameter('id', ':id')
-            ;
-
-            $query = $qb->getQuery();
-        }
 }

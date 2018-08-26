@@ -8,15 +8,18 @@
 
     {% for newSignal in signalement %}
 
-            <a href="/search/{{ newSignal.sigIdSpotId.id }}">Voir les informations</a>
+            <a href="/search/{{ newSignal.spot.id }}">Voir les informations</a>
             <p>Il n'y a rien à ce spot : {{ newSignal.sigVide }}</p>
             <p>Toxicité incorrecte : {{ newSignal.sigToxique }}</p>
             <p>Description incorrecte : {{ newSignal.sigDesc }}</p>
             <p>Qualité du spot incorrecte : {{ newSignal.sigAccessibilite }}</p>
 
             <form action="" method="POST">
-                <a href="{{ path('admin', { 'id': newSignal.sigIdSpotId.id }) }}"></a>
-                <input type="submit" name="delete" value="Supprimer le spot">
+                <a href="{{ path('admin', { 'id': newSignal.spot.id }) }}"></a>
+                <input type="hidden" name="spotId" value="{{ newSignal.spot.id }}" />
+                <input type="hidden" name="sigId" value = "{{ newSignal.id  }}" />
+                <input type="submit" name="delete" value="Supprimer le spot" />
+                <input type="submit" name="signal" value="Ignorer le signalement" />
             </form>
 
     {% endfor %}
