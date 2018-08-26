@@ -111,7 +111,7 @@ class MapController extends Controller
             $users = $repo->find($userId);
 
             $newSignal->setSIGIdUser($users);
-            $newSignal->setSigIdSpotId($spots);
+            $newSignal->setSpot($spots);
 
             $manager->persist($newSignal);
             $manager->flush();
