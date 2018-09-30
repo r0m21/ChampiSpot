@@ -41,7 +41,7 @@ class AjoutSpotController extends Controller
                             'min' => '1',
                             'max' => '5',
                             'placeholder' => '1 à 5',
-                            'class' => 'browser-default input-1  d-flex flex-column mt-10 mb-10',
+                            'class' => 'browser-default input-1 d-flex flex-column mt-10 mb-10',
                         ]
                      ))
                      ->add('SPO_description', TextareaType::class, array(

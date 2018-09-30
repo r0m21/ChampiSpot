@@ -176,14 +176,15 @@ class MapController extends Controller
         $repoChampis = $this->getDoctrine()
         ->getRepository(Champignon::class);
 
+        $repoComment = $this->getDoctrine()
+        ->getRepository(CommentairesUser::class);
+
         if(isset($_POST['submitFilter'])){
             $espece = $_POST['filter'];
             if ($espece != 'Default'){
                 $spots = $repo
                 ->findBy(array('SPO_id_champi' => $espece));
             }
-            
-       
         }else
         {
             $spots = $repo->findAll();
@@ -193,11 +194,9 @@ class MapController extends Controller
 
         return $this->render('index.html.twig', [
             'spots' => $spots,
-            'allChampis' => $allChampis,           
-           
+            'allChampis' => $allChampis, 
         ]);
     }
-
     
     /**
      * @Route("/a-propos", name="a-propos")

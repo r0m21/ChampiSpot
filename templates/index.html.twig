@@ -39,7 +39,7 @@
                 <!-- Modal Structure -->
                 <div id="info-modal-spot{{ spot.id }}" class="modal">
                 
-                    <div class="modal-content">
+                    <div class="modal-content col s12 h-50pct bg-transparent">
                         <div class="col s6">
                             {% if spot.SPOPhoto %}
 
@@ -54,13 +54,19 @@
             
                         <div class="col s6">
                             <h4 class="fs-24 raleway fw-300 border-bot-2 pb-15">Informations</h4>
-                            <p class="raleway fw-500 fs-20">{{ spot.SPODescription }}</p>
-                            <aside class="col s12">Posté par <a href="/profil/{{ spot.SPOIdUser.Id}}">{{ spot.SPOIdUser.Username}}</a></aside>
+                            <p class="raleway fw-500 fs-20 col s12 no-padding">{{ spot.SPODescription }}</p>
+                            <aside class="col s12 no-padding d-flex jc-space-between">
+                                <p>Posté par <a class="raleway fs-14 color-2" href="/profil/{{ spot.SPOIdUser.Id}}">{{ spot.SPOIdUser.Username}}</a></p> 
+                                <p class="raleway fs-14">Champignon :  <span class="color-1">{{ spot.SPOIdChampi.CHAEspece }}</span></p>
+                            </aside>
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        
+                    <div class="modal-footer col s12 h-50pct bg-transparent d-flex ai-center jc-center">
+                        <div>
+                            <a href="/search/{{ spot.id }}">Signaler ce spot</a>
+                            <a href="/search/{{ spot.id }}">Commenter ce spot</a>
+                        </div>
                     </div>
                 </div>
                 <!-- End Modal -->
