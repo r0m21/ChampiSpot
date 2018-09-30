@@ -102,6 +102,7 @@ body {position: relative;}
     /*------------------------------------*/
     /*-----------MARGING/PADDING----------*/
 
+    .m-auto{margin: auto;}
     .no-margin{margin: 0;}
     .no-padding{padding:0;}
     .no-margin-bottom{margin-bottom:0;}
@@ -111,6 +112,9 @@ body {position: relative;}
     .mt-10{margin-top:10px;}
     .mt-20{margin-top:20px;}
     .mt-50{margin-top: 50px;}
+
+    .mb-10{margin-bottom: 10px;}
+    .mb-20{margin-bottom:20px;}
 
     .pt-50{padding-top:50px;}
 
