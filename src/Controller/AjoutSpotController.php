@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class AjoutSpotController extends Controller
@@ -44,10 +44,10 @@ class AjoutSpotController extends Controller
                             'class' => 'browser-default input-1  d-flex flex-column',
                         ]
                      ))
-                     ->add('SPO_description', TextType::class, array(
+                     ->add('SPO_description', TextareaType::class, array(
                         'label' => 'Description',
                         'attr' => [
-                            'class' => 'browser-default input-1  d-flex flex-column',
+                            'class' => 'browser-default input-1 d-flex flex-column h-100px p-10',
                         ]
                      ))
 

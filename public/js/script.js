@@ -198,32 +198,35 @@ if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("p
 // Fonction pour la prise de photo
 
 // Grab elements, create settings, etc.
-if(window.location.href.indexOf("ajout") > -1){
-    window.onload = function getCamera(){
-        var video = document.getElementById('video');
-        
-        // Get access to the camera!
-        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            // Not adding `{ audio: true }` since we only want video now
-            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-                video.src = window.URL.createObjectURL(stream);
-                video.play();
-            });
-        }
-        // Elements for taking the snapshot
-        var canvas = document.getElementById('canvas');
-        var context = canvas.getContext('2d');
-        
-        // Trigger photo take
-        document.getElementById("snap").addEventListener("click", function() {
-            canvas.classList.remove("d-none");
-            canvas.classList.add("d-block");
-            context.drawImage(video, 0, 0, 250, 180);
-            var dataURL = canvas.toDataURL("image/png");
-            document.getElementById('form_SPO_photo').value = dataURL;
-        });  
-        }
+if (screenWidth < 600){
+    if(window.location.href.indexOf("ajout") > -1){
+        window.onload = function getCamera(){
+            var video = document.getElementById('video');
+            
+            // Get access to the camera!
+            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                // Not adding `{ audio: true }` since we only want video now
+                navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                    video.src = window.URL.createObjectURL(stream);
+                    video.play();
+                });
+            }
+            // Elements for taking the snapshot
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            
+            // Trigger photo take
+            document.getElementById("snap").addEventListener("click", function() {
+                canvas.classList.remove("d-none");
+                canvas.classList.add("d-block");
+                context.drawImage(video, 0, 0, 250, 180);
+                var dataURL = canvas.toDataURL("image/png");
+                document.getElementById('form_SPO_photo').value = dataURL;
+            });  
+            }
+    }
 }
+
 
 // Ajout dynamique du nom de fichier à la place d'un texte.
 

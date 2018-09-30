@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+
 class AdminController extends Controller
 {
     /**
@@ -22,29 +23,26 @@ class AdminController extends Controller
         $repo = $this->getDoctrine()
         ->getRepository(Signalement::class);
         $signalement = $repo->FindAll();
-
-
-        /* if(isset($_POST['delete']))
-        {
-            $id_spot = $_POST['idvalue'];
-            $id_signal = $_POST['idsignal'];
-
-
-            $repoSpot = $this->getDoctrine()
-            ->getRepository(Spot::class);
-
-            $signal = $repo->findById($id_signal);
-            $spot = $repoSpot->findById($id_spot);
-            dump($signal);
-            dump($spot);
-
-            //$manager->remove($signal[0]);
-            $manager->remove($spot[0]);     
-
-            $manager->flush();
-
-        } */
+        $repoSpot = $this->getDoctrine()
+        ->getRepository(Spot::class);
         
+
+        if(isset($_POST['delete'])){
+            $spotId = $_POST['spotId'];
+            $findSpot = $repoSpot->findById($spotId);
+            $thisSpot = $findSpot[0];
+            dump($thisSpot);
+            $manager->remove($thisSpot);
+            $manager->flush();            
+        }
+        else if(isset($_POST['signal'])){
+            $sigId = $_POST['sigId'];
+            $findSig = $repo->findById($sigId);
+            $thisSig = $findSig[0];
+            dump($thisSig);
+            $manager->remove($thisSig);
+            $manager->flush();
+        }
         return $this->render('admin/admin.html.twig', [
             'signalement' => $signalement,
         

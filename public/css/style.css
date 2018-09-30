@@ -77,6 +77,7 @@ body {position: relative;}
     .fs-14{font-size: 0.875rem;}
     .fs-20{font-size: 20px;}
     .fs-24{font-size:24px;}
+    .fs-40{font-size:40px;}
     .fs-80{font-size:80px;}
 
     /*-----------------------------------*/
@@ -104,6 +105,9 @@ body {position: relative;}
     .no-margin{margin: 0;}
     .no-padding{padding:0;}
     .no-margin-bottom{margin-bottom:0;}
+
+    .m-20{margin:20px;}
+
     .mt-10{margin-top:10px;}
     .mt-20{margin-top:20px;}
     .mt-50{margin-top: 50px;}
@@ -125,6 +129,7 @@ body {position: relative;}
     .d-block{display:block;}
     .d-none{display:none;}
     .d-inline-flex{display: inline-flex;}
+    .d-inline-block{display: inline-block;}
 
     /*------------------------------------*/
     /*--------------POSITION---------------*/

@@ -44,11 +44,6 @@ class Spot
     private $commentairesUsers;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Signalement", mappedBy="SIG_id_spot")
-     */
-    private $signalement;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="spots")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -71,16 +66,15 @@ class Spot
     private $SPO_latitude;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Signalement", mappedBy="sig_id_spot_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Signalement", mappedBy="spot", orphanRemoval=true)
      */
-    private $signalements;
+    private $spot_id_sig;
 
     public function __construct()
     {
         $this->photoUsers = new ArrayCollection();
         $this->commentairesUsers = new ArrayCollection();
-        $this->signalements = new ArrayCollection();
-        $this->signa = new ArrayCollection();
+        $this->spot_id_sig = new ArrayCollection();
     }
 
     public function getId()
@@ -237,62 +231,32 @@ class Spot
     /**
      * @return Collection|Signalement[]
      */
-    public function getSignalements(): Collection
+    public function getSpotIdSig(): Collection
     {
-        return $this->signalements;
+        return $this->spot_id_sig;
     }
 
-    public function addSignalement(Signalement $signalement): self
+    public function addSpotIdSig(Signalement $spotIdSig): self
     {
-        if (!$this->signalements->contains($signalement)) {
-            $this->signalements[] = $signalement;
-            $signalement->setSigIdSpotId($this);
+        if (!$this->spot_id_sig->contains($spotIdSig)) {
+            $this->spot_id_sig[] = $spotIdSig;
+            $spotIdSig->setSpot($this);
         }
 
         return $this;
     }
 
-    public function removeSignalement(Signalement $signalement): self
+    public function removeSpotIdSig(Signalement $spotIdSig): self
     {
-        if ($this->signalements->contains($signalement)) {
-            $this->signalements->removeElement($signalement);
+        if ($this->spot_id_sig->contains($spotIdSig)) {
+            $this->spot_id_sig->removeElement($spotIdSig);
             // set the owning side to null (unless already changed)
-            if ($signalement->getSigIdSpotId() === $this) {
-                $signalement->setSigIdSpotId(null);
+            if ($spotIdSig->getSpot() === $this) {
+                $spotIdSig->setSpot(null);
             }
         }
 
         return $this;
     }
 
-    /**
-     * @return Collection|Signalement[]
-     */
-    public function getSigna(): Collection
-    {
-        return $this->signa;
-    }
-
-    public function addSigna(Signalement $signa): self
-    {
-        if (!$this->signa->contains($signa)) {
-            $this->signa[] = $signa;
-            $signa->setSIGIdSpot($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSigna(Signalement $signa): self
-    {
-        if ($this->signa->contains($signa)) {
-            $this->signa->removeElement($signa);
-            // set the owning side to null (unless already changed)
-            if ($signa->getSIGIdSpot() === $this) {
-                $signa->setSIGIdSpot(null);
-            }
-        }
-
-        return $this;
-    }
 }
