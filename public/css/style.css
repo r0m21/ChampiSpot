@@ -52,6 +52,7 @@ body {position: relative;}
 
     .border-bot-1{border-bottom: 1px solid #E9E9E9;}
     .border-bot-2{border-bottom:1px solid #F37A3A;}
+    .border-1{border: 1px solid #F37A3A !important;}
     .no-border-radius{border-radius:0;}
 
     /*------------------------------------*/
