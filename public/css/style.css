@@ -50,6 +50,7 @@ body {position: relative;}
     .bg-color-3{background-color: #F37A3A;}
 
     .border-bot-1{border-bottom: 1px solid #E9E9E9;}
+    .border-1{border: 1px solid #F37A3A !important;}
     .no-border-radius{border-radius:0;}
 
     /*------------------------------------*/

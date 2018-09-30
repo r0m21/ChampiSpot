@@ -41,13 +41,13 @@ class AjoutSpotController extends Controller
                             'min' => '1',
                             'max' => '5',
                             'placeholder' => '1 à 5',
-                            'class' => 'browser-default input-1  d-flex flex-column mt-10 mb-10',
+                            'class' => 'border-1 browser-default input-1 d-flex flex-column mt-10 mb-10',
                         ]
                      ))
                      ->add('SPO_description', TextareaType::class, array(
                         'label' => 'Description',
                         'attr' => [
-                            'class' => 'browser-default input-1 d-flex flex-column h-100px p-10 mt-10 mb-10',
+                            'class' => 'border-1 browser-default input-1 d-flex flex-column h-100px p-10 mt-10 mb-10',
                         ]
                      ))
 
@@ -72,7 +72,7 @@ class AjoutSpotController extends Controller
                         'class' => Champignon::class,
                         'choice_label' => 'CHANom',
                         'attr' => [
-                            "class" => "browser-default input-1  d-flex flex-column mt-10 mb-20"
+                            "class" => "border-1 browser-default input-1  d-flex flex-column mt-10 mb-20"
                         ]
                      ))
                      ->add('SPO_id_user', HiddenType::class)
