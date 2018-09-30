@@ -50,6 +50,7 @@ body {position: relative;}
     .bg-color-3{background-color: #F37A3A;}
 
     .border-bot-1{border-bottom: 1px solid #E9E9E9;}
+    .border-bot-2{border-bottom:1px solid #F37A3A;}
     .no-border-radius{border-radius:0;}
 
     /*------------------------------------*/
@@ -113,6 +114,8 @@ body {position: relative;}
     .mt-50{margin-top: 50px;}
 
     .pt-50{padding-top:50px;}
+
+    .pb-15{padding-bottom:15px;}
 
     .p-10{padding:10px;}
     .p-10-50{padding:10px 50px;}

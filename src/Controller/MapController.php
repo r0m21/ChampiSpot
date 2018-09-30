@@ -37,14 +37,12 @@ class MapController extends Controller
         ->getRepository(CommentairesUser::class);
         
         $spots = $repo->find($id);  
-        dump($spots);
+        
         $comment = $repoComment -> findBy([
             "COM_id_spot" => $spots,
         ], 
         [ 'id' => 'DESC'],
          3);
-        dump($comment);
-        
 
         $thisAuthor = $spots->getSPOIdUser();
 
@@ -190,7 +188,7 @@ class MapController extends Controller
         {
             $spots = $repo->findAll();
         }
-
+        
         $allChampis = $repoChampis->findAll();
 
         return $this->render('index.html.twig', [
