@@ -24,7 +24,7 @@ class AdminController extends Controller
         $signalement = $repo->FindAll();
 
 
-        if(isset($_POST['delete']))
+        /* if(isset($_POST['delete']))
         {
             $id_spot = $_POST['idvalue'];
             $id_signal = $_POST['idsignal'];
@@ -43,7 +43,7 @@ class AdminController extends Controller
 
             $manager->flush();
 
-        }
+        } */
         
         return $this->render('admin/admin.html.twig', [
             'signalement' => $signalement,

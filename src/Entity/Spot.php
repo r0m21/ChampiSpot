@@ -71,7 +71,7 @@ class Spot
     private $SPO_latitude;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Signalement", mappedBy="sig_id_spot_id")
+     * @ORM\OneToMany(targetEntity="App\Entity\Signalement", mappedBy="sig_id_spot_id", orphanRemoval=true)
      */
     private $signalements;
 
@@ -80,6 +80,7 @@ class Spot
         $this->photoUsers = new ArrayCollection();
         $this->commentairesUsers = new ArrayCollection();
         $this->signalements = new ArrayCollection();
+        $this->signa = new ArrayCollection();
     }
 
     public function getId()
@@ -258,6 +259,37 @@ class Spot
             // set the owning side to null (unless already changed)
             if ($signalement->getSigIdSpotId() === $this) {
                 $signalement->setSigIdSpotId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Signalement[]
+     */
+    public function getSigna(): Collection
+    {
+        return $this->signa;
+    }
+
+    public function addSigna(Signalement $signa): self
+    {
+        if (!$this->signa->contains($signa)) {
+            $this->signa[] = $signa;
+            $signa->setSIGIdSpot($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSigna(Signalement $signa): self
+    {
+        if ($this->signa->contains($signa)) {
+            $this->signa->removeElement($signa);
+            // set the owning side to null (unless already changed)
+            if ($signa->getSIGIdSpot() === $this) {
+                $signa->setSIGIdSpot(null);
             }
         }
 
