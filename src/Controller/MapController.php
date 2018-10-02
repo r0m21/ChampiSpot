@@ -63,6 +63,7 @@ class MapController extends Controller
                         "multiple" => false,
                         "attr" => array(
                             "name" => "group1",
+                            "class" => "d-flex",
                         ))
 
                     )
@@ -74,7 +75,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "d-flex",
                         ))
 
                     )
@@ -87,7 +88,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "d-flex",
                         ))
 
                     )
@@ -100,7 +101,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default",
+                            "class" => "d-flex",
                         ))
 
                         
