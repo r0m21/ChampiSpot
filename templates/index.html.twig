@@ -10,7 +10,7 @@
             <div class="d-flex flex-column">
                 <h3 class="raleway fw-700 color-1 separator fs-24 no-margin text-center">FILTRES DE RECHERCHE</h3>
                     <form class="" action="" id="formFilter" method='POST'>
-                        <select name="filter" class="browser-default" id="filterValue">
+                        <select name="filter" class=" border-1 browser-default" id="filterValue">
                             <option value="default">Choisir une espèce</option>
                         {% for champignon in allChampis %}
                             <option value="{{ champignon.id }}">{{ champignon.CHAEspece }}</option>

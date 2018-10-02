@@ -11,11 +11,23 @@
             <div class="d-flex flex-column">
                 <h3 class="raleway fw-700 color-1 separator fs-24 no-margin text-center">AJOUTER UN SPOT</h3>
                      {{ form_start(formSpot) }}
+
+                    <div class="block-ajout">
                         {{ form_row(formSpot.SPO_description) }}
+                    </div>
+
+                    <div class="block-ajout">
                         {{ form_row(formSpot.SPO_accessibilite) }}
+                    </div>
+                    
                         {{ form_row(formSpot.SPO_longitude) }}
+
+                    <div class="block-ajout">
                         {{ form_row(formSpot.SPO_id_champi) }}
+                    </div>
+
                         {{ form_row(formSpot.SPO_photo) }}
+                        
                         {{ form_row(formSpot.SPO_latitude) }}
                         
                         <input class="browser-default button-secondary" type="submit" value="Envoyer">
