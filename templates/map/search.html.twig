@@ -58,15 +58,7 @@
         </div>     
     </div>
 
-     {{ form_start(formSignal) }}
-
-        {{ form_row(formSignal.SIG_vide, {'label': 'Il n\'y a rien à ce spot : '}) }}
-        {{ form_row(formSignal.SIG_toxique, {'label': 'Toxicité incorrecte : '}) }}
-        {{ form_row(formSignal.SIG_desc, {'label': 'Description incorrecte : '}) }}
-        {{ form_row(formSignal.SIG_accessibilite, {'label': 'Qualité du spot incorrecte : '}) }}
-        <input type="submit" value="Signaler ce spot">
-
-    {{ form_end(formSignal) }}
+     
 
     
 <!-- Version Desktop -->
@@ -85,9 +77,18 @@
                             {{ form_end(formComment) }}
                         </form>
                 </div>
-                <div class="d-flex ai-flex-end">
-                    <img class="responsive-img d-none-mobile" src="../img/congratulations.svg" alt="">
-                </div>
+                <div class="h-250px col s12 m12 m-t-25-mobile">
+
+                    {{ form_start(formSignal) }}
+                    <div class="form-signal h-250px d-flex flex-column jc-space-around">
+                        {{ form_row(formSignal.SIG_vide, {'label': 'Il n\'y a rien à ce spot : '}) }}
+                        {{ form_row(formSignal.SIG_toxique, {'label': 'Toxicité incorrecte : '}) }}
+                        {{ form_row(formSignal.SIG_desc, {'label': 'Description incorrecte : '}) }}
+                        {{ form_row(formSignal.SIG_accessibilite, {'label': 'Qualité du spot incorrecte : '}) }}
+                        <input type="submit" value="Signaler ce spot" class="button-secondary mt-10">
+                    </div>
+                    {{ form_end(formSignal) }}
+                </div>  
             </div>
     
             <div class="col m9 s12 m-t-25-mobile">
