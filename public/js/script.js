@@ -290,4 +290,13 @@ var myDoughnutChart = new Chart(ctx, {
        
 });
 
+
+
+  
+   
+     
+    
+      
+     
+
     
