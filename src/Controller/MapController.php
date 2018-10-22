@@ -32,15 +32,23 @@ class MapController extends Controller
         /* Récupère le repo */
         $repo = $this->getDoctrine()
         ->getRepository(Spot::class);
+
+        $repoComment = $this->getDoctrine()
+        ->getRepository(CommentairesUser::class);
+        
         $spots = $repo->find($id);  
-        $comment = $spots->getCommentairesUsers();
-                         
+        
+        $comment = $repoComment -> findBy([
+            "COM_id_spot" => $spots,
+        ], 
+        [ 'id' => 'DESC'],
+         3);
 
         $thisAuthor = $spots->getSPOIdUser();
 
         $thisChampi = $spots->getSPOIdChampi()->getCHAComestible();
 
-        $comment = $spots->getCommentairesUsers();
+        /* $comment = $spots->getCommentairesUsers(); */
 
         $newSignal = new Signalement();
 
@@ -58,7 +66,7 @@ class MapController extends Controller
                         ],
                         "attr" => array(
                             "name" => "group1",
-                            "class" => "color-1-mobile"
+                            "class" => "d-flex",
                         ))
 
                     )
@@ -73,7 +81,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default ",
+                            "class" => "d-flex",
                         ))
 
                     )
@@ -89,7 +97,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default ",
+                            "class" => "d-flex",
                         ))
 
                     )
@@ -105,7 +113,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
-                            "class" => "browser-default ",
+                            "class" => "d-flex",
                         ))
 
                         
@@ -124,7 +132,7 @@ class MapController extends Controller
             $users = $repo->find($userId);
 
             $newSignal->setSIGIdUser($users);
-            $newSignal->setSigIdSpotId($spots);
+            $newSignal->setSpot($spots);
 
             $manager->persist($newSignal);
             $manager->flush();
@@ -153,6 +161,7 @@ class MapController extends Controller
             $manager->persist($newComment);
             $manager->flush();
 
+
         }
 
         return $this->render('map/search.html.twig', [
@@ -180,28 +189,27 @@ class MapController extends Controller
         $repoChampis = $this->getDoctrine()
         ->getRepository(Champignon::class);
 
+        $repoComment = $this->getDoctrine()
+        ->getRepository(CommentairesUser::class);
+
         if(isset($_POST['submitFilter'])){
             $espece = $_POST['filter'];
             if ($espece != 'Default'){
                 $spots = $repo
                 ->findBy(array('SPO_id_champi' => $espece));
             }
-            
-       
         }else
         {
             $spots = $repo->findAll();
         }
-
+        
         $allChampis = $repoChampis->findAll();
 
         return $this->render('index.html.twig', [
             'spots' => $spots,
-            'allChampis' => $allChampis,           
-           
+            'allChampis' => $allChampis, 
         ]);
     }
-
     
     /**
      * @Route("/a-propos", name="a-propos")

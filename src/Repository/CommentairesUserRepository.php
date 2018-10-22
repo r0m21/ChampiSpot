@@ -47,4 +47,25 @@ class CommentairesUserRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /* public function findComment($id){
+        $conn = $this->getEntityManager()->getConnection();               
+                $sql = 'SELECT * FROM commentaires_user
+                        WHERE com_id_spot_id = :id
+                        LIMIT 3';
+                $stmt = $conn->prepare($sql);
+
+                $stmt->bindValue(':id', $id);
+                $stmt->execute();
+            } */
+
+    /* public function findComment($id)
+    {
+        return $this->createQueryBuilder()
+            ->andWhere('com_id_spot_id = :id')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+        ;
+    } */
 }

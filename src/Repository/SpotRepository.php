@@ -46,35 +46,5 @@ class SpotRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
-
-    /* public function findChampisFromAllSpot(){
-        $conn = $this->getEntityManager()->getConnection();
-        if(isset($_POST['submitFilter'])){
-            $espece = $_POST['filter'];
-            if($_POST['filter'] != "default"){                
-                $sql = '
-                SELECT * FROM spot
-                INNER JOIN champignon
-                WHERE spot.spo_id_champi_id = champignon.id
-                AND champignon.cha_espece LIKE :espece                    
-                ';
-                $stmt = $conn->prepare($sql);
-                $stmt->bindValue(':espece', $espece);
-                $stmt -> execute();
-            }
-        }
-        else{
-            $sql = '
-            SELECT * FROM spot
-            INNER JOIN champignon
-            WHERE spot.spo_id_champi_id = champignon.id    
-            ';
-            $stmt = $conn->prepare($sql);
-            $stmt -> execute();
-        }
-
-
-        return $stmt->fetchAll();
-    } */
+    */    
 }

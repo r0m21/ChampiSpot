@@ -7,26 +7,41 @@
 <section class="p-50-50-0 no-padding-mobile">
 
     <div class="row d-flex-mobile flex-column-reverse-mobile">
-        <div class="col m3 d-flex flex-column ai-center jc-space-between h-100pct s12 h-100pct-mobile">
+        <div class="col s12 m3 d-flex flex-column ai-center jc-space-between h-100pct h-100pct-mobile h-75vh">
             <div class="d-flex flex-column">
                 <h3 class="raleway fw-700 color-1 separator fs-24 no-margin text-center">AJOUTER UN SPOT</h3>
                      {{ form_start(formSpot) }}
+
+                    <div class="block-ajout block-ajout-tablette">
                         {{ form_row(formSpot.SPO_description) }}
+                    </div>
+
+                    <div class="block-ajout block-ajout-tablette">
                         {{ form_row(formSpot.SPO_accessibilite) }}
+                    </div>
+                    
                         {{ form_row(formSpot.SPO_longitude) }}
+
+                    <div class="block-ajout block-ajout-tablette">
                         {{ form_row(formSpot.SPO_id_champi) }}
+                    </div>
+
                         {{ form_row(formSpot.SPO_photo) }}
+
                         {{ form_row(formSpot.SPO_latitude) }}
                         
-                        <input type="submit" value="Envoyer">
+                        <input class="browser-default button-secondary" type="submit" value="Envoyer">
                     {{ form_end(formSpot) }}
-                    <div class="d-flex flex-column">
+                    <div class="d-flex flex-column d-none d-block-mobile mt-40">
                         <button id="snap" class="browser-default">Prendre la photo</button>
-                        <video id="video" width="250" height="180" autoplay></video>
+                        <video id="video" class="" width="250" height="180" autoplay></video>
                         <canvas id="canvas" width="250" height="180" class="d-none"></canvas>
                     </div>
-                    <a href="{{ path('ajout_champignon') }}">Ajouter un champignon</a>
+                    <a href="{{ path('ajout_champignon') }}" class="m-auto m-t-15-tablette fs-13px-tablette">Ajouter un champignon</a>
                     
+            </div>
+            <div class="d-flex ai-flex-end">
+                <img class="responsive-img d-none-tablette w-100pct-tablette d-none-mobile m-auto w-65pct mt-10" src="../img/congratulations.svg" alt="">
             </div>
         </div>
 
@@ -53,27 +68,13 @@
                 </div>
                 <!-- End Modal -->
             {%   endfor   %} #}
-                
-        
             </div>
             <p id="infoposition"></p>
 
             <input type="hidden" name="lat" id="lat"/> 
             <input type="hidden" name="lng" id="lng"/>
-
-
-
             
         </div>
     </div>
 </section>
-
-    <div class="map" id="mapid"></div>
-    <p id="infoposition"></p>
-
-
-   
-
-
-   
 {% endblock %}

@@ -35,7 +35,7 @@ body {position: relative;}
     /*----------COULEURS/BACKGROUND---------*/
 
     .color-1{color: #F37A3A;}
-    .color-2{color: #333333;}
+    .color-2{color: #333333 !important;}
     .color-3{color: white;}
 
     .bg-color-1{
@@ -48,21 +48,31 @@ body {position: relative;}
 
     .bg-color-2{background-color:#FFFFFF;}
     .bg-color-3{background-color: #F37A3A;}
+    .bg-transparent{background: transparent !important;}
 
 
     .border-bot-1{border-bottom: 1px solid #E9E9E9;}
+    .border-bot-2{border-bottom:1px solid #F37A3A;}
+    .border-1{border: 1px solid #F37A3A !important;}
     .no-border-radius{border-radius:0;}
 
     /*------------------------------------*/
     /*---------------TAILLES--------------*/
 
     .w-100pct{width: 100%;}
-
+    .w-90pct{width: 90%;}
+    .w-65pct{width: 65%;}
+    .w-50pct{
+        width:50%;
+    }
     .h-100vh{height: 100vh;}
     .h-75vh{height:75vh;}
 
+    .h-50pct{height:50%;}
     .h-100pct{height: 100%;}
-
+    .h-250px{
+        height:250px;
+    }
     .h-100px{height:100px;}
 
     /*------------------------------------*/
@@ -78,6 +88,7 @@ body {position: relative;}
     .fs-14{font-size: 0.875rem;}
     .fs-20{font-size: 20px;}
     .fs-24{font-size:24px;}
+    .fs-40{font-size:40px;}
     .fs-80{font-size:80px;}
 
     /*-----------------------------------*/
@@ -102,14 +113,24 @@ body {position: relative;}
     /*------------------------------------*/
     /*-----------MARGING/PADDING----------*/
 
+    .m-auto{margin: auto;}
     .no-margin{margin: 0;}
     .no-padding{padding:0;}
     .no-margin-bottom{margin-bottom:0;}
+
+    .m-20{margin:20px;}
+
     .mt-10{margin-top:10px;}
     .mt-20{margin-top:20px;}
+    .mt-40{margin-top: 40px;}
     .mt-50{margin-top: 50px;}
 
+    .mb-10{margin-bottom: 10px;}
+    .mb-20{margin-bottom:20px;}
+
     .pt-50{padding-top:50px;}
+
+    .pb-15{padding-bottom:15px;}
 
     .p-10{padding:10px;}
     .p-10-50{padding:10px 50px;}
@@ -126,6 +147,7 @@ body {position: relative;}
     .d-block{display:block;}
     .d-none{display:none;}
     .d-inline-flex{display: inline-flex;}
+    .d-inline-block{display: inline-block;}
 
     /*------------------------------------*/
     /*--------------POSITION---------------*/
@@ -149,7 +171,7 @@ body {position: relative;}
         display: block;
         height: 1px;
         width: auto;
-        background-color: #E8910C;
+        background-color: #F37A3A;
         margin: 10px 0px 20px;
         
     }
@@ -157,6 +179,9 @@ body {position: relative;}
     .map{
         height:75vh;
     }
+
+    .leaflet-container a{color:#F37A3A;transition: 1s ease;}
+    .leaflet-container a:hover{color: #212121;transition: 1s ease;}
     
     /*------------------------------------*/
     /*--------------IMAGES------------*/
@@ -182,10 +207,68 @@ body {position: relative;}
         margin: auto;
         overflow-y: auto;
         will-change: top, opacity;
+        cursor:default;
+    }
+
+    .modal .modal-footer{
+        background-color:transparent;
+        height:50%;
     }
     
     /*------------------------------------*/
     /*----------------BUTTON--------------*/
+
+    [type="radio"]:checked,
+    [type="radio"]:not(:checked) {
+        position: absolute;
+        left: -9999px;
+    }
+    [type="radio"]:checked + label,
+    [type="radio"]:not(:checked) + label
+    {
+        position: relative;
+        padding-left: 28px;
+        cursor: pointer;
+        line-height: 20px;
+        display: inline-block;
+        color: #666;
+    }
+    [type="radio"]:checked + label:before,
+    [type="radio"]:not(:checked) + label:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 18px;
+        height: 18px;
+        border: 1px solid #F37A3A;
+        border-radius: 100%;
+        background: #fff;
+    }
+    [type="radio"]:checked + label:after,
+    [type="radio"]:not(:checked) + label:after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background: #F37A3A;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        border-radius: 100%;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+    [type="radio"]:not(:checked) + label:after {
+        opacity: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    [type="radio"]:checked + label:after {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    
 
     .input-action input[type="submit"]{
         background-color: #F37A3A;
@@ -237,6 +320,11 @@ body {position: relative;}
     /*------------------------------------*/
     /*----------------Formulaire--------------*/
 
+    .block-ajout label{
+        color: #333333;
+        font-family: 'Raleway', sans-serif;
+    }
+
     .block-form label{
         display:block;
         text-align:left;
@@ -257,8 +345,13 @@ body {position: relative;}
      }
 
      textarea{resize:none;}
-
-    
+    .form-signal > div{
+        display:flex;
+        justify-content:space-around;
+    }
+    .form-signal label{
+        width:50%;
+    }
 
      /*------------------------------------*/
     /*----------------Couleurs--------------*/
@@ -276,6 +369,48 @@ body {position: relative;}
     
 /*------------------------------------*/
 /*--------------MEDIA QUERIES------------*/
+
+@media screen and (max-width: 768px) {
+
+    .d-none-tablette{
+        display: none;
+    }
+
+    .ai-center-tablette{
+        align-items: center;
+    }
+    .w-100pct-tablette{
+        width:100% !important;
+    }
+
+    .w-70pct-tablette{
+        width: 70%;
+    }
+
+    .p-10-20-tablette{
+        padding: 10px 20px;
+    }
+
+    .p-initial-tablette{
+        padding: initial !important;
+    }
+
+    .block-ajout-tablette label{
+        font-size:14px;
+    }
+
+    .m-t-15-tablette{
+        margin-top: 15px;
+    }
+
+    .fs-13px-tablette{
+        font-size: 13px;
+    }
+
+    .line-height-15px-tablette{
+        line-height: 15px;
+    }
+} 
 
 @media screen and (max-width: 600px) {
     .modal{

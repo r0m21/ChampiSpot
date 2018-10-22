@@ -36,17 +36,18 @@ class Signalement
      */
     private $SIG_accessibilite;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Spot", inversedBy="signalements")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $sig_id_spot_id;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="signalements")
      * @ORM\JoinColumn(nullable=false)
      */
     private $SIG_id_user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Spot", inversedBy="spot_id_sig")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $spot;
 
     public function getId()
     {
@@ -101,17 +102,6 @@ class Signalement
         return $this;
     }
 
-    public function getSigIdSpotId(): ?Spot
-    {
-        return $this->sig_id_spot_id;
-    }
-
-    public function setSigIdSpotId(?Spot $sig_id_spot_id): self
-    {
-        $this->sig_id_spot_id = $sig_id_spot_id;
-
-        return $this;
-    }
 
     public function getSIGIdUser(): ?User
     {
@@ -121,6 +111,18 @@ class Signalement
     public function setSIGIdUser(?User $SIG_id_user): self
     {
         $this->SIG_id_user = $SIG_id_user;
+
+        return $this;
+    }
+
+    public function getSpot(): ?Spot
+    {
+        return $this->spot;
+    }
+
+    public function setSpot(?Spot $spot): self
+    {
+        $this->spot = $spot;
 
         return $this;
     }

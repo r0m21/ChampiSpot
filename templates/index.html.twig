@@ -10,17 +10,20 @@
             <div class="d-flex flex-column">
                 <h3 class="raleway fw-700 color-1 separator fs-24 no-margin text-center">FILTRES DE RECHERCHE</h3>
                     <form class="" action="" id="formFilter" method='POST'>
-                        <select name="filter" class="browser-default" id="filterValue">
+                        <select name="filter" class=" border-1 browser-default" id="filterValue">
                             <option value="default">Choisir une espèce</option>
                         {% for champignon in allChampis %}
                             <option value="{{ champignon.id }}">{{ champignon.CHAEspece }}</option>
                         {% endfor %}
                         </select>
                         <input class="button-secondary mt-20" type="submit" value="Filtrer" name="submitFilter" id="submitFilter">
+                        
                     </form>
+                    
+                    <a href="/ajout" class="button-secondary mt-20 text-center">Ajouter un spot</a>
             </div>
             <div class="d-flex ai-flex-end">
-                <img class="responsive-img d-none-mobile" src="../img/congratulations.svg" alt="">
+                <img class="responsive-img d-none-mobile d-none-tablette" src="../img/congratulations.svg" alt="">
             </div>
         </div>
 
@@ -35,29 +38,45 @@
                 
                 <!-- Modal Structure -->
                 <div id="info-modal-spot{{ spot.id }}" class="modal">
-                    <div class="modal-content">
-                        <h4>Modale de l'id {{ spot.id }}</h4>
-                        <p>{{  spot.SPODescription  }}</p>
-                        <p>Avec le champi : {{ spot.SPOIdChampi.CHAEspece }}</p>
+                
+                    <div class="modal-content col s12 h-50pct bg-transparent">
+                        <div class="col s6">
+                            {% if spot.SPOPhoto %}
+
+                                <img class="responsive-img" src="../{{ spot.SPOPhoto }}" alt="Primary champignon">
+                    
+                            {% else %}
+                            
+                                <img class="responsive-img" src="../img/champi-nf.png" alt="Primary champignon">
+                                
+                            {% endif %}
+                        </div>
+            
+                        <div class="col s6">
+                            <h4 class="fs-24 raleway fw-300 border-bot-2 pb-15">Informations</h4>
+                            <p class="raleway fw-500 fs-20 col s12 no-padding">{{ spot.SPODescription }}</p>
+                            <aside class="col s12 no-padding d-flex jc-space-between">
+                                <p>Posté par <a class="raleway fs-14 color-2" href="/profil/{{ spot.SPOIdUser.Id}}">{{ spot.SPOIdUser.Username}}</a></p> 
+                                <p class="raleway fs-14">Champignon :  <span class="color-1">{{ spot.SPOIdChampi.CHAEspece }}</span></p>
+                            </aside>
+                        </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    <div class="modal-footer col s12 h-50pct bg-transparent d-flex ai-center jc-center">
+                        <div>
+                            <a href="/search/{{ spot.id }}">Signaler ce spot</a>
+                            <a href="/search/{{ spot.id }}">Commenter ce spot</a>
+                        </div>
                     </div>
                 </div>
                 <!-- End Modal -->
             {%   endfor   %}
-                
-                
             </div>
+
             <p id="infoposition"></p>
 
             <input type="hidden" name="lat" id="lat"/> 
-            <input type="hidden" name="lng" id="lng"/>
-
-
-
-            
+            <input type="hidden" name="lng" id="lng"/> 
         </div>
     </div>
 

@@ -35,8 +35,6 @@ var screenWidth = $(document).width();
 
         latitude.setAttribute('data-lat', lat);
         longitude.setAttribute('data-lng', lng);
-
-        console.log(lat,lng);
     }
 
     /**
@@ -178,8 +176,6 @@ if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("p
         }
     })
 
-
-
         var marker;
         var spotslnglat = document.querySelectorAll('.lnglat');
 
@@ -188,9 +184,10 @@ if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("p
         var long = spotslnglat[i].getAttribute('data-long');
         var photo = spotslnglat[i].getAttribute('data-img');
         var id = spotslnglat[i].getAttribute('data-id');
-        var popupContent = "<div><a id='trigger-modal' class='waves-effect waves-light btn modal-trigger' href='#info-modal-spot" + id + "'>Modal</a></div>";
+        var popupContent = "<div class=''><a id='trigger-modal' class='modal-trigger no-padding' href='#info-modal-spot" + id + "'><img class='responsive-img' src='" + photo + "'><h5 class='fs-20 color-1 raleway fw-300'>Informations</h5></a></div>";
 
         marker = new L.marker([long, lat])
+                .setIcon(markericon)
                 .bindPopup(popupContent)
                 .addTo(mymap);
     }
@@ -198,32 +195,35 @@ if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("p
 // Fonction pour la prise de photo
 
 // Grab elements, create settings, etc.
-if(window.location.href.indexOf("ajout") > -1){
-    window.onload = function getCamera(){
-        var video = document.getElementById('video');
-        
-        // Get access to the camera!
-        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            // Not adding `{ audio: true }` since we only want video now
-            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-                video.src = window.URL.createObjectURL(stream);
-                video.play();
-            });
-        }
-        // Elements for taking the snapshot
-        var canvas = document.getElementById('canvas');
-        var context = canvas.getContext('2d');
-        
-        // Trigger photo take
-        document.getElementById("snap").addEventListener("click", function() {
-            canvas.classList.remove("d-none");
-            canvas.classList.add("d-block");
-            context.drawImage(video, 0, 0, 250, 180);
-            var dataURL = canvas.toDataURL("image/png");
-            document.getElementById('form_SPO_photo').value = dataURL;
-        });  
-        }
+if (screenWidth < 600){
+    if(window.location.href.indexOf("ajout") > -1){
+        window.onload = function getCamera(){
+            var video = document.getElementById('video');
+            
+            // Get access to the camera!
+            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                // Not adding `{ audio: true }` since we only want video now
+                navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                    video.src = window.URL.createObjectURL(stream);
+                    video.play();
+                });
+            }
+            // Elements for taking the snapshot
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            
+            // Trigger photo take
+            document.getElementById("snap").addEventListener("click", function() {
+                canvas.classList.remove("d-none");
+                canvas.classList.add("d-block");
+                context.drawImage(video, 0, 0, 250, 180);
+                var dataURL = canvas.toDataURL("image/png");
+                document.getElementById('form_SPO_photo').value = dataURL;
+            });  
+            }
+    }
 }
+
 
 // Ajout dynamique du nom de fichier à la place d'un texte.
 
@@ -289,5 +289,14 @@ var myDoughnutChart = new Chart(ctx, {
     }
        
 });
+
+
+
+  
+   
+     
+    
+      
+     
 
     
