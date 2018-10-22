@@ -4,30 +4,14 @@
 
 {% block body %}
 
-   <div class="map d-none-mobile" id="mapid"></div>
+    
 
-                <input type="hidden" data-lat="{{ spots.SPOLatitude }}" 
-                data-long="{{ spots.SPOLongitude }}" data-img="{{  spots.SPOPhoto  }}" 
-                data-id="{{   spots.id   }}" data-description="{{  spots.SPODescription  }}" 
-                name="lnglat" id="lnglat" class="lnglat" />
-                
-                <!-- Modal Structure -->
-                <div id="info-modal-spot{{ spots.id }}" class="modal">
-                    <div class="modal-content">
-                        <h4>Modale de l'id {{ spots.id }}</h4>
-                        <p>{{  spots.SPODescription  }}</p>
-                        <p>Avec le champi : {{ spots.SPOIdChampi.CHAEspece }}</p>
-                    </div>
+    <input type="hidden" data-lat="{{ spots.SPOLatitude }}" 
+    data-long="{{ spots.SPOLongitude }}" data-img="{{  spots.SPOPhoto  }}" 
+    data-id="{{   spots.id   }}" data-description="{{  spots.SPODescription  }}" 
+    name="lnglat" id="lnglat" class="lnglat" />
 
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                    </div>
-                </div>
-                <!-- End Modal -->
-   <p id="infoposition"></p>
-
-    <input type="hidden" name="lat" id="lat"/> 
-    <input type="hidden" name="lng" id="lng"/>
+<!-- Version mobile -->
 
 
 
@@ -36,7 +20,13 @@
         {# VERSION MOBILE #}
     <div class="d-flex flex-column d-none d-block-mobile d-flex-mobile flex-column-mobile ai-center">
         {% if spots.SPOPhoto %}
-        <img src = "../{{  spots.SPOPhoto }}" class="responsive-img"/>
+
+            <img src="../{{ spots.SPOPhoto }}" alt="Primary champignon">
+
+        {% else %}
+        
+            <img src="../img/champi-nf.png" alt="Primary champignon">
+            
         {% endif %}
         <p class="color-1">INFORMATIONS</p>
         <div class="row no-margin-mobile w-90pct-mobile">
@@ -96,17 +86,75 @@
 
         <input type="submit" value="Signaler ce spot">
 
-    {{ form_end(formSignal) }}
+    {{ form_end(formSignal) }} -->
 
-  </div>
-   {{ form_start(formComment) }}
-        {{ form_widget(formComment.COM_text, {'placeholder': 'Écrire un commentaire'}) }}
-        <input type="submit" value="Ajouter un commentaire">
-    {{ form_end(formComment) }}
-         
-    </div>
+    
+<!-- Version Desktop -->
 
-   
+<section class="p-50-50-0 no-padding-mobile">
+
+        <div class="row d-flex-mobile flex-column-reverse-mobile">
+            <div class="col m3 d-flex flex-column ai-center jc-space-between h-75vh s12 h-100pct-mobile">
+                <div class="d-flex flex-column">
+                    <h3 class="raleway fw-700 color-1 separator fs-24 no-margin text-center">LAISSER UN COMMENTAIRE</h3>
+                        <form class="" action="" id="formFilter" method='POST'>
+                           <!-- Ajouter des commentaires -->
+                            {{ form_start(formComment) }}
+                                {{ form_widget(formComment.COM_text, { 'value': '' }) }}
+                                <input class="button-secondary mt-10" type="submit" value="Poster le commentaire">
+                            {{ form_end(formComment) }}
+                        </form>
+                </div>
+                <div class="d-flex ai-flex-end">
+                    <img class="responsive-img d-none-mobile" src="../img/congratulations.svg" alt="">
+                </div>
+            </div>
     
+            <div class="col m9 s12 m-t-25-mobile">
     
+                <div class="map w-100pct map-mobile d-none-mobile" id="mapid">
+                     <!-- Modal Structure -->
+                        <div id="info-modal-spot{{ spots.id }}" class="modal">
+                            
+                                <div class="modal-content row">
+                                    <div class="col s6">
+                                        {% if spots.SPOPhoto %}
+
+                                            <img src="../{{ spots.SPOPhoto }}" alt="Primary champignon">
+                                
+                                        {% else %}
+                                        
+                                            <img src="../img/champi-nf.png" alt="Primary champignon">
+                                            
+                                        {% endif %}
+                                    </div>
+                        
+                                    <div class="col s6">
+                                        <h3>Informations</h3>
+                                        <p>Description : {{ spots.SPODescription }}</p>
+                                        <p>Le champignon : {{ spots.SPOIdChampi.CHAEspece }}</p>
+                                        <p>Poster par : {{ spots.SPOIdUser.Username}}</p>
+                                    </div>
+                                    
+                                </div>
+                        
+                                <div class="modal-footer row">
+                        
+                                    <div class="col s12">
+                        
+                                        <!-- Affiche les commentaires -->
+                                        {%   for comments in comment   %}
+                                            <p>{{ comments.COMText }}</p>
+                                        {%   endfor   %}
+                        
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- End Modal -->
+                </div>
+                <p id="infoposition"></p> 
+            </div>
+        </div>
+    
+    </section>
 {% endblock %}
