@@ -61,6 +61,9 @@ class MapController extends Controller
                         ),
                         "expanded" => true,
                         "multiple" => false,
+                        "label_attr" => [
+                            "class" => "color-1-mobile"
+                        ],
                         "attr" => array(
                             "name" => "group1",
                             "class" => "d-flex",
@@ -71,6 +74,9 @@ class MapController extends Controller
                         'choices' => array(
                             'Oui' => 'oui',
                             'Non' => 'non',
+                        ),
+                        "choice_attr" => array(
+                            "class" => "color-1-mobile"
                         ),
                         "expanded" => true,
                         "multiple" => false,
@@ -85,6 +91,9 @@ class MapController extends Controller
                             'Oui' => 'oui',
                             'Non' => 'non',
                         ),
+                        "choice_attr" => array(
+                            "class" => "color-1-mobile"
+                        ),
                         "expanded" => true,
                         "multiple" => false,
                         "attr" => array(
@@ -97,6 +106,9 @@ class MapController extends Controller
                         'choices' => array(
                             'Oui' => 'oui',
                             'Non' => 'non',
+                        ),
+                        "choice_attr" => array(
+                            "class" => "color-1-mobile"
                         ),
                         "expanded" => true,
                         "multiple" => false,

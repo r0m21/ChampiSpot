@@ -25,6 +25,7 @@ class AdminController extends Controller
         $signalement = $repo->FindAll();
         $repoSpot = $this->getDoctrine()
         ->getRepository(Spot::class);
+        dump($signalement);
         
 
         if(isset($_POST['delete'])){

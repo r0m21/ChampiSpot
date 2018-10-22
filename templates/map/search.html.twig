@@ -13,6 +13,11 @@
 
 <!-- Version mobile -->
 
+
+
+
+
+        {# VERSION MOBILE #}
     <div class="d-flex flex-column d-none d-block-mobile d-flex-mobile flex-column-mobile ai-center">
         {% if spots.SPOPhoto %}
 
@@ -55,10 +60,33 @@
             <p class="raleway fs-18 color-1">Accessibilité :</p>
             <p class="no-margin">{{ spots.SPOAccessibilite }}</p>
             <input type="hidden" name="accessibilité" id="accessibilite" value="{{ spots.SPOAccessibilite }}">
-        </div>     
-    </div>
+        </div>
+<!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger bg-color-3" href="#modal1">Signaler ce spot</a>
 
-     
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bg-color-4">
+    {{ form_start(formSignal) }}
+
+        {{ form_label(formSignal.SIG_vide, 'Il n\'y a rien à ce spot : ', {
+       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
+        {{ form_widget(formSignal.SIG_vide)}}
+
+        {{ form_label(formSignal.SIG_toxique, 'Toxicité incorrecte : ', {
+       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
+        {{ form_widget(formSignal.SIG_toxique)}}
+
+        {{ form_label(formSignal.SIG_desc, 'Description incorrecte :  ', {
+       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
+        {{ form_widget(formSignal.SIG_desc) }}
+
+        {{ form_label(formSignal.SIG_accessibilite, 'Accessibilité du spot incorrecte :  ', {
+       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
+        {{ form_widget(formSignal.SIG_accessibilite) }}
+
+        <input type="submit" value="Signaler ce spot">
+
+    {{ form_end(formSignal) }} -->
 
     
 <!-- Version Desktop -->
@@ -93,7 +121,7 @@
     
             <div class="col m9 s12 m-t-25-mobile">
     
-                <div class="map w-100pct map-mobile" id="mapid">
+                <div class="map w-100pct map-mobile d-none-mobile" id="mapid">
                      <!-- Modal Structure -->
                         <div id="info-modal-spot{{ spots.id }}" class="modal">
                             
