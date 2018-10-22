@@ -17,7 +17,7 @@ class SignalementType extends AbstractType
             ->add('SIG_toxique')
             ->add('SIG_desc')
             ->add('SIG_accessibilite')
-            ->add('SIG_id_spot')
+            ->add('spot')
         ;
     }
 
