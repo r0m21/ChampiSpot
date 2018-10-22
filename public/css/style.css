@@ -369,6 +369,29 @@ body {position: relative;}
 /*------------------------------------*/
 /*--------------MEDIA QUERIES------------*/
 
+
+
+@media screen and (min-width: 1200px) {
+    .d-block-lg{
+        display: block;
+    }
+    .d-none-lg{
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .jc-center-lg{
+        justify-content: center;
+    }
+    .flex-column-xl{
+        flex-direction:column;
+    }
+    .mb-40-xl{
+        margin-bottom: 40px;
+    }
+}
+
 @media screen and (max-width: 768px) {
 
     .d-none-tablette{
