@@ -5,17 +5,21 @@
 {% block body %}     
     
         <h2 class="raleway fw-700 color-1 separator fs-24 no-margin text-center">Signalements</h2>
-    <section class="d-flex flex-wrap">
+    <section class="d-flex flex-wrap jc-space-around">
     
     {% for newSignal in signalement %}
        
-        <div class="border-1 w-40pct p-1em-0">
+        <div class="border-1 w-40pct p-1em-0 w-100pct-tablette w-100-mobile mb-20">
             <div class="d-flex jc-space-around w-100pct">
-                {% if newSignal.spot.spoPhoto %}
+            {% if newSignal.spot.spoPhoto %}
+                {% if newSignal.spot.spoPhoto != 'uploads/photos/d41d8cd98f00b204e9800998ecf8427e.png' %}
                     <img src="../{{ newSignal.spot.spoPhoto }}" alt="" class="w-40pct">  
                 {% else %}  
-                    <img src="../public/img/champi-nf.png" alt="" class="w-40pct"> 
-                {% endif %}       
+                    <img src="./img/champi-nf.png" alt="" class="w-40pct h-175px h-150px-tablette"> 
+                {% endif %} 
+            {% else %}  
+                <img src="./img/champi-nf.png" alt="" class="w-40pct h-175px h-150px-tablette">    
+            {% endif %}     
                 <div class="w-40pct">
                     <a href="/search/{{ newSignal.spot.id }}" class="border-bot-2 color-1 raleway">Voir les informations</a>
                     <p>Il n'y a rien à ce spot : {{ newSignal.sigVide }}</p>
@@ -33,8 +37,8 @@
                 {# <a href="{{ path('admin', { 'id': newSignal.spot.id }) }}"></a> #}
                 <input type="hidden" name="spotId" value="{{ newSignal.spot.id }}" />
                 <input type="hidden" name="sigId" value = "{{ newSignal.id  }}" />
-                <input type="submit" name="signal" value="Ignorer le signalement" class="browser-default bg-color-4 no-border raleway color-3 w-40pct fs-20 fw-700 p-05em-0"/>
-                <input type="submit" name="delete" value="Supprimer le spot" class="browser-default bg-color-5 no-border raleway color-3 w-40pct fs-20 fw-700 p-05em-0"/>
+                <input type="submit" name="signal" value="Ignorer le signalement" class="cursor-pointer browser-default bg-color-4 no-border raleway color-3 w-40pct fw-700 p-05em-0"/>
+                <input type="submit" name="delete" value="Supprimer le spot" class="cursor-pointer browser-default bg-color-5 no-border raleway color-3 w-40pct fw-700 p-05em-0"/>
             </form>
         </div>
 

@@ -79,6 +79,7 @@ body {position: relative;}
         height:250px;
     }
     .h-100px{height:100px;}
+    .h-175px{height:175px;}
 
     /*------------------------------------*/
     /*----------------FONTS--------------*/
@@ -171,7 +172,7 @@ body {position: relative;}
 
     /*------------------------------------*/
     /*--------------GENERAL---------------*/
-
+    .cursor-pointer{cursor:pointer;}
     .separator::after{      /* Séparateur centré */
         content: "";
         display: block;
@@ -377,7 +378,7 @@ body {position: relative;}
 /*--------------MEDIA QUERIES------------*/
 
 @media screen and (max-width: 768px) {
-
+    .h-150px-tablette{height:150px;}
     .d-none-tablette{
         display: none;
     }
