@@ -13,11 +13,6 @@
 
 <!-- Version mobile -->
 
-
-
-
-
-        {# VERSION MOBILE #}
     <div class="d-flex flex-column d-none d-block-mobile d-flex-mobile flex-column-mobile ai-center">
         {% if spots.SPOPhoto %}
 
@@ -60,33 +55,10 @@
             <p class="raleway fs-18 color-1">Accessibilité :</p>
             <p class="no-margin">{{ spots.SPOAccessibilite }}</p>
             <input type="hidden" name="accessibilité" id="accessibilite" value="{{ spots.SPOAccessibilite }}">
-        </div>
-<!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger bg-color-3" href="#modal1">Signaler ce spot</a>
+        </div>     
+    </div>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal bg-color-4">
-    {{ form_start(formSignal) }}
-
-        {{ form_label(formSignal.SIG_vide, 'Il n\'y a rien à ce spot : ', {
-       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
-        {{ form_widget(formSignal.SIG_vide)}}
-
-        {{ form_label(formSignal.SIG_toxique, 'Toxicité incorrecte : ', {
-       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
-        {{ form_widget(formSignal.SIG_toxique)}}
-
-        {{ form_label(formSignal.SIG_desc, 'Description incorrecte :  ', {
-       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
-        {{ form_widget(formSignal.SIG_desc) }}
-
-        {{ form_label(formSignal.SIG_accessibilite, 'Accessibilité du spot incorrecte :  ', {
-       'label_attr': {'class': 'color-1-mobile fs-20'} }) }}
-        {{ form_widget(formSignal.SIG_accessibilite) }}
-
-        <input type="submit" value="Signaler ce spot">
-
-    {{ form_end(formSignal) }} -->
+     
 
     
 <!-- Version Desktop -->
@@ -113,6 +85,7 @@
                         {{ form_row(formSignal.SIG_toxique, {'label': 'Toxicité incorrecte : '}) }}
                         {{ form_row(formSignal.SIG_desc, {'label': 'Description incorrecte : '}) }}
                         {{ form_row(formSignal.SIG_accessibilite, {'label': 'Qualité du spot incorrecte : '}) }}
+                        
                         <input type="submit" value="Signaler ce spot" class="button-secondary mt-10">
                     </div>
                     {{ form_end(formSignal) }}
@@ -121,28 +94,28 @@
     
             <div class="col m9 s12 m-t-25-mobile">
     
-                <div class="map w-100pct map-mobile d-none-mobile" id="mapid">
+                <div class="map w-100pct map-mobile" id="mapid">
                      <!-- Modal Structure -->
                         <div id="info-modal-spot{{ spots.id }}" class="modal">
                             
                                 <div class="modal-content row">
                                     <div class="col s6">
-                                        {% if spots.SPOPhoto %}
-
-                                            <img src="../{{ spots.SPOPhoto }}" alt="Primary champignon">
-                                
-                                        {% else %}
-                                        
-                                            <img src="../img/champi-nf.png" alt="Primary champignon">
-                                            
-                                        {% endif %}
+                                    {% if spots.SPOPhoto %}
+                                        {% if spots.SPOPhoto != 'uploads/photos/d41d8cd98f00b204e9800998ecf8427e.png' %}
+                                            <img src="../{{ spots.SPOPhoto }}" alt="Primary champignon">  
+                                        {% else %}  
+                                            <img src="./img/champi-nf.png" alt="Primary champignon"> 
+                                        {% endif %} 
+                                    {% else %}  
+                                        <img src="./img/champi-nf.png" alt="Primary champignon">    
+                                    {% endif %}     
                                     </div>
                         
                                     <div class="col s6">
                                         <h3>Informations</h3>
                                         <p>Description : {{ spots.SPODescription }}</p>
                                         <p>Le champignon : {{ spots.SPOIdChampi.CHAEspece }}</p>
-                                        <p>Poster par : {{ spots.SPOIdUser.Username}}</p>
+                                        <p>Posté par : {{ spots.SPOIdUser.Username}}</p>
                                     </div>
                                     
                                 </div>

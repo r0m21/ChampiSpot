@@ -398,8 +398,11 @@ body {position: relative;}
     .mb-40-xl{
         margin-bottom: 40px;
     }
+    .w-100-xl{width:100%;}
 }
-
+@media screen and (max-width: 1000px){
+    .w-100-m{width:100%;}
+}
 @media screen and (max-width: 768px) {
     .h-150px-tablette{height:150px;}
     .d-none-tablette{
