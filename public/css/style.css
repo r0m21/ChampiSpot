@@ -48,6 +48,8 @@ body {position: relative;}
 
     .bg-color-2{background-color:#FFFFFF;}
     .bg-color-3{background-color: #F37A3A;}
+    .bg-color-4{background-color: rgba(243,122,58,0.8) !important;}
+
     .bg-transparent{background: transparent !important;}
 
     .border-bot-1{border-bottom: 1px solid #E9E9E9;}
@@ -63,6 +65,9 @@ body {position: relative;}
     .w-65pct{width: 65%;}
     .w-50pct{
         width:50%;
+    }
+    .w-30pct{
+        width:30%;
     }
     .h-100vh{height: 100vh;}
     .h-75vh{height:75vh;}
@@ -85,6 +90,9 @@ body {position: relative;}
 
     .fs-12{font-size: 12px;}
     .fs-14{font-size: 0.875rem;}
+    .fs-14px{
+        font-size:14px;
+    }
     .fs-20{font-size: 20px;}
     .fs-24{font-size:24px;}
     .fs-40{font-size:40px;}
@@ -293,6 +301,22 @@ body {position: relative;}
         border: 1px solid #F37A3A;
     }
 
+    .button-signal{
+        background-color: transparent;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        width:70%;
+        padding: 10px;
+        border:1px solid white;
+        transition: .5s;
+    }
+    .button-signal:hover{
+        background: white;
+        color: #F37A3A;
+        border: 1px solid #F37A3A;
+    }
+
     .button-action{
         background-color: #F37A3A;
         color: #fff;
@@ -351,7 +375,11 @@ body {position: relative;}
     .form-signal label{
         width:50%;
     }
-
+    .signal-mobile form{
+        display:flex;
+        align-items:center;
+        flex-direction:column;
+    }
      /*------------------------------------*/
     /*----------------Couleurs--------------*/
 
@@ -455,5 +483,12 @@ body {position: relative;}
     }
     .w-90pct-mobile{
         width:90%;
+    }
+    .color-1-mobile{
+        color:white;
+    }
+    .signal-mobile input[type="radio"] + label{
+        color:white;
+        font-size : 14px;
     }
 }
