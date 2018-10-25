@@ -85,6 +85,7 @@
                         {{ form_row(formSignal.SIG_toxique, {'label': 'Toxicité incorrecte : '}) }}
                         {{ form_row(formSignal.SIG_desc, {'label': 'Description incorrecte : '}) }}
                         {{ form_row(formSignal.SIG_accessibilite, {'label': 'Qualité du spot incorrecte : '}) }}
+                        
                         <input type="submit" value="Signaler ce spot" class="button-secondary mt-10">
                     </div>
                     {{ form_end(formSignal) }}
@@ -99,22 +100,22 @@
                             
                                 <div class="modal-content row">
                                     <div class="col s6">
-                                        {% if spots.SPOPhoto %}
-
-                                            <img src="../{{ spots.SPOPhoto }}" alt="Primary champignon">
-                                
-                                        {% else %}
-                                        
-                                            <img src="../img/champi-nf.png" alt="Primary champignon">
-                                            
-                                        {% endif %}
+                                    {% if spots.SPOPhoto %}
+                                        {% if spots.SPOPhoto != 'uploads/photos/d41d8cd98f00b204e9800998ecf8427e.png' %}
+                                            <img src="../{{ spots.SPOPhoto }}" alt="Primary champignon">  
+                                        {% else %}  
+                                            <img src="./img/champi-nf.png" alt="Primary champignon"> 
+                                        {% endif %} 
+                                    {% else %}  
+                                        <img src="./img/champi-nf.png" alt="Primary champignon">    
+                                    {% endif %}     
                                     </div>
                         
                                     <div class="col s6">
                                         <h3>Informations</h3>
                                         <p>Description : {{ spots.SPODescription }}</p>
                                         <p>Le champignon : {{ spots.SPOIdChampi.CHAEspece }}</p>
-                                        <p>Poster par : {{ spots.SPOIdUser.Username}}</p>
+                                        <p>Posté par : {{ spots.SPOIdUser.Username}}</p>
                                     </div>
                                     
                                 </div>

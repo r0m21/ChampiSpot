@@ -31,7 +31,8 @@ class AdminController extends Controller
             $spotId = $_POST['spotId'];
             $findSpot = $repoSpot->findById($spotId);
             $thisSpot = $findSpot[0];
-            dump($thisSpot);
+
+            
             $manager->remove($thisSpot);
             $manager->flush();            
         }
@@ -39,7 +40,7 @@ class AdminController extends Controller
             $sigId = $_POST['sigId'];
             $findSig = $repo->findById($sigId);
             $thisSig = $findSig[0];
-            dump($thisSig);
+
             $manager->remove($thisSig);
             $manager->flush();
         }
