@@ -184,13 +184,25 @@ if(window.location.href.indexOf("ajout") > -1 || window.location.href.indexOf("p
         var long = spotslnglat[i].getAttribute('data-long');
         var photo = spotslnglat[i].getAttribute('data-img');
         var id = spotslnglat[i].getAttribute('data-id');
-        if (photo !='uploads/photos/d41d8cd98f00b204e9800998ecf8427e.png'){
-            var popupContent = "<div class=''><a id='trigger-modal' class='modal-trigger no-padding' href='#info-modal-spot" + id + "'><img class='responsive-img' src='" + photo + "'><h5 class='fs-20 color-1 raleway fw-300'>Informations</h5></a></div>";
+        if(window.location.href.indexOf("search") > -1 ){
+            if (photo !='uploads/photos/d41d8cd98f00b204e9800998ecf8427e.png'){
+                var popupContent = "<div class=''><a id='trigger-modal' class='modal-trigger no-padding' href='#info-modal-spot" + id + "'><img class='responsive-img' src='" + photo + "'><h5 class='fs-20 color-1 raleway fw-300'>Informations</h5></a></div>";
+            }
+            else{
+                var popupContent = "<div class=''><a id='trigger-modal' class='modal-trigger no-padding' href='#info-modal-spot" + id + "'><img class='responsive-img' src='../img/champi-nf.png'><h5 class='fs-20 color-1 raleway fw-300'>Informations</h5></a></div>";
+    
+            }
         }
         else{
-            var popupContent = "<div class=''><a id='trigger-modal' class='modal-trigger no-padding' href='#info-modal-spot" + id + "'><img class='responsive-img' src='./img/champi-nf.png'><h5 class='fs-20 color-1 raleway fw-300'>Informations</h5></a></div>";
-
+            if (photo !='uploads/photos/d41d8cd98f00b204e9800998ecf8427e.png'){
+                var popupContent = "<div class=''><a id='trigger-modal' class='modal-trigger no-padding' href='#info-modal-spot" + id + "'><img class='responsive-img' src='" + photo + "'><h5 class='fs-20 color-1 raleway fw-300'>Informations</h5></a></div>";
+            }
+            else{
+                var popupContent = "<div class=''><a id='trigger-modal' class='modal-trigger no-padding' href='#info-modal-spot" + id + "'><img class='responsive-img' src='./img/champi-nf.png'><h5 class='fs-20 color-1 raleway fw-300'>Informations</h5></a></div>";
+    
+            }
         }
+        
 
         marker = new L.marker([long, lat])
                 .setIcon(markericon)
