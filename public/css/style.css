@@ -425,6 +425,7 @@ body {position: relative;}
 }
 @media screen and (max-width: 1000px){
     .w-100-m{width:100%;}
+    .w-50-m{width:50% !important;}
 }
 @media screen and (max-width: 768px) {
     .h-150px-tablette{height:150px;}

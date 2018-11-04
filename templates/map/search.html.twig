@@ -15,14 +15,14 @@
 
     <div class="d-flex flex-column d-none d-block-mobile d-flex-mobile flex-column-mobile ai-center">
         {% if spots.SPOPhoto %}
-
-            <img src="../{{ spots.SPOPhoto }}" alt="Primary champignon">
-
-        {% else %}
-        
-            <img src="../img/champi-nf.png" alt="Primary champignon">
-            
-        {% endif %}
+            {% if spots.SPOPhoto != 'uploads/photos/d41d8cd98f00b204e9800998ecf8427e.png' %}
+                <img src="../{{ spots.SPOPhoto }}" alt="Primary champignon">  
+            {% else %}  
+                <img src="../img/champi-nf.png" alt="Primary champignon"> 
+            {% endif %} 
+        {% else %}  
+            <img src="../img/champi-nf.png" alt="Primary champignon">    
+        {% endif %}  
         <p class="color-1">INFORMATIONS</p>
         <div class="row no-margin-mobile w-90pct-mobile">
             <div class="d-flex text-center col s3">
@@ -104,10 +104,10 @@
                                         {% if spots.SPOPhoto != 'uploads/photos/d41d8cd98f00b204e9800998ecf8427e.png' %}
                                             <img src="../{{ spots.SPOPhoto }}" alt="Primary champignon">  
                                         {% else %}  
-                                            <img src="./img/champi-nf.png" alt="Primary champignon"> 
+                                            <img src="../img/champi-nf.png" alt="Primary champignon"> 
                                         {% endif %} 
                                     {% else %}  
-                                        <img src="./img/champi-nf.png" alt="Primary champignon">    
+                                        <img src="../img/champi-nf.png" alt="Primary champignon">    
                                     {% endif %}     
                                     </div>
                         

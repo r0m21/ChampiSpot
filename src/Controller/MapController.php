@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -62,7 +63,7 @@ class MapController extends Controller
                         "expanded" => true,
                         "multiple" => false,
                         "label_attr" => [
-                            "class" => "color-1-mobile"
+                            "class" => ""
                         ],
                         "attr" => array(
                             "name" => "group1",
@@ -114,10 +115,9 @@ class MapController extends Controller
                         "multiple" => false,
                         "attr" => array(
                             "class" => "d-flex",
-                        ))
-
-                        
+                        ))                        
                     )
+                    ->add('spot', HiddenType::class)
 
                     ->getForm();
 
